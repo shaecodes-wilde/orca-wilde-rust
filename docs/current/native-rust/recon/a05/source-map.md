@@ -19,11 +19,11 @@ Bytes are first checked by the shared StreamCursor. Accepted bytes enter a singl
 
 Fresh sessions start at sequence 0. A gap, replay, or identity/generation mismatch latches SnapshotRequired and leaves the last screen intact. No public resync constructor exists: vt100's formatted visible screen is not proven to capture parser fragments, both buffers, all scrollback, and host ordering. Recovery requires future host-authoritative snapshot semantics. Too-large frames return FrameTooLarge without advancing or latching recovery.
 
-Screen admission: 1..200 rows, 1..400 columns; at most 10000 scrollback rows; at most 2000000 retained grid cells. Resize must be ordered by the caller with A2's PTY resize. This pilot does not claim a whole-process memory cap or transport backpressure.
+Screen admission: 1..200 rows, 1..400 columns; at most 10000 scrollback rows; at most 2000000 retained grid cells. Resize must be ordered by the caller with A2's PTY resize. Parser-internal OSC/combining storage limits have not been independently verified. This pilot does not claim a whole-model/whole-process byte cap or transport backpressure.
 
 A2 must serialize saves per document and route each candidate acknowledgement to its owning document. The state model carries no filesystem/host authority.
 
-Editor admission: at most 1 MiB UTF8 document; at most 8 MiB / 128 retained full-text history states. Edits use checked byte ranges, preserving Unicode boundaries; this is not grapheme-aware navigation. SaveCandidate owns draft and expected disk baseline. A2 must compare that baseline at the actual write boundary and acknowledge only a confirmed successful save. Changes made while a candidate is being saved stay dirty.
+Editor admission: at most 1 MiB UTF8 document; at most 8 MiB / 128 retained full-text history states. Edits use checked byte ranges, preserving Unicode boundaries; this is not grapheme-aware navigation. SaveCandidate owns draft and expected disk baseline plus a private document-origin token. Acknowledgement from another document fails before mutation even when baseline and revision match. A2 must compare that baseline at the actual write boundary and acknowledge only a confirmed successful save. Changes made while a candidate is being saved stay dirty.
 
 ## Evidence boundaries
 
@@ -32,3 +32,4 @@ Deterministic terminal fixtures are synthetic byte streams in terminal_model/tes
 ## State pilot acceptance criteria
 
 Accepted consecutive frames produce the same cells as uninterrupted bytes, including ANSI and UTF8 splits. Alternate screen exit restores the primary screen and cursor. Rejected order/generation/host identity leaves screen and cursor unchanged and requires recovery. Oversized frames are rejected whole and the same sequence may be retried with an admissible payload. Invalid resizing cannot mutate the screen. Scrollback count and editor document/history admission stay within their configured bounds. Invalid edit ranges/Unicode splits preserve text and history; undo/redo restores user text; stale disk content produces a conflict; saving an earlier draft never marks later edits clean. All of these are model-level criteria, not native UI or external filesystem acceptance.
+
