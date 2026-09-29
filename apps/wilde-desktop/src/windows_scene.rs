@@ -251,7 +251,6 @@ pub fn run(args: &[String]) -> Result<()> {
     drop(output);
     drop(input);
     drop(sidebar);
-    drop(owner);
     drop(window);
     let cleanup = fixture.close(Duration::from_secs(2));
     if let Some(error) = failure {
