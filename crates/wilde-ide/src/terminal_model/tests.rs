@@ -149,3 +149,12 @@ fn scrollback_retention_and_admission_are_bounded() {
         Err(TerminalError::Contract(ContractError::InvalidIdentity))
     ));
 }
+
+#[test]
+fn resize_budget_remembers_wider_retained_history() {
+    let mut terminal = TerminalModel::new_session(identity(), 1, 400, 4_900).unwrap();
+    terminal.resize(1, 1).unwrap();
+    assert_eq!(terminal.resize(200, 1), Err(TerminalError::RetentionLimit));
+    assert_eq!(terminal.resize(1, 0), Err(TerminalError::InvalidDimensions));
+    assert_eq!(terminal.screen().size(), (1, 1));
+}
