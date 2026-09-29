@@ -29,8 +29,13 @@ fn await_marker(
     while Instant::now() < deadline {
         match session
             .read_output(Duration::from_millis(100))
-            .expect("ordered native output")
-        {
+            .unwrap_or_else(|error| {
+                panic!(
+                    "fixture native read failed: {error}; admitted_bytes={}; escaped_prefix={}",
+                    bytes.len(),
+                    escaped_transcript(&bytes)
+                )
+            }) {
             OutputEvent::Frame(frame) => {
                 cursor
                     .accept(&frame)
@@ -42,10 +47,22 @@ fn await_marker(
                 }
             }
             OutputEvent::TimedOut => (),
-            event => panic!("fixture ended before expected marker: {event:?}"),
+            event => panic!(
+                "fixture ended before expected marker: {event:?}; admitted_bytes={}; escaped_prefix={}",
+                bytes.len(),
+                escaped_transcript(&bytes)
+            ),
         }
     }
-    panic!("fixture output deadline exceeded");
+    panic!(
+        "fixture output deadline exceeded; admitted_bytes={}; escaped_prefix={}",
+        bytes.len(),
+        escaped_transcript(&bytes)
+    );
+}
+
+fn escaped_transcript(bytes: &[u8]) -> String {
+    bytes[..bytes.len().min(4096)].escape_ascii().to_string()
 }
 
 fn assert_cleanup(session: &mut OwnedFixtureSession) {

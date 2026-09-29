@@ -1,4 +1,5 @@
-//! Fixture-only PTY lifecycle. No network, user commands, profiles or durable daemon.
+//! Fixture-only PTY lifecycle, quarantined behind an outer owned-runner watchdog.
+//! Native reader/master cleanup has no proven hard deadline; production R08 is not accepted.
 #[path = "fixture-command.rs"]
 mod fixture_command;
 #[path = "fixture-lifecycle.rs"]
@@ -62,6 +63,7 @@ pub struct OwnedFixtureSession {
 
 impl OwnedFixtureSession {
     pub fn spawn(identity: SessionIdentity, size: PtySize) -> Result<Self> {
+        fixture_command::require_guard(std::env::var_os("WILDE_RUNTIME_FIXTURE_GUARD").as_deref())?;
         fixture_command::validate(&identity, size)?;
         let mut cwd = FixtureDirectory::create()?;
         let command = fixture_command::command(&cwd.0)?;
@@ -231,6 +233,7 @@ impl OwnedFixtureSession {
         let deadline = Instant::now() + budget.min(MAX_CLEANUP_WAIT);
         loop {
             let verdict = self.verdict();
+            // Native ConPTY destruction may block; the outer owned runner is the timeout boundary.
             if verdict == ProcessVerdict::Exited {
                 self.master.take();
             }

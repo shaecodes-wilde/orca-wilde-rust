@@ -6,6 +6,12 @@ use wilde_contracts::{SessionIdentity, StreamCursor};
 
 static NEXT_CWD: AtomicU64 = AtomicU64::new(1);
 
+pub(crate) fn require_guard(value: Option<&std::ffi::OsStr>) -> Result<()> {
+    if value != Some(std::ffi::OsStr::new("owned-runner-watchdog-v1")) {
+        bail!("fixture execution requires A1 owned-runner watchdog attestation");
+    }
+    Ok(())
+}
 pub(crate) fn validate(identity: &SessionIdentity, size: PtySize) -> Result<()> {
     StreamCursor::from_snapshot(identity.clone(), 0)
         .map_err(|error| anyhow::anyhow!("invalid fixture identity: {error:?}"))?;
@@ -131,3 +137,15 @@ while IFS= read -r line; do
     esac
 done
 exit 0"#;
+
+#[cfg(test)]
+mod guard_admission_tests {
+    use super::*;
+
+    #[test]
+    fn unguarded_or_mismatched_runner_attestation_refuses_fixture_execution() {
+        assert!(require_guard(None).is_err());
+        assert!(require_guard(Some(std::ffi::OsStr::new("unguarded"))).is_err());
+        assert!(require_guard(Some(std::ffi::OsStr::new("owned-runner-watchdog-v1"))).is_ok());
+    }
+}
