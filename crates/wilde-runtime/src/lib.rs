@@ -2,6 +2,8 @@
 //! Native reader/master cleanup has no proven hard deadline; production R08 is not accepted.
 #[path = "fixture-command.rs"]
 mod fixture_command;
+#[path = "fixture-directory.rs"]
+mod fixture_directory;
 #[path = "fixture-lifecycle.rs"]
 mod fixture_lifecycle;
 #[path = "fixture-output.rs"]
@@ -11,7 +13,7 @@ use anyhow::{Context, Result, bail};
 use fixture_command::FixtureDirectory;
 use fixture_lifecycle::OwnedChild;
 pub use fixture_lifecycle::{
-    CleanupReceipt, CleanupReport, MAX_CLEANUP_WAIT, MAX_FIXTURE_LIFETIME,
+    CleanupReceipt, CleanupReport, CwdRemovalError, MAX_CLEANUP_WAIT, MAX_FIXTURE_LIFETIME,
 };
 pub use portable_pty::PtySize;
 use portable_pty::{MasterPty, native_pty_system};
@@ -93,6 +95,7 @@ impl OwnedFixtureSession {
             reader_joined: false,
             lifecycle_joined: false,
             cwd_removed: false,
+            cwd_remove_error: None,
         })));
         let (sender, output) = sync_channel(fixture_output::QUEUE_CHUNKS);
         let mut session = Self {
@@ -239,13 +242,31 @@ impl OwnedFixtureSession {
             }
             join_finished(&mut self.reader, &self.receipt, true);
             join_finished(&mut self.lifecycle, &self.receipt, false);
+            let workers = self.receipt.snapshot();
             if verdict == ProcessVerdict::Exited
-                && self.reader.is_none()
-                && self.lifecycle.is_none()
+                && workers.reader_joined
+                && workers.lifecycle_joined
             {
-                let removed = self.cwd.remove();
-                self.receipt.update(|report| report.cwd_removed = removed);
-                break;
+                match self.cwd.remove_before(deadline) {
+                    Ok(()) => {
+                        self.receipt.update(|report| {
+                            report.cwd_removed = true;
+                            report.cwd_remove_error = None;
+                        });
+                        break;
+                    }
+                    Err(error) => {
+                        let failure = CwdRemovalError::from_io(&error);
+                        let retry = failure.is_transient_lock();
+                        self.receipt.update(|report| {
+                            report.cwd_removed = false;
+                            report.cwd_remove_error = Some(failure);
+                        });
+                        if !retry {
+                            break;
+                        }
+                    }
+                }
             }
             if Instant::now() >= deadline {
                 break;
@@ -272,10 +293,11 @@ fn join_finished(worker: &mut Option<JoinHandle<()>>, receipt: &CleanupReceipt, 
 impl Drop for OwnedFixtureSession {
     fn drop(&mut self) {
         // Failed supervisor creation still leaves an owned child requiring cleanup.
-        if self.lifecycle.is_none() && self.verdict() != ProcessVerdict::Exited {
-            if let Ok(mut child) = self.child.lock() {
-                let _ = child.kill();
-            }
+        if self.lifecycle.is_none()
+            && self.verdict() != ProcessVerdict::Exited
+            && let Ok(mut child) = self.child.lock()
+        {
+            let _ = child.kill();
         }
         let _ = self.close(MAX_CLEANUP_WAIT);
     }

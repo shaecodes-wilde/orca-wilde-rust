@@ -62,9 +62,12 @@ impl FixtureDirectory {
         bail!("fixture cwd collision budget exhausted")
     }
 
-    pub fn remove(&self) -> bool {
-        // The fixture creates no files; never recursively remove an unexpected occupant.
-        std::fs::remove_dir(&self.0).is_ok() || !self.0.exists()
+    pub fn remove(&self) -> std::io::Result<()> {
+        self.remove_before(std::time::Instant::now() + crate::MAX_CLEANUP_WAIT)
+    }
+
+    pub fn remove_before(&self, deadline: std::time::Instant) -> std::io::Result<()> {
+        crate::fixture_directory::remove_before(&self.0, deadline)
     }
 }
 
@@ -147,5 +150,25 @@ mod guard_admission_tests {
         assert!(require_guard(None).is_err());
         assert!(require_guard(Some(std::ffi::OsStr::new("unguarded"))).is_err());
         assert!(require_guard(Some(std::ffi::OsStr::new("owned-runner-watchdog-v1"))).is_ok());
+    }
+}
+
+#[cfg(test)]
+mod directory_preservation_tests {
+    use super::*;
+
+    #[test]
+    fn nonempty_fixture_directory_is_retained_until_its_exact_test_file_is_removed() {
+        let directory = FixtureDirectory::create().unwrap();
+        let file = directory.0.join("synthetic-retained-file");
+        std::fs::write(&file, b"synthetic").unwrap();
+        let error = directory
+            .remove()
+            .expect_err("nonempty fixture must be retained");
+        assert_eq!(error.kind(), std::io::ErrorKind::DirectoryNotEmpty);
+        assert!(file.is_file());
+        std::fs::remove_file(&file).unwrap();
+        directory.remove().unwrap();
+        directory.remove().unwrap();
     }
 }
