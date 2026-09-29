@@ -4,7 +4,7 @@ Task / role: A02 runtime/process owner; R01 reconnaissance and R08 fixture lifec
 Actual model / runner / session: GPT-6.1-Sol High, native collaboration worker /root/a02_runtime. User-requested model overrides kickoff Opus label.
 Worktree / branch / exact HEAD: F:\wr\a02 / rust-v2/a02-runtime. Base ce470be8c01a54f68125e4de111cce312cf6ffd6; exact implementation commit supplied in completion message.
 Base contract version: Rust protocol major 1; legacy selected snapshot 1db4ef38577ec932f97067b7391625b7be599884.
-Status: IMPLEMENTED; source formatted; BUILD AND REAL FIXTURE TESTS NOT RUN by A02. Not integrated.
+Status: IMPLEMENTED FIXTURE PILOT; production R08 bounded cleanup NOT ACCEPTED. Superseded acceptance notes: R09-review-response.md. Source formatted; BUILD AND REAL FIXTURE TESTS NOT RUN by A02. Not integrated.
 
 ## Result in plain English
 
@@ -28,7 +28,7 @@ Exactly two session workers: bounded output reader and lifecycle supervisor. Sup
 
 PASS, exit 0: rustfmt --edition 2024 on the five owned Rust files. PASS, exit 0: rustfmt --edition 2024 --check and git diff --cached --check. No Cargo command, dependency install, fixture process or GUI launch was run by A02.
 
-A1 ready command after registering crate: ORCA_BACKGROUND_LAUNCH=1, WILDE_RUNTIME_TEST_ROOT=F:\wr-build\runtime-tests (existing directory), CARGO_BUILD_JOBS=2, CARGO_TARGET_DIR=F:\wr-build\<coordinator-selected-target>; cargo test -p wilde-runtime -- --test-threads=1. This starts only installed fixed fixture shells, with synthetic temporary cwd and no GUI. A1 chooses the external build target and executes all builds sequentially.
+A1 guarded-runner command only, after establishing owned subprocess/job watchdog; WILDE_RUNTIME_FIXTURE_GUARD=owned-runner-watchdog-v1 is mandatory attestation, not proof. Standalone fixture execution is quarantined. Previous candidate command after registering crate: ORCA_BACKGROUND_LAUNCH=1, WILDE_RUNTIME_TEST_ROOT=F:\wr-build\runtime-tests (existing directory), CARGO_BUILD_JOBS=2, CARGO_TARGET_DIR=F:\wr-build\<coordinator-selected-target>; cargo test -p wilde-runtime -- --test-threads=1. This starts only installed fixed fixture shells, with synthetic temporary cwd and no GUI. A1 chooses the external build target and executes all builds sequentially.
 
 Prepared real integration tests (NOT RUN): native output/escape bytes, write/read acknowledgement, viewer detach/reattach with stable PID and identity, native resize, successful natural exit, explicit kill and repeatable close, Drop receipt, fixed lifetime/automatic stop. Prepared pure tests (NOT RUN): fatal bounded queue overflow preserves ordering of admitted chunks; disconnected consumer refusal; invalid host/generation/geometry/identifier admission.
 

@@ -39,6 +39,7 @@ impl CleanupReceipt {
 
 pub(crate) fn verdict(child: &OwnedChild, receipt: &CleanupReceipt) -> ProcessVerdict {
     let Ok(mut child) = child.lock() else {
+        record_unverifiable(receipt);
         return ProcessVerdict::Unverifiable;
     };
     match child.try_wait() {
@@ -47,8 +48,18 @@ pub(crate) fn verdict(child: &OwnedChild, receipt: &CleanupReceipt) -> ProcessVe
             ProcessVerdict::Exited
         }
         Ok(None) => ProcessVerdict::Live,
-        Err(_) => ProcessVerdict::Unverifiable,
+        Err(_) => {
+            record_unverifiable(receipt);
+            ProcessVerdict::Unverifiable
+        }
     }
+}
+
+fn record_unverifiable(receipt: &CleanupReceipt) {
+    receipt.update(|report| {
+        report.verdict = ProcessVerdict::Unverifiable;
+        report.exit_code = None;
+    });
 }
 
 fn record_exit(receipt: &CleanupReceipt, status: ExitStatus) {
@@ -72,7 +83,7 @@ pub(crate) fn supervise(
             let _ = fault.compare_exchange(0, LEASE_EXPIRED, Ordering::AcqRel, Ordering::Acquire);
         }
         let Ok(mut owned) = child.lock() else {
-            receipt.update(|report| report.verdict = ProcessVerdict::Unverifiable);
+            record_unverifiable(&receipt);
             break;
         };
         match owned.try_wait() {
@@ -81,7 +92,7 @@ pub(crate) fn supervise(
                 break;
             }
             Ok(None) => receipt.update(|report| report.verdict = ProcessVerdict::Live),
-            Err(_) => receipt.update(|report| report.verdict = ProcessVerdict::Unverifiable),
+            Err(_) => record_unverifiable(&receipt),
         }
         if stop_deadline.is_none()
             && (stop.load(Ordering::Acquire) || fault.load(Ordering::Acquire) != 0)
@@ -95,5 +106,78 @@ pub(crate) fn supervise(
             break;
         }
         std::thread::sleep(Duration::from_millis(10));
+    }
+}
+
+#[cfg(test)]
+mod observation_failure_tests {
+    use super::*;
+    use portable_pty::ChildKiller;
+
+    #[derive(Debug, Clone)]
+    struct UnavailableObservation;
+
+    impl ChildKiller for UnavailableObservation {
+        fn kill(&mut self) -> std::io::Result<()> {
+            Ok(())
+        }
+        fn clone_killer(&self) -> Box<dyn ChildKiller + Send + Sync> {
+            Box::new(self.clone())
+        }
+    }
+    impl Child for UnavailableObservation {
+        fn try_wait(&mut self) -> std::io::Result<Option<ExitStatus>> {
+            Err(std::io::Error::other(
+                "synthetic owned child observation failed",
+            ))
+        }
+        fn wait(&mut self) -> std::io::Result<ExitStatus> {
+            Err(std::io::Error::other(
+                "synthetic owned child observation failed",
+            ))
+        }
+        fn process_id(&self) -> Option<u32> {
+            None
+        }
+        #[cfg(windows)]
+        fn as_raw_handle(&self) -> Option<std::os::windows::io::RawHandle> {
+            None
+        }
+    }
+
+    fn receipt() -> CleanupReceipt {
+        CleanupReceipt(Arc::new(Mutex::new(CleanupReport {
+            process_id: None,
+            generation: 1,
+            cwd: PathBuf::from("synthetic-unused-cwd"),
+            verdict: ProcessVerdict::Live,
+            exit_code: None,
+            reader_joined: false,
+            lifecycle_joined: false,
+            cwd_removed: false,
+        })))
+    }
+
+    #[test]
+    fn genuine_child_observation_error_replaces_stale_live_receipt() {
+        let child: OwnedChild = Arc::new(Mutex::new(Box::new(UnavailableObservation)));
+        let receipt = receipt();
+        assert_eq!(receipt.snapshot().verdict, ProcessVerdict::Live);
+        assert_eq!(verdict(&child, &receipt), ProcessVerdict::Unverifiable);
+        assert_eq!(receipt.snapshot().verdict, ProcessVerdict::Unverifiable);
+        assert_eq!(receipt.snapshot().exit_code, None);
+    }
+
+    #[test]
+    fn poisoned_ownership_lock_also_replaces_stale_live_receipt() {
+        let child: OwnedChild = Arc::new(Mutex::new(Box::new(UnavailableObservation)));
+        let receipt = receipt();
+        let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+            let _held = child.lock().unwrap();
+            panic!("synthetic child owner failure");
+        }));
+        assert!(result.is_err());
+        assert_eq!(verdict(&child, &receipt), ProcessVerdict::Unverifiable);
+        assert_eq!(receipt.snapshot().verdict, ProcessVerdict::Unverifiable);
     }
 }
