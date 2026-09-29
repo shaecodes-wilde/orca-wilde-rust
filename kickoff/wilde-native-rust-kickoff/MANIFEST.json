@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "package": "wilde-native-rust-kickoff",
+  "version": "1.0.0",
+  "built_on": "2026-09-29",
+  "reviewed_repository": "shaecodes-wilde/orca-wilde",
+  "reviewed_commit": "1db4ef38577ec932f97067b7391625b7be599884",
+  "contents": [
+    {
+      "path": ".gitignore",
+      "bytes": 41,
+      "sha256": "04beb4e9443645aa73e5529bfff562ca5ba0252f4b4169d3e1f6ffb2e237e4ef"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 1475,
+      "sha256": "b1b6849ce9e8964fe08bdf1f355488d937b556a78cbf896eaabf1a438e6b5395"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2603,
+      "sha256": "0096b4141e8fdb7e22d76711f08c775929dead5db469ed3e428d7a79f7191ebc"
+    },
+    {
+      "path": "START_HERE_CODEX.md",
+      "bytes": 8505,
+      "sha256": "277af9d5d7fcae34524ad3983537a85700e67b778d13270cdcb2a2c9d3810d4a"
+    },
+    {
+      "path": "VALIDATION.md",
+      "bytes": 2307,
+      "sha256": "433b4ff65acededc319455b2a2aa6e53280c11d64e03570af53db2da1e91c8cb"
+    },
+    {
+      "path": "coordination/backlog.json",
+      "bytes": 13750,
+      "sha256": "21330d339371edb213142142cedded141726e73ac521569f01ab09fe6900801f"
+    },
+    {
+      "path": "coordination/feature-parity.csv",
+      "bytes": 4675,
+      "sha256": "114db5a9a5d6066634bb5be0355cc5731b34fc498f7b02cc47763304581802be"
+    },
+    {
+      "path": "coordination/roles.json",
+      "bytes": 4011,
+      "sha256": "77a4aa316014b237b09d1043b18a48651bfda4729bc9995e788ebdfeb4f2b45a"
+    },
+    {
+      "path": "docs/01-repository-baseline.md",
+      "bytes": 3864,
+      "sha256": "502497d785463a0ebe318916968e12172f4b2042e1102b1f1c770cb8baeea2e9"
+    },
+    {
+      "path": "docs/02-native-architecture.md",
+      "bytes": 5717,
+      "sha256": "dca5f27ad99cb5a61b1c43c0d40c9f97c923f85eeafaaf7136f9ba90dcb01840"
+    },
+    {
+      "path": "docs/03-team-and-orchestration.md",
+      "bytes": 4825,
+      "sha256": "2d8c3b6bbcb7b7b243563115a1a6c2262ed2f715ce50c7ea82b807ae5ac63ac9"
+    },
+    {
+      "path": "docs/04-milestones-and-gates.md",
+      "bytes": 4040,
+      "sha256": "21a15e5d117c83955ee876f8cc95c08cb7f913e0c77db5c3693db14c641e07b8"
+    },
+    {
+      "path": "docs/05-contracts-and-boundaries.md",
+      "bytes": 6186,
+      "sha256": "7574e35075ae76c0721c8aad4b1a8c663f583f1e14e98c4eb735f9628242c33e"
+    },
+    {
+      "path": "docs/06-validation-and-performance.md",
+      "bytes": 5489,
+      "sha256": "15322537da0214bcbb1deb5b9283be08c2a2b12d657ba8eb1cbbef3c2a546e30"
+    },
+    {
+      "path": "docs/07-native-toolkit-and-browser-spikes.md",
+      "bytes": 3661,
+      "sha256": "ebe24cbd420b610e2549c6db50789c024afd475dc58a28a4b415995b9f89c6b8"
+    },
+    {
+      "path": "docs/08-data-security-and-release.md",
+      "bytes": 3782,
+      "sha256": "c542ff1bf95c823ce326dd8c5b2485d11a3ac546383c8e4f1985a800f5f434d8"
+    },
+    {
+      "path": "docs/09-worktrees-and-lifecycle.md",
+      "bytes": 3527,
+      "sha256": "691c98d6d2192007b38f371dfef89ce5d9f5bbd7be06b4fe7bdd7cf21dadfc31"
+    },
+    {
+      "path": "docs/10-sources.md",
+      "bytes": 3450,
+      "sha256": "42d7fba8e5d1e82c988babd5719f76c727c94770e6cc9650f5f80d4db93d8448"
+    },
+    {
+      "path": "prompts/01-astra-integration.md",
+      "bytes": 2554,
+      "sha256": "3f6d4538f7ad2216b35461024bc4c4d36850b7ce52b3632da20f5e8962dcd9cd"
+    },
+    {
+      "path": "prompts/02-opus-runtime.md",
+      "bytes": 2431,
+      "sha256": "4f42aa3e211c8d54f7454249f79386582540b623a7b85d276280f3b4841b587e"
+    },
+    {
+      "path": "prompts/03-opus-domain-storage.md",
+      "bytes": 2447,
+      "sha256": "cb6ed2cd119fc1fb3f0715b4d9699c9f85413eba0de46999c3c40de585920e2e"
+    },
+    {
+      "path": "prompts/04-opus-native-ui.md",
+      "bytes": 2440,
+      "sha256": "dfce7d99591660194373d44a466dd21df1c31546d68dd2f4400235a170bb2d39"
+    },
+    {
+      "path": "prompts/05-opus-native-ide.md",
+      "bytes": 2454,
+      "sha256": "0cb943c984f27d6323caa4c79eb3beb00c3329a6d733b46c0805301fd1035494"
+    },
+    {
+      "path": "prompts/06-astra-browser-platform.md",
+      "bytes": 2860,
+      "sha256": "cbff3cde874cbf64d65a9fe435857523b745dbfc8073aadd1552863c4d55211b"
+    },
+    {
+      "path": "prompts/CONTINUE_CODEX.md",
+      "bytes": 1296,
+      "sha256": "e50088bed2a70f291c26902d30c5cf3a2d9f6dc9b73101a4775cd45d7676c763"
+    },
+    {
+      "path": "templates/ADR.md",
+      "bytes": 730,
+      "sha256": "57e9205d06d8a6294a196742c339b77eb32197f04fdcf6144f8fbbf58cc78397"
+    },
+    {
+      "path": "templates/CONTRACT_CHANGE.md",
+      "bytes": 563,
+      "sha256": "e6c9c55db97f2b60d74a66f4fdcce6eef5bd0311d8016c19b7a3e189bf91c81a"
+    },
+    {
+      "path": "templates/HANDOFF.md",
+      "bytes": 845,
+      "sha256": "8a27a5fa0d10a29e946b74f897285b12f79d2b5bcc66cc02dea62ee799f230fb"
+    },
+    {
+      "path": "templates/SESSION_REPORT.md",
+      "bytes": 1003,
+      "sha256": "e4c3ab990f5f6eefbf32c33ad7fef230c0f1d2d292b291aedda02a0979ca2363"
+    },
+    {
+      "path": "templates/benchmark-run.json",
+      "bytes": 939,
+      "sha256": "c5184141a8999f4a44b2437c402f759771761300438213f3963e52712d11ff5d"
+    },
+    {
+      "path": "templates/closeout.json",
+      "bytes": 560,
+      "sha256": "296019032620d2a38ef6edfb843bccaa00420359b2f987271f8c1cfe9fc54e07"
+    },
+    {
+      "path": "tests/test_tools.py",
+      "bytes": 12151,
+      "sha256": "033eda4fa9c4f1aaec0e2437f4edeb4314c38e092d26a6b5e8142a2eb4ac6962"
+    },
+    {
+      "path": "tools/README.md",
+      "bytes": 3098,
+      "sha256": "32d891d8370ce2537932c54ff0385680ef0b7ec26f2328ac9e3bf339cadc1304"
+    },
+    {
+      "path": "tools/compare_benchmarks.py",
+      "bytes": 5966,
+      "sha256": "2985eb39fcf86ce1219a0683be72e0aebcd7aeed16094a4953cd12269f67f62f"
+    },
+    {
+      "path": "tools/preflight.py",
+      "bytes": 4482,
+      "sha256": "e64ef03c46b332d6f165227760da3e8c3c63a327b9295169dfccc5b9fe34d849"
+    },
+    {
+      "path": "tools/worktrees.py",
+      "bytes": 10370,
+      "sha256": "3ec8e58ccd1af1c4fe1adf6870a9816035f6b29840725d08590a7f1a75667a07"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "role": "a02",
+  "reviewed_head": null,
+  "integration_ref": "refs/heads/rust-v2/integration",
+  "integration_sha": null,
+  "evidence_path": null,
+  "durable_evidence_reference": null,
+  "evidence_preserved": false,
+  "process_ownership_checked": false,
+  "task_processes_stopped": false,
+  "unique_material_preserved": false,
+  "note": "Fill only after actual verification. The tool independently checks Git ancestry, exact HEAD, registered path and clean tracked/untracked/ignored state. It does not infer OS process ownership."
+}

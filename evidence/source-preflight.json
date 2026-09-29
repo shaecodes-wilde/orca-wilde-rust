@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "collected_at_utc": "2026-09-29T20:29:52.635989+00:00",
+  "repository_path": "C:\\Users\\sread\\orca-wilde-build",
+  "head": {
+    "exit_code": 0,
+    "stdout": "1db4ef38577ec932f97067b7391625b7be599884",
+    "stderr": ""
+  },
+  "branch": {
+    "exit_code": 0,
+    "stdout": "wilde/theme",
+    "stderr": ""
+  },
+  "origin_default_ref_if_locally_known": {
+    "exit_code": 0,
+    "stdout": "refs/remotes/origin/main",
+    "stderr": ""
+  },
+  "remote_names": {
+    "exit_code": 0,
+    "stdout": "origin\nwilde",
+    "stderr": ""
+  },
+  "worktrees": {
+    "exit_code": 0,
+    "stdout": "worktree F:/Projects/orca\nHEAD 9dedb42e6769563daefed078c894aeddf6c2e63e\ndetached\n\nworktree C:/Users/sread/orca-baseline\nHEAD 5e6fcca0b31e3e51d1704bf53f84c00170bfaa47\ndetached\nprunable gitdir file points to non-existent location\n\nworktree C:/Users/sread/orca-wilde-build\nHEAD 1db4ef38577ec932f97067b7391625b7be599884\nbranch refs/heads/wilde/theme",
+    "stderr": ""
+  },
+  "dirty_status_available": true,
+  "changed_or_untracked_entries": 47,
+  "disk_bytes": {
+    "total": 239013457920,
+    "used": 233944768512,
+    "free": 5068689408
+  },
+  "tools": {
+    "git": {
+      "path": "C:\\Program Files\\Git\\cmd\\git.EXE",
+      "version_check": {
+        "exit_code": 0,
+        "stdout": "git version 2.52.0.windows.1",
+        "stderr": ""
+      }
+    },
+    "rustc": {
+      "path": "C:\\Users\\sread\\.cargo\\bin\\rustc.EXE",
+      "version_check": {
+        "exit_code": 0,
+        "stdout": "rustc 1.94.0 (4a4ef493e 2026-03-02)",
+        "stderr": ""
+      }
+    },
+    "cargo": {
+      "path": "C:\\Users\\sread\\.cargo\\bin\\cargo.EXE",
+      "version_check": {
+        "exit_code": 0,
+        "stdout": "cargo 1.94.0 (85eff7c80 2026-01-15)",
+        "stderr": ""
+      }
+    },
+    "node": {
+      "path": "C:\\Program Files\\nodejs\\node.EXE",
+      "version_check": {
+        "exit_code": 0,
+        "stdout": "v24.13.0",
+        "stderr": ""
+      }
+    },
+    "pnpm": {
+      "path": "C:\\Users\\sread\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\fallback\\pnpm.CMD",
+      "version_check": "not-run"
+    },
+    "codex": {
+      "path": "C:\\Users\\sread\\AppData\\Roaming\\npm\\codex.CMD",
+      "version_check": "not-run"
+    },
+    "claude": {
+      "path": "C:\\Users\\sread\\.local\\bin\\claude.EXE",
+      "version_check": "not-run"
+    },
+    "gh": {
+      "path": "C:\\Program Files\\GitHub CLI\\gh.EXE",
+      "version_check": "not-run"
+    }
+  },
+  "benchmark_scripts_to_review_not_execute": {
+    "test:perf:contracts": "vitest run --config config/vitest.performance.config.ts",
+    "test:e2e:terminal-perf": "pnpm run ensure:electron-runtime && npx playwright test tests/e2e/terminal-typing-latency.spec.ts tests/e2e/terminal-foreground-redraw-freeze.spec.ts tests/e2e/terminal-output-scheduler.spec.ts tests/e2e/terminal-hidden-tui-visual-restore.spec.ts tests/e2e/artificial-opencode-terminal-load.spec.ts --config tests/playwright.config.ts --project electron-headless --workers=2",
+    "test:e2e:terminal-perf:scale": "pnpm run ensure:electron-runtime && node config/scripts/run-terminal-scale-perf-e2e.mjs",
+    "test:e2e:terminal-perf:scale:report": "pnpm run ensure:electron-runtime && node config/scripts/run-terminal-scale-perf-report-gate.mjs",
+    "test:e2e:terminal-perf:check-report": "node config/scripts/check-terminal-perf-report-budgets.mjs",
+    "test:e2e:terminal-perf:summarize": "node config/scripts/summarize-terminal-perf-report.mjs",
+    "test:e2e:terminal-perf:html-report": "node config/scripts/generate-terminal-perf-html-report.mjs",
+    "bench:idle-cpu": "pnpm run ensure:electron-runtime && node config/scripts/run-idle-cpu-benchmark.mjs",
+    "bench:spinners": "pnpm run ensure:electron-runtime && node tests/tools/benchmarks/spinner-rendering/run.mjs",
+    "bench:macos-computer-helper-owner-loss": "node config/scripts/macos-computer-helper-owner-loss-benchmark.mjs",
+    "bench:startup": "pnpm run ensure:electron-runtime && node tests/tools/benchmarks/startup-time-bench.mjs",
+    "bench:daemon-coldstart": "pnpm run ensure:electron-runtime && node tests/tools/benchmarks/daemon-coldstart-bench.mjs",
+    "bench:wsl-hook-relay-reattach": "pnpm run build:relay && node config/scripts/wsl-hook-relay-reattach-benchmark.mjs",
+    "bench:wsl-git-shell": "node config/scripts/wsl-git-shell-benchmark.mjs",
+    "bench:hang-watchdog-memory": "pnpm run ensure:electron-runtime && node config/scripts/hang-watchdog-memory-benchmark.mjs",
+    "bench:main-thread-jank": "pnpm run ensure:electron-runtime && node tests/tools/benchmarks/main-thread-jank-bench.mjs",
+    "bench:worktree-deletion": "node tests/tools/benchmarks/worktree-deletion-dev-bench.mjs",
+    "bench:zustand-selector-fanout": "node config/scripts/zustand-selector-fanout-benchmark.mjs",
+    "bench:agent-inspection-cadence": "node config/scripts/agent-inspection-cadence-batching-benchmark.mjs",
+    "bench:renderer-quadratic-scans": "node config/scripts/renderer-quadratic-scan-benchmark.mjs",
+    "bench:session-write-hot-path": "node config/scripts/session-write-hot-path-benchmark.mjs",
+    "bench:terminal-partial-escape-tail": "node config/scripts/terminal-partial-escape-tail-benchmark.mjs",
+    "bench:worktree-refresh-churn": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON config/scripts/worktree-refresh-churn-benchmark.mjs",
+    "bench:multi-workspace-typing": "pnpm run ensure:electron-runtime && node config/scripts/run-multi-workspace-typing-bench.mjs",
+    "bench:ai-vault-typing": "pnpm run ensure:electron-runtime && node config/scripts/run-ai-vault-typing-bench.mjs",
+    "bench:cold-park-reveal": "pnpm run ensure:electron-runtime && node tests/tools/benchmarks/terminal-cold-park-reveal-bench.mjs",
+    "bench:cold-park-resource": "pnpm run ensure:electron-runtime && node tests/tools/benchmarks/terminal-cold-park-resource-bench.mjs",
+    "bench:compare": "node config/scripts/compare-benchmark-artifacts.mjs"
+  },
+  "package_read_error": null,
+  "instruction_paths_present": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "WILDE.md",
+    "docs/STYLEGUIDE.md"
+  ],
+  "existing_native_rust_directory": false,
+  "not_done": [
+    "No network fetch",
+    "No dependency installation",
+    "No worktree mutation",
+    "No live app/profile inspection",
+    "No model/provider verification",
+    "No runtime benchmark"
+  ]
+}

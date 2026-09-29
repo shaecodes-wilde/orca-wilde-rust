@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "run_kind": "template",
+  "commit": null,
+  "metadata": {
+    "machine_id": null,
+    "os": null,
+    "environment_fingerprint": null,
+    "build_mode": "release",
+    "workload_id": null,
+    "fixture_sha256": null,
+    "measurement_version": null,
+    "memory_metric": null,
+    "power_mode": null,
+    "display_profile": null
+  },
+  "metrics": {
+    "startup_ms": {
+      "unit": "ms",
+      "direction": "lower",
+      "statistic": "median",
+      "samples": []
+    },
+    "input_to_present_ms": {
+      "unit": "ms",
+      "direction": "lower",
+      "statistic": "p95",
+      "samples": []
+    },
+    "idle_memory_mib": {
+      "unit": "MiB",
+      "direction": "lower",
+      "statistic": "median",
+      "samples": []
+    }
+  },
+  "note": "Template only; comparator refuses it. Replace metadata with actual observations and run_kind with measured only after collection. No sample values are invented."
+}

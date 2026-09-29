@@ -1,0 +1,7 @@
+/target/
+/.dev-profile/
+/evidence/raw/
+*.tmp
+.env
+.env.*
+/kickoff/wilde-native-rust-kickoff/**/__pycache__/
