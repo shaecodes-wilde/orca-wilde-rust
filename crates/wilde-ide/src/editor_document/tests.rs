@@ -114,3 +114,22 @@ fn document_and_history_admission_limits_are_enforced() {
         Err(EditorError::InvalidLimits)
     ));
 }
+
+#[test]
+fn same_baseline_save_candidate_cannot_acknowledge_another_document() {
+    let mut first = document("a");
+    let mut second = document("a");
+    first.replace(0..1, "b").unwrap();
+    second.replace(0..1, "c").unwrap();
+    let second_candidate = second.prepare_save("a").unwrap();
+    assert_eq!(
+        first.acknowledge_saved(second_candidate.clone()),
+        Err(EditorError::WrongDocument)
+    );
+    assert_eq!(first.text(), "b");
+    assert!(first.is_dirty());
+    assert!(first.prepare_save("a").is_ok());
+    assert_eq!(first.revision(), 1);
+    second.acknowledge_saved(second_candidate).unwrap();
+    assert!(!second.is_dirty());
+}

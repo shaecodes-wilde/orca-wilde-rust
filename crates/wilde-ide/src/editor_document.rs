@@ -1,4 +1,4 @@
-use std::{collections::VecDeque, ops::Range};
+use std::{collections::VecDeque, ops::Range, sync::Arc};
 
 pub const MAX_DOCUMENT_BYTES: usize = 1_048_576;
 pub const MAX_HISTORY_BYTES: usize = 8_388_608;
@@ -29,10 +29,12 @@ pub enum EditorError {
     Utf8Boundary,
     RevisionExhausted,
     SaveConflict,
+    WrongDocument,
 }
 
 #[derive(Debug, Clone)]
 pub struct SaveCandidate {
+    document_token: Arc<()>,
     text: String,
     expected_disk: String,
     revision: u64,
@@ -51,6 +53,7 @@ impl SaveCandidate {
 }
 
 pub struct EditorDocument {
+    document_token: Arc<()>,
     text: String,
     disk_baseline: String,
     revision: u64,
@@ -74,6 +77,7 @@ impl EditorDocument {
             return Err(EditorError::DocumentTooLarge);
         }
         Ok(Self {
+            document_token: Arc::new(()),
             disk_baseline: text.clone(),
             text,
             revision: 0,
@@ -154,6 +158,7 @@ impl EditorDocument {
             return Err(EditorError::SaveConflict);
         }
         Ok(SaveCandidate {
+            document_token: Arc::clone(&self.document_token),
             text: self.text.clone(),
             expected_disk: self.disk_baseline.clone(),
             revision: self.revision,
@@ -162,6 +167,9 @@ impl EditorDocument {
 
     /// Call only after the host confirms this exact candidate was durably saved.
     pub fn acknowledge_saved(&mut self, candidate: SaveCandidate) -> Result<(), EditorError> {
+        if !Arc::ptr_eq(&candidate.document_token, &self.document_token) {
+            return Err(EditorError::WrongDocument);
+        }
         if candidate.expected_disk != self.disk_baseline || candidate.revision > self.revision {
             return Err(EditorError::SaveConflict);
         }
