@@ -19,7 +19,7 @@ Owned paths only: crates/wilde-browser/src, tests/browser_policy.rs, Cargo.toml 
 Inspected cached wry-0.54.4, tao-0.34.8 and raw-window-handle-0.6.2 APIs plus official upstream docs; links and actual limitations in recon/browser-feasibility.md. rustfmt --edition 2024 over owned Rust files: exit 0. No dependency install or build by A6.
 
 A1 to run with CARGO_BUILD_JOBS=2 and CARGO_TARGET_DIR under F:\wr-build:
-- Set WILDE_BROWSER_TEST_ROOT=F:\wr-build\a06\evidence; cargo test -p wilde-browser (8 Windows headless tests; extra Unix symlink test).
+- Set WILDE_BROWSER_TEST_ROOT=F:\wr-build\a06\evidence; cargo test -p wilde-browser (7 Windows headless tests; extra Unix symlink test).
 - cargo check -p wilde-browser --features windows-child (compile only).
 
 Tests cover profile markers/traversal/revalidation, strict origin escape rejection, cleanup ownership/duplicate IDs, all protected retention reasons, cooldown/clock uncertainty, invalid bounds and launch refusal. Fixtures use synthetic data and remain in the assigned evidence root. Permission policy does not claim backend enforcement.
