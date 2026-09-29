@@ -1,0 +1,82 @@
+[
+  {
+    "root": "F:\\wr-build\\runtime-tests\\wilde-pty-fixture-22164-1",
+    "entries": [
+      {
+        "relative": "AppData",
+        "type": "directory",
+        "size": null
+      },
+      {
+        "relative": "AppData/Roaming",
+        "type": "directory",
+        "size": null
+      }
+    ],
+    "incomplete": false
+  },
+  {
+    "root": "F:\\wr-build\\runtime-tests\\wilde-pty-fixture-25912-1",
+    "entries": [
+      {
+        "relative": "AppData",
+        "type": "directory",
+        "size": null
+      },
+      {
+        "relative": "AppData/Roaming",
+        "type": "directory",
+        "size": null
+      }
+    ],
+    "incomplete": false
+  },
+  {
+    "root": "F:\\wr-build\\runtime-tests\\wilde-pty-fixture-25912-2",
+    "entries": [
+      {
+        "relative": "AppData",
+        "type": "directory",
+        "size": null
+      },
+      {
+        "relative": "AppData/Roaming",
+        "type": "directory",
+        "size": null
+      }
+    ],
+    "incomplete": false
+  },
+  {
+    "root": "F:\\wr-build\\runtime-tests\\wilde-pty-fixture-25912-3",
+    "entries": [
+      {
+        "relative": "AppData",
+        "type": "directory",
+        "size": null
+      },
+      {
+        "relative": "AppData/Roaming",
+        "type": "directory",
+        "size": null
+      }
+    ],
+    "incomplete": false
+  },
+  {
+    "root": "F:\\wr-build\\runtime-tests\\wilde-pty-fixture-25912-4",
+    "entries": [
+      {
+        "relative": "AppData",
+        "type": "directory",
+        "size": null
+      },
+      {
+        "relative": "AppData/Roaming",
+        "type": "directory",
+        "size": null
+      }
+    ],
+    "incomplete": false
+  }
+]

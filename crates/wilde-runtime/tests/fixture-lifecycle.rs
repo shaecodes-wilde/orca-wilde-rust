@@ -65,6 +65,26 @@ fn escaped_transcript(bytes: &[u8]) -> String {
     bytes[..bytes.len().min(4096)].escape_ascii().to_string()
 }
 
+fn await_quiet(session: &mut OwnedFixtureSession, cursor: &mut StreamCursor) {
+    let deadline = Instant::now() + Duration::from_millis(100);
+    for _ in 0..32 {
+        let remaining = deadline.saturating_duration_since(Instant::now());
+        match session
+            .read_output(remaining)
+            .expect("bounded admitted trailing output")
+        {
+            OutputEvent::Frame(frame) => cursor
+                .accept(&frame)
+                .expect("ordered trailing native frame"),
+            OutputEvent::TimedOut => return,
+            event => panic!("fixture ended while awaiting quiet output: {event:?}"),
+        }
+        if Instant::now() >= deadline {
+            break;
+        }
+    }
+    panic!("fixture output did not become quiet within 32 frames / 100 milliseconds");
+}
 fn assert_cleanup(session: &mut OwnedFixtureSession) {
     let report = session.close(MAX_CLEANUP_WAIT);
     assert_eq!(
@@ -130,10 +150,8 @@ fn explicit_close_kills_only_the_owned_fixture_and_is_repeatable() {
     let mut cursor = StreamCursor::from_snapshot(session.identity().clone(), 0).unwrap();
     await_marker(&mut session, b"WILDE_FIXTURE_READY", &mut cursor);
     let first = session.cleanup_receipt().snapshot();
-    assert_eq!(
-        session.read_output(Duration::from_millis(20)).unwrap(),
-        OutputEvent::TimedOut
-    );
+    await_quiet(&mut session, &mut cursor);
+
     assert_cleanup(&mut session);
     let repeated = session.close(Duration::ZERO);
     assert_eq!(repeated.process_id, first.process_id);

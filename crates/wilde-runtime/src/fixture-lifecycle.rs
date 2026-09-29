@@ -11,6 +11,33 @@ pub const MAX_CLEANUP_WAIT: Duration = Duration::from_secs(2);
 pub(crate) type OwnedChild = Arc<Mutex<Box<dyn Child + Send + Sync>>>;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
+pub struct CwdRemovalError {
+    pub kind: std::io::ErrorKind,
+    pub raw_os_error: Option<i32>,
+}
+
+impl CwdRemovalError {
+    pub(crate) fn from_io(error: &std::io::Error) -> Self {
+        Self {
+            kind: error.kind(),
+            raw_os_error: error.raw_os_error(),
+        }
+    }
+    pub(crate) fn is_transient_lock(&self) -> bool {
+        if matches!(
+            self.kind,
+            std::io::ErrorKind::Interrupted | std::io::ErrorKind::WouldBlock
+        ) {
+            return true;
+        }
+        #[cfg(windows)]
+        if matches!(self.raw_os_error, Some(32 | 33)) {
+            return true;
+        }
+        false
+    }
+}
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CleanupReport {
     pub process_id: Option<u32>,
     pub generation: u64,
@@ -20,6 +47,7 @@ pub struct CleanupReport {
     pub reader_joined: bool,
     pub lifecycle_joined: bool,
     pub cwd_removed: bool,
+    pub cwd_remove_error: Option<CwdRemovalError>,
 }
 
 #[derive(Clone)]
@@ -155,6 +183,7 @@ mod observation_failure_tests {
             reader_joined: false,
             lifecycle_joined: false,
             cwd_removed: false,
+            cwd_remove_error: None,
         })))
     }
 
