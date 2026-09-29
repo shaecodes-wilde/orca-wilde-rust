@@ -1,0 +1,14 @@
+[package]
+name = "wilde-browser"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.94"
+license = "MIT"
+
+[features]
+default = []
+windows-child = ["dep:wry", "dep:raw-window-handle"]
+
+[target.'cfg(target_os = "windows")'.dependencies]
+wry = { version = "=0.54.4", optional = true, default-features = false, features = ["os-webview"] }
+raw-window-handle = { version = "=0.6.2", optional = true }
