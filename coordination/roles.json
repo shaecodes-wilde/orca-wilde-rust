@@ -64,7 +64,9 @@
       "worktree": "F:\\wr\\a02",
       "runner_task_name": "/root/a02_runtime",
       "session_id_note": "Collaboration worker handle recorded; no distinct global thread UUID exposed in available tool receipts.",
-      "routing_evidence": "Codex runner accepted explicit gpt-6.1-sol/high launch; no recursive delegation."
+      "routing_evidence": "Codex runner accepted explicit gpt-6.1-sol/high launch; no recursive delegation.",
+      "delivered_head": "7d9c47f8999e4ba645ec182d142e8edca81ecede",
+      "cycle_status": "integrated; retained for next gate"
     },
     {
       "id": "a03",
@@ -91,7 +93,9 @@
       "worktree": "F:\\wr\\a03",
       "runner_task_name": "/root/a03_domain_storage",
       "session_id_note": "Collaboration worker handle recorded; no distinct global thread UUID exposed in available tool receipts.",
-      "routing_evidence": "Codex runner accepted explicit gpt-6.1-sol/high launch; no recursive delegation."
+      "routing_evidence": "Codex runner accepted explicit gpt-6.1-sol/high launch; no recursive delegation.",
+      "delivered_head": "affa99bb5b689136b28d24f1bd8b513f56f6b8c9",
+      "cycle_status": "integrated; retained for next gate"
     },
     {
       "id": "a04",
@@ -116,7 +120,9 @@
       "worktree": "F:\\wr\\a04",
       "runner_task_name": "/root/a04_native_ui",
       "session_id_note": "Collaboration worker handle recorded; no distinct global thread UUID exposed in available tool receipts.",
-      "routing_evidence": "Codex runner accepted explicit gpt-6.1-sol/high launch; no recursive delegation."
+      "routing_evidence": "Codex runner accepted explicit gpt-6.1-sol/high launch; no recursive delegation.",
+      "delivered_head": "c94ad02ba999803461e4bbfd4094460bcc944d17",
+      "cycle_status": "integrated; retained for next gate"
     },
     {
       "id": "a05",
@@ -141,7 +147,9 @@
       "worktree": "F:\\wr\\a05",
       "runner_task_name": "/root/a05_native_ide",
       "session_id_note": "Collaboration worker handle recorded; no distinct global thread UUID exposed in available tool receipts.",
-      "routing_evidence": "Codex runner accepted explicit gpt-6.1-sol/high launch; no recursive delegation."
+      "routing_evidence": "Codex runner accepted explicit gpt-6.1-sol/high launch; no recursive delegation.",
+      "delivered_head": "d03b45090a87f73528fc69eb9229af0af7684b53",
+      "cycle_status": "integrated; retained for next gate"
     },
     {
       "id": "a06",
@@ -170,11 +178,14 @@
       "worktree": "F:\\wr\\a06",
       "runner_task_name": "/root/a06_browser_platform",
       "session_id_note": "Collaboration worker handle recorded; no distinct global thread UUID exposed in available tool receipts.",
-      "routing_evidence": "Codex runner accepted explicit gpt-6.1-sol/high launch; no recursive delegation."
+      "routing_evidence": "Codex runner accepted explicit gpt-6.1-sol/high launch; no recursive delegation.",
+      "delivered_head": "d5fa2102f36c18211e2902f9c7ce61604c2f020b",
+      "cycle_status": "integrated; retained for next gate"
     }
   ],
   "destination_repository": "shaecodes-wilde/orca-wilde-rust",
   "destination_visibility": "public",
   "publication_status": "local-reviewed-candidate; external-write approval pending",
-  "model_override_source": "Shae explicitly requested GPT-6.1-Sol High for A1 and all five workers, overriding kickoff Astra/Opus preferences."
+  "model_override_source": "Shae explicitly requested GPT-6.1-Sol High for A1 and all five workers, overriding kickoff Astra/Opus preferences.",
+  "tested_source": "52e478ce83db480df779cc0255cf898495844452"
 }

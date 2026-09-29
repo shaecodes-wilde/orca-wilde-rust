@@ -1,0 +1,139 @@
+   Compiling cfg-if v1.0.4
+   Compiling serde v1.0.228
+   Compiling bitflags v2.11.0
+   Compiling zerocopy v0.8.47
+   Compiling once_cell v1.21.4
+   Compiling winapi v0.3.9
+   Compiling libc v0.2.183
+   Compiling ahash v0.8.12
+   Compiling hashbrown v0.14.5
+   Compiling thiserror v1.0.69
+   Compiling libsqlite3-sys v0.28.0
+   Compiling hashlink v0.9.1
+   Compiling fallible-iterator v0.3.0
+   Compiling lazy_static v1.5.0
+   Compiling fallible-streaming-iterator v0.1.9
+   Compiling smallvec v1.15.1
+   Compiling shared_library v0.1.9
+   Compiling rusqlite v0.31.0
+   Compiling nix v0.28.0
+   Compiling filedescriptor v0.8.3
+   Compiling winreg v0.10.1
+   Compiling anyhow v1.0.102
+   Compiling serial2 v0.2.34
+   Compiling wilde-contracts v0.1.0 (F:\Orca Wilde Rust\crates\wilde-contracts)
+   Compiling bitflags v1.3.2
+   Compiling downcast-rs v1.2.1
+   Compiling shell-words v1.1.1
+   Compiling log v0.4.29
+   Compiling portable-pty v0.9.0
+   Compiling wilde-domain v0.1.0 (F:\Orca Wilde Rust\crates\wilde-domain)
+   Compiling wilde-runtime v0.1.0 (F:\Orca Wilde Rust\crates\wilde-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 33s
+     Running unittests src\lib.rs (F:\wr-build\a01\debug\deps\wilde_browser-07d4f2ec4c1c6b42.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\browser_policy.rs (F:\wr-build\a01\debug\deps\browser_policy-ffe5dc5c29684c41.exe)
+
+running 7 tests
+test bounds_and_launch_reject_infinite_outside_background_and_unisolated_scenes ... ok
+test closing_one_owner_preserves_other_pages_and_duplicate_ids_fail_closed ... ok
+test cooldown_and_clock_uncertainty_defer_budget_without_repeated_eviction ... ok
+test explicit_marked_profile_succeeds_but_default_existing_and_traversal_fail ... ok
+test navigation_cannot_escape_allowlist_via_credentials_schemes_host_suffix_or_backslash ... ok
+test synthetic_initial_navigation_loads_once_and_rejects_external_or_repeat_navigation ... ok
+test visible_dirty_unknown_media_download_and_lease_pages_are_outside_warm_budget ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.23s
+
+     Running unittests src\lib.rs (F:\wr-build\a01\debug\deps\wilde_contracts-49997b206d700627.exe)
+
+running 7 tests
+test tests::bounded_ingress_rejects_invalid_identity_before_dispatch ... ok
+test tests::gap_does_not_advance_cursor_and_replay_requires_snapshot ... ok
+test tests::lost_host_contact_cannot_invent_process_exit ... ok
+test tests::restarted_session_and_oversized_payload_do_not_consume_cursor ... ok
+test tests::unknown_verdict_preserves_reply_but_wrong_type_is_rejected ... ok
+test tests::unsupported_major_fails_before_execution ... ok
+test tests::wire_ingress_preserves_bytes_and_unknown_optional_fields ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src\lib.rs (F:\wr-build\a01\debug\deps\wilde_domain-07b36f04555022d2.exe)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests\sqlite.rs (F:\wr-build\a01\debug\deps\sqlite-3e0b0a6a48cf93ec.exe)
+
+running 12 tests
+test client_project_folder_and_worktree_survive_sqlite_reopen_without_launching ... ok
+test consequential_edits_require_a_preview_implementation ... ok
+test cross_client_and_duplicate_workspace_assignments_roll_back ... ok
+test invalid_relationship_rolls_back_every_record_and_does_not_consume_request_id ... ok
+test malformed_unsupported_and_conflicting_imports_leave_destination_unchanged ... ok
+test missing_relationship_import_is_atomic_even_when_parent_is_written_first ... ok
+test native_synthetic_export_import_preserves_records_and_foreign_runtime_identity ... ok
+test retry_returns_original_outcome_after_later_writes_and_reopen ... ok
+test stale_store_and_entity_revisions_preserve_saved_state ... ok
+test two_connections_cannot_overwrite_a_stale_snapshot ... ok
+test unmarked_relative_invalid_or_oversized_inputs_never_write ... ok
+test unrelated_existing_database_is_rejected_without_schema_or_data_mutation ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 4.48s
+
+     Running unittests src\lib.rs (F:\wr-build\a01\debug\deps\wilde_runtime-13a98684704c9dcd.exe)
+
+running 4 tests
+test fixture_output::tests::dropped_consumer_refuses_new_output_without_blocking ... ok
+test fixture_output::tests::slow_observer_gets_explicit_failure_without_byte_reordering ... ok
+test tests::invalid_host_generation_and_geometry_are_refused_before_launch ... ok
+test tests::oversized_and_control_character_identifiers_are_refused ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.19s
+
+     Running tests\fixture-lifecycle.rs (F:\wr-build\a01\debug\deps\fixture_lifecycle-f67be9aa44138cc5.exe)
+
+running 4 tests
+test dropping_viewer_owner_has_an_observable_cleanup_receipt ... FAILED
+test explicit_close_kills_only_the_owned_fixture_and_is_repeatable ... FAILED
+test fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement ... FAILED
+test real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach ... FAILED
+
+failures:
+
+---- dropping_viewer_owner_has_an_observable_cleanup_receipt stdout ----
+
+thread 'dropping_viewer_owner_has_an_observable_cleanup_receipt' (31944) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:48:5:
+fixture output deadline exceeded
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- explicit_close_kills_only_the_owned_fixture_and_is_repeatable stdout ----
+
+thread 'explicit_close_kills_only_the_owned_fixture_and_is_repeatable' (34384) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:48:5:
+fixture output deadline exceeded
+
+---- fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement stdout ----
+
+thread 'fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement' (18336) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:48:5:
+fixture output deadline exceeded
+
+---- real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach stdout ----
+
+thread 'real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach' (33696) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:48:5:
+fixture output deadline exceeded
+
+
+failures:
+    dropping_viewer_owner_has_an_observable_cleanup_receipt
+    explicit_close_kills_only_the_owned_fixture_and_is_repeatable
+    fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement
+    real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach
+
+test result: FAILED. 0 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 17.70s
+
+error: test failed, to rerun pass `-p wilde-runtime --test fixture-lifecycle`

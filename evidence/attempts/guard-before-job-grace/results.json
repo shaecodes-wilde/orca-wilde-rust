@@ -1,0 +1,26 @@
+{
+  "run_id": "adf4ef4dfaf645888af1ac54f39b909c",
+  "completed": true,
+  "results": [
+    {
+      "exit_code": 0,
+      "timeout": false,
+      "forced_remaining_children": false,
+      "owned_job_empty": true,
+      "pid_informational_only": 28412,
+      "seconds": 0.3279999999795109,
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_desktop-e8bc92127595aea6.exe",
+      "log": "F:\\Orca Wilde Rust\\evidence\\guarded-tests\\00-wilde_desktop-e8bc92127595aea6.log"
+    },
+    {
+      "exit_code": 0,
+      "timeout": false,
+      "forced_remaining_children": true,
+      "owned_job_empty": true,
+      "pid_informational_only": 34100,
+      "seconds": 0.5160000000032596,
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_desktop-49ddc5605d27f14e.exe",
+      "log": "F:\\Orca Wilde Rust\\evidence\\guarded-tests\\01-wilde_desktop-49ddc5605d27f14e.log"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+
+running 8 tests
+test fixture_command::guard_admission_tests::unguarded_or_mismatched_runner_attestation_refuses_fixture_execution ... ok
+test fixture_lifecycle::observation_failure_tests::genuine_child_observation_error_replaces_stale_live_receipt ... ok
+test fixture_lifecycle::observation_failure_tests::poisoned_ownership_lock_also_replaces_stale_live_receipt ... ok
+test fixture_output::drain_failure_tests::overflow_drains_remaining_native_bytes_without_publishing_them ... ok
+test fixture_output::tests::dropped_consumer_refuses_new_output_without_blocking ... ok
+test fixture_output::tests::slow_observer_gets_explicit_failure_without_byte_reordering ... ok
+test tests::invalid_host_generation_and_geometry_are_refused_before_launch ... ok
+test tests::oversized_and_control_character_identifiers_are_refused ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.29s
+

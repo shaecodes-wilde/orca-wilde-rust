@@ -1,0 +1,82 @@
+{
+  "observed_utc": "2026-09-29T19:45:03.100322-03:00",
+  "tested_source": "52e478ce83db480df779cc0255cf898495844452",
+  "original_repository": {
+    "path": "C:\\Users\\sread\\orca-wilde-build",
+    "head": "1db4ef38577ec932f97067b7391625b7be599884",
+    "dirty_entry_count": 47,
+    "mutated_by_migration": false,
+    "qualification": "HEAD/count snapshots do not prove concurrent user files unchanged byte-for-byte"
+  },
+  "worker_worktrees": [
+    {
+      "path": "F:\\wr\\a02",
+      "head": "7d9c47f8999e4ba645ec182d142e8edca81ecede",
+      "branch": "rust-v2/a02-runtime",
+      "tracked_untracked_ignored_status": "",
+      "integrated_by_ancestry": true,
+      "cleanup": "Retained deliberately for next migration gates; exact clean state and integration ancestry verified. Removal not performed."
+    },
+    {
+      "path": "F:\\wr\\a03",
+      "head": "affa99bb5b689136b28d24f1bd8b513f56f6b8c9",
+      "branch": "rust-v2/a03-domain",
+      "tracked_untracked_ignored_status": "",
+      "integrated_by_ancestry": true,
+      "cleanup": "Retained deliberately for next migration gates; exact clean state and integration ancestry verified. Removal not performed."
+    },
+    {
+      "path": "F:\\wr\\a04",
+      "head": "c94ad02ba999803461e4bbfd4094460bcc944d17",
+      "branch": "rust-v2/a04-ui",
+      "tracked_untracked_ignored_status": "",
+      "integrated_by_ancestry": true,
+      "cleanup": "Retained deliberately for next migration gates; exact clean state and integration ancestry verified. Removal not performed."
+    },
+    {
+      "path": "F:\\wr\\a05",
+      "head": "d03b45090a87f73528fc69eb9229af0af7684b53",
+      "branch": "rust-v2/a05-ide",
+      "tracked_untracked_ignored_status": "",
+      "integrated_by_ancestry": true,
+      "cleanup": "Retained deliberately for next migration gates; exact clean state and integration ancestry verified. Removal not performed."
+    },
+    {
+      "path": "F:\\wr\\a06",
+      "head": "d5fa2102f36c18211e2902f9c7ce61604c2f020b",
+      "branch": "rust-v2/a06-platform",
+      "tracked_untracked_ignored_status": "",
+      "integrated_by_ancestry": true,
+      "cleanup": "Retained deliberately for next migration gates; exact clean state and integration ancestry verified. Removal not performed."
+    }
+  ],
+  "current_guard_run": "aa71cc5015f74927895e03d3b4e6469f",
+  "all_13_owned_test_jobs_empty": true,
+  "shared_build_lease_present": false,
+  "build_cache": {
+    "path": "F:\\wr-build\\a01",
+    "file_count": 2480,
+    "file_bytes": 885982049,
+    "deleted": false,
+    "qualification": "Scoped file-length sum, not filesystem allocation or performance measurement"
+  },
+  "storage": [
+    {
+      "DeviceID": "C:",
+      "FileSystem": "NTFS",
+      "FreeSpace": 5546373120,
+      "Size": 239013457920
+    },
+    {
+      "DeviceID": "F:",
+      "FileSystem": "exFAT",
+      "FreeSpace": 51773571072,
+      "Size": 250038059008
+    }
+  ],
+  "memory": {
+    "TotalVisibleMemorySize": 15672136,
+    "FreePhysicalMemory": 3922136
+  },
+  "matching_allowlisted_fixture_process_count": 0
+}

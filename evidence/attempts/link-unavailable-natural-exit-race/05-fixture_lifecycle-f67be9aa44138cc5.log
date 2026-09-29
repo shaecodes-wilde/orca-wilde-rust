@@ -1,0 +1,39 @@
+
+running 4 tests
+test dropping_viewer_owner_has_an_observable_cleanup_receipt ... FAILED
+test explicit_close_kills_only_the_owned_fixture_and_is_repeatable ... FAILED
+test fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement ... FAILED
+test real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach ... FAILED
+
+failures:
+
+---- dropping_viewer_owner_has_an_observable_cleanup_receipt stdout ----
+
+thread 'dropping_viewer_owner_has_an_observable_cleanup_receipt' (32936) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:57:5:
+fixture output deadline exceeded; admitted_bytes=4; escaped_prefix=\x1b[6n
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- explicit_close_kills_only_the_owned_fixture_and_is_repeatable stdout ----
+
+thread 'explicit_close_kills_only_the_owned_fixture_and_is_repeatable' (12004) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:57:5:
+fixture output deadline exceeded; admitted_bytes=4; escaped_prefix=\x1b[6n
+
+---- fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement stdout ----
+
+thread 'fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement' (18648) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:57:5:
+fixture output deadline exceeded; admitted_bytes=4; escaped_prefix=\x1b[6n
+
+---- real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach stdout ----
+
+thread 'real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach' (23776) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:57:5:
+fixture output deadline exceeded; admitted_bytes=4; escaped_prefix=\x1b[6n
+
+
+failures:
+    dropping_viewer_owner_has_an_observable_cleanup_receipt
+    explicit_close_kills_only_the_owned_fixture_and_is_repeatable
+    fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement
+    real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach
+
+test result: FAILED. 0 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 17.18s
+

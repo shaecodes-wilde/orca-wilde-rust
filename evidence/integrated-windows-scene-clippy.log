@@ -1,0 +1,12 @@
+warning: constant `PSUEDOCONSOLE_INHERIT_CURSOR` is never used
+  --> crates\wilde-runtime\vendor\portable-pty\src\win\psuedocon.rs:27:11
+   |
+27 | pub const PSUEDOCONSOLE_INHERIT_CURSOR: DWORD = 0x1;
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: `portable-pty` (lib) generated 1 warning
+    Checking wilde-runtime v0.1.0 (F:\Orca Wilde Rust\crates\wilde-runtime)
+    Checking wilde-desktop v0.1.0 (F:\Orca Wilde Rust\apps\wilde-desktop)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 36.66s

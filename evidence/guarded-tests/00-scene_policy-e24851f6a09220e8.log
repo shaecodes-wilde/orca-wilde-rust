@@ -1,0 +1,14 @@
+
+running 9 tests
+test admitted_policy_keeps_explicit_root_and_development_identity ... ok
+test background_denial_overrides_all_other_opt_ins ... ok
+test each_missing_isolation_signal_denies_launch ... ok
+test focus_traversal_and_reverse_traversal_wrap_between_native_and_browser_regions ... ok
+test invalid_dpi_and_coordinate_overflow_are_rejected ... ok
+test minimizing_and_restoring_removes_and_restores_all_surfaces ... ok
+test production_identity_and_implicit_or_misnamed_profiles_are_denied ... ok
+test repeated_resize_keeps_surfaces_disjoint_and_inside_logical_window ... ok
+test scaling_changes_logical_bounds_without_reusing_stale_coordinates ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+

@@ -1,0 +1,30 @@
+[
+  {
+    "step": "format",
+    "exit_code": 0,
+    "started_utc": "2026-09-29T22:14:52.2229595Z",
+    "log": "F:\\Orca Wilde Rust\\evidence\\integrated-format.log",
+    "elapsed_seconds": 1.3510901
+  },
+  {
+    "step": "check",
+    "exit_code": 0,
+    "started_utc": "2026-09-29T22:14:53.6991183Z",
+    "log": "F:\\Orca Wilde Rust\\evidence\\integrated-check.log",
+    "elapsed_seconds": 20.5635031
+  },
+  {
+    "step": "test-build",
+    "exit_code": 0,
+    "started_utc": "2026-09-29T22:15:14.3681799Z",
+    "log": "F:\\Orca Wilde Rust\\evidence\\integrated-test-build.log",
+    "elapsed_seconds": 292.6564757
+  },
+  {
+    "step": "guarded-tests",
+    "exit_code": 1,
+    "started_utc": "2026-09-29T22:20:07.2140800Z",
+    "log": "F:\\Orca Wilde Rust\\evidence\\integrated-guarded-tests.log",
+    "elapsed_seconds": 40.9497972
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "observed_utc": "2026-09-29T22:46:31.736583+00:00",
+  "ref": "refs/heads/rust-v2/integration",
+  "head_at_scan": "3f8f7975fb090852463bd21988b68d9cca2f9318",
+  "commits": 53,
+  "unique_blobs": 218,
+  "blob_bytes": 1303284,
+  "findings": [],
+  "scope": "High-confidence token/private-key patterns across bounded named new-repository history; values never emitted. Pattern absence is not a comprehensive security audit. Uncommitted final docs/evidence receive a separate file scan."
+}

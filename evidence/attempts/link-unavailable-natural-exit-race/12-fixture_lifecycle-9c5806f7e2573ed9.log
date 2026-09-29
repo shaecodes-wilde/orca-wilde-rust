@@ -1,0 +1,41 @@
+
+running 4 tests
+test dropping_viewer_owner_has_an_observable_cleanup_receipt ... FAILED
+test explicit_close_kills_only_the_owned_fixture_and_is_repeatable ... FAILED
+test fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement ... FAILED
+test real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach ... FAILED
+
+failures:
+
+---- dropping_viewer_owner_has_an_observable_cleanup_receipt stdout ----
+
+thread 'dropping_viewer_owner_has_an_observable_cleanup_receipt' (31880) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:164:5:
+cleanup incomplete: CleanupReport { process_id: Some(9320), generation: 1, cwd: "\\\\?\\F:\\wr-build\\runtime-tests\\wilde-pty-fixture-25912-1", verdict: Exited, exit_code: Some(3221225786), reader_joined: true, lifecycle_joined: true, cwd_removed: false }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- explicit_close_kills_only_the_owned_fixture_and_is_repeatable stdout ----
+
+thread 'explicit_close_kills_only_the_owned_fixture_and_is_repeatable' (33052) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:133:5:
+assertion `left == right` failed
+  left: Frame(TerminalFrame { identity: SessionIdentity { session_id: "synthetic-pty", execution_host_id: "local-fixture", workspace_id: "synthetic-folder", generation: 2 }, sequence: 2, payload: [27, 91, 109] })
+ right: TimedOut
+
+---- fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement stdout ----
+
+thread 'fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement' (34252) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:79:5:
+own cwd must be removed: CleanupReport { process_id: Some(27736), generation: 3, cwd: "\\\\?\\F:\\wr-build\\runtime-tests\\wilde-pty-fixture-25912-3", verdict: Exited, exit_code: Some(1), reader_joined: true, lifecycle_joined: true, cwd_removed: false }
+
+---- real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach stdout ----
+
+thread 'real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach' (18116) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:79:5:
+own cwd must be removed: CleanupReport { process_id: Some(18540), generation: 4, cwd: "\\\\?\\F:\\wr-build\\runtime-tests\\wilde-pty-fixture-25912-4", verdict: Exited, exit_code: Some(0), reader_joined: true, lifecycle_joined: true, cwd_removed: false }
+
+
+failures:
+    dropping_viewer_owner_has_an_observable_cleanup_receipt
+    explicit_close_kills_only_the_owned_fixture_and_is_repeatable
+    fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement
+    real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach
+
+test result: FAILED. 0 passed; 4 failed; 0 ignored; 0 measured; 0 filtered out; finished in 12.15s
+

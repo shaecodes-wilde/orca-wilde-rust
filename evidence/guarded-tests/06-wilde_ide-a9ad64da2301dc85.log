@@ -1,0 +1,22 @@
+
+running 17 tests
+test editor_document::tests::acknowledged_earlier_save_keeps_later_edit_dirty ... ok
+test editor_document::tests::document_and_history_admission_limits_are_enforced ... ok
+test editor_document::tests::history_limits_keep_recent_undo_and_never_exceed_budget ... ok
+test editor_document::tests::invalid_utf8_boundaries_ranges_and_oversized_edits_are_atomic ... ok
+test editor_document::tests::same_baseline_save_candidate_cannot_acknowledge_another_document ... ok
+test editor_document::tests::save_conflict_returns_no_candidate_and_preserves_dirty_buffer ... ok
+test editor_document::tests::unchanged_edit_leaves_history_and_revision_alone ... ok
+test editor_document::tests::unicode_edit_undo_redo_and_branching_preserve_text ... ok
+test terminal_model::tests::alternate_screen_restores_primary_contents_and_cursor ... ok
+test terminal_model::tests::every_byte_split_preserves_utf8_wide_and_combining_cells ... ok
+test terminal_model::tests::identity_generation_and_replay_rejections_preserve_screen ... ok
+test terminal_model::tests::oversized_frame_is_atomic_and_can_be_retried_at_same_sequence ... ok
+test terminal_model::tests::resize_budget_remembers_wider_retained_history ... ok
+test terminal_model::tests::resize_clamps_cursor_and_rejects_invalid_size_without_mutation ... ok
+test terminal_model::tests::scrollback_retention_and_admission_are_bounded ... ok
+test terminal_model::tests::split_ansi_retains_parser_state_across_frames ... ok
+test terminal_model::tests::stream_gap_latches_recovery_without_consuming_escape_fragment ... ok
+
+test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+

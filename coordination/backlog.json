@@ -25,10 +25,14 @@
         "Feature register initialized",
         "Actual runner/model map"
       ],
-      "status": "ready",
+      "status": "verified",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "evidence/source-preflight.json",
+        "docs/current/native-rust/recon/a01/inventory-and-routing.md"
+      ],
+      "current_note": "Source inventory, read-only preflight and actual model/runner routing recorded; old checkout remains untouched."
     },
     {
       "id": "R01",
@@ -43,10 +47,13 @@
         "Source-to-contract map",
         "Process/session authority decisions"
       ],
-      "status": "planned",
+      "status": "review",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "docs/current/native-rust/recon/a02/"
+      ],
+      "current_note": "Source runtime map and local fixture authority reviewed; full daemon/SSH/WSL replacements remain open."
     },
     {
       "id": "R02",
@@ -61,10 +68,13 @@
         "Golden request/response fixtures",
         "No production data"
       ],
-      "status": "planned",
+      "status": "review",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "crates/wilde-domain/tests/"
+      ],
+      "current_note": "Synthetic SQLite command fixtures implemented; full legacy differential fixtures remain open."
     },
     {
       "id": "R03",
@@ -80,10 +90,14 @@
         "Input/DPI/focus evidence",
         "Explicit Wayland/Windows results"
       ],
-      "status": "planned",
+      "status": "blocked",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "docs/current/native-rust/recon/a04/",
+        "apps/wilde-desktop/src/windows_scene.rs"
+      ],
+      "current_note": "Iced/Slint compared; guarded Windows native composition source compiles. Actual scene input/focus/DPI/IME/accessibility and Windows/Wayland toolkit comparison await isolated display; toolkit not selected."
     },
     {
       "id": "R04",
@@ -99,10 +113,14 @@
         "Text edit/undo/save pilot",
         "No xterm or Monaco parity claim"
       ],
-      "status": "planned",
+      "status": "review",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "crates/wilde-ide/tests/",
+        "docs/current/native-rust/recon/a05/"
+      ],
+      "current_note": "VT100 and editor model tests implemented; native terminal renderer and native editor integration still open."
     },
     {
       "id": "R05",
@@ -118,10 +136,14 @@
         "Windows/Wayland results or precise blockers",
         "Measured baseline with environment metadata"
       ],
-      "status": "planned",
+      "status": "blocked",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "crates/wilde-browser/",
+        "docs/current/native-rust/recon/a06/"
+      ],
+      "current_note": "WRY child browser source compiles and policy tests exist. Actual Windows/Wayland input/focus/cleanup and comparable baseline require isolated displays."
     },
     {
       "id": "R06",
@@ -138,10 +160,14 @@
         "Schema/fixture tests",
         "Compatibility strategy"
       ],
-      "status": "planned",
+      "status": "review",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "docs/current/native-rust/architecture/contract-1.md",
+        "crates/wilde-contracts/"
+      ],
+      "current_note": "Version 1 bounded terminal/session/host-status contracts integrated and tested; pilot consumers acknowledged. Full service envelopes and authenticated remote compatibility remain future tasks."
     },
     {
       "id": "R07",
@@ -157,10 +183,16 @@
         "Lockfile/toolchain decision",
         "Separate identity/profile/endpoints"
       ],
-      "status": "planned",
+      "status": "review",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "Cargo.toml",
+        "Cargo.lock",
+        "tools/verify.ps1",
+        ".github/workflows/wilde-native-headless.yml"
+      ],
+      "current_note": "Independent Cargo workspace, lockfile, dev identity and manual headless CI source integrated; final integrated checks tracked in session report. Remote CI has not run."
     },
     {
       "id": "R08",
@@ -176,10 +208,14 @@
         "PID/start identity cleanup",
         "UI detach behavior explicit"
       ],
-      "status": "planned",
+      "status": "review",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "crates/wilde-runtime/tests/fixture-lifecycle.rs",
+        "tools/guarded_tests.py"
+      ],
+      "current_note": "Real allowlisted native ConPTY pilot and owned-job fixture tests integrated. Cleanup cancellation hard deadline, arbitrary shells, durable daemon and full production lifecycle remain unaccepted."
     },
     {
       "id": "R09",
@@ -196,10 +232,13 @@
         "Repeat request/preview conflict tests",
         "Read-only source or synthetic fixture"
       ],
-      "status": "planned",
+      "status": "review",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "crates/wilde-domain/"
+      ],
+      "current_note": "Real synthetic SQLite client/project/assignment, revisions, durable idempotency and merge-only native import/export tested. Full preview-token commit/legacy API/import/backup parity remains open."
     },
     {
       "id": "R10",
@@ -218,10 +257,13 @@
         "Keyboard navigation",
         "No eager process launches"
       ],
-      "status": "planned",
+      "status": "blocked",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "apps/wilde-desktop/src/windows_scene.rs"
+      ],
+      "current_note": "Toolkit scene gate unresolved. Diagnostic Windows controls do not constitute approved business UI."
     },
     {
       "id": "R11",
@@ -238,10 +280,14 @@
         "Native typing/resize evidence",
         "No process stop on widget hide"
       ],
-      "status": "planned",
+      "status": "review",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "crates/wilde-ide/",
+        "apps/wilde-desktop/src/lib.rs"
+      ],
+      "current_note": "Bounded terminal parser consumes real ordered fixture stream; renderer/native typing/history interaction not verified."
     },
     {
       "id": "R12",
@@ -258,10 +304,13 @@
         "Permission boundary",
         "Cleanup evidence"
       ],
-      "status": "planned",
+      "status": "review",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "crates/wilde-browser/"
+      ],
+      "current_note": "Explicit dev profile, fail-closed browser navigation/download policy and Windows child compile integrated. Live embedded-page input and disposal require isolated display."
     },
     {
       "id": "R13",
@@ -318,10 +367,14 @@
         "Exact integrated commit",
         "Independent A6 review"
       ],
-      "status": "planned",
+      "status": "in-progress",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "apps/wilde-desktop/tests/pilot.rs",
+        "docs/current/native-rust/handoffs/a01/SESSION_REPORT.md"
+      ],
+      "current_note": "SQLite reopen plus client/project/synthetic assignment to real PTY pilot implemented. Actual workspace provisioning, durable terminal restart/reconnect and rendered native/browser composition remain open."
     },
     {
       "id": "R16",
@@ -337,10 +390,13 @@
         "Repeated real samples",
         "No invented savings"
       ],
-      "status": "planned",
+      "status": "blocked",
       "issue_url": null,
       "pr_url": null,
-      "evidence": []
+      "evidence": [
+        "docs/current/native-rust/recon/a06/"
+      ],
+      "current_note": "Comparable old/native benchmark not run: no isolated reference-app/display environment. No savings claimed."
     },
     {
       "id": "R17",
@@ -524,5 +580,8 @@
       "pr_url": null,
       "evidence": []
     }
-  ]
+  ],
+  "scope_note": "Statuses cover entire acceptance criteria; tested prototype subsets never imply feature parity or cutover.",
+  "tested_source": "52e478ce83db480df779cc0255cf898495844452",
+  "current_verification": "All 8 local verification steps passed; remote CI and rendered native gates unrun."
 }

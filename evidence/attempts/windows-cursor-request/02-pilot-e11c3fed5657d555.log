@@ -1,0 +1,18 @@
+
+running 1 test
+test synthetic_client_workspace_sqlite_reopen_and_real_native_pty_share_one_slice ... FAILED
+
+failures:
+
+---- synthetic_client_workspace_sqlite_reopen_and_real_native_pty_share_one_slice stdout ----
+
+thread 'synthetic_client_workspace_sqlite_reopen_and_real_native_pty_share_one_slice' (20632) panicked at apps\wilde-desktop\tests\pilot.rs:25:27:
+called `Result::unwrap()` on an `Err` value: native headless slice output incomplete: PilotEvidence { application_id: "systems.wilde.native-rust.dev", records: 3, database_reopened: true, duplicate_request_replayed: true, terminal_ready: false, terminal_pong: false, terminal_finished: false, verdict: Exited, exit_code: Some(1), reader_joined: false, lifecycle_joined: true, fixture_cwd_removed: false }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    synthetic_client_workspace_sqlite_reopen_and_real_native_pty_share_one_slice
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 14.35s
+

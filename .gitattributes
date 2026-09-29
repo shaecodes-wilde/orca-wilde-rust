@@ -1,3 +1,6 @@
 * text=auto eol=lf
 *.png binary
 *.jpg binary
+
+# Preserve observed evidence bytes and independently recorded hashes.
+evidence/** -text

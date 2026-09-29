@@ -1,0 +1,17 @@
+
+running 4 tests
+test dropping_viewer_owner_has_an_observable_cleanup_receipt ... ok
+test explicit_close_kills_only_the_owned_fixture_and_is_repeatable ... ok
+test fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement ... ok
+test real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach ... ok
+
+successes:
+
+successes:
+    dropping_viewer_owner_has_an_observable_cleanup_receipt
+    explicit_close_kills_only_the_owned_fixture_and_is_repeatable
+    fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement
+    real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 12.81s
+

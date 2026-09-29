@@ -1,0 +1,34 @@
+test_debug_rejected (test_tools.BenchmarkTests) ... ok
+test_definition_change_rejected (test_tools.BenchmarkTests) ... ok
+test_explicit_threshold (test_tools.BenchmarkTests) ... ok
+test_higher_is_better (test_tools.BenchmarkTests) ... ok
+test_improvement_is_informational_without_gate (test_tools.BenchmarkTests) ... ok
+test_metadata_mismatch_rejected (test_tools.BenchmarkTests) ... ok
+test_metric_sets_must_match (test_tools.BenchmarkTests) ... ok
+test_nonfinite_boolean_and_short_samples_rejected (test_tools.BenchmarkTests) ... ok
+test_p95_requires_twenty_samples (test_tools.BenchmarkTests) ... ok
+test_template_rejected (test_tools.BenchmarkTests) ... ok
+test_zero_baseline_no_infinite_percentage (test_tools.BenchmarkTests) ... ok
+test_branch_not_sha_rejected (test_tools.GitFixture) ... ok
+test_changed_head_blocks_removal (test_tools.GitFixture) ... ok
+test_clean_integrated_remove_and_branch_retained (test_tools.GitFixture) ... ok
+test_create_defaults_to_plan (test_tools.GitFixture) ... ok
+test_create_reuses_without_reset (test_tools.GitFixture) ... ok
+test_ignored_file_blocks_removal (test_tools.GitFixture) ... ok
+test_integration_role_not_removed (test_tools.GitFixture) ... ok
+test_locked_worker_blocks_removal (test_tools.GitFixture) ... ok
+test_missing_process_check_blocks_removal (test_tools.GitFixture) ... ok
+test_nested_root_rejected (test_tools.GitFixture) ... ok
+test_preflight_is_read_only (test_tools.GitFixture) ... ok
+test_preflight_output_refuses_overwrite (test_tools.GitFixture) ... ok
+test_unknown_duplicate_roles_rejected (test_tools.GitFixture) ... ok
+test_unmerged_commit_blocks_removal (test_tools.GitFixture) ... ok
+test_unregistered_existing_directory_rejected (test_tools.GitFixture) ... ok
+test_untracked_file_blocks_removal (test_tools.GitFixture) ... ok
+test_backlog_is_acyclic_and_roles_match (test_tools.PackageTests) ... ok
+test_templates_are_not_execution_approvals (test_tools.PackageTests) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 53.735s
+
+OK
