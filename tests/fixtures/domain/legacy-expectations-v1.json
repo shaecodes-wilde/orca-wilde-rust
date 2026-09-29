@@ -1,0 +1,17 @@
+{
+  "fixture_version": 1,
+  "source_commit": "1db4ef38577ec932f97067b7391625b7be599884",
+  "synthetic_only": true,
+  "cases": [
+    {"case":"snapshot-bounds","source":"database.ts:snapshot","native_status":"IMPLEMENTED_NOT_RUN","expected":"Return at most 10000 records; native pilot rejects capacity rather than silently truncate."},
+    {"case":"stale-revision","source":"mutations.ts:applyMutation","native_status":"IMPLEMENTED_NOT_RUN","record_revision":0,"stored_revision":1,"expected":"Reject and retain all prior records."},
+    {"case":"duplicate-request","source":"database.ts:dispatch","native_status":"IMPLEMENTED_NOT_RUN","request_id":"synthetic-repeat","expected":"Same payload has one effect; native v1 returns the original persisted outcome, unlike legacy current snapshot replay."},
+    {"case":"changed-request-payload","source":"database.ts:dispatch","native_status":"IMPLEMENTED_NOT_RUN","request_id":"synthetic-repeat","expected":"Changed payload under same ID rejects; original effect remains."},
+    {"case":"preview-no-effect","source":"database.ts:preview","native_status":"OPEN","request_id":"synthetic-preview","store_revision":1,"expected":"Validation transaction rolls back; preview token alone changes no records."},
+    {"case":"preview-expiry","source":"database.ts:preview/dispatch","native_status":"OPEN","preview_at_ms":0,"commit_at_ms":300001,"expected":"Reject expired token; require new review."},
+    {"case":"preview-stale-store","source":"database.ts:dispatch","native_status":"OPEN","preview_revision":1,"commit_revision":2,"expected":"Reject token after store changes."},
+    {"case":"preview-exact-payload","source":"database.ts:preview/applyPreview","native_status":"OPEN","expected":"Token references the exact stored mutation/import payload and revision; no caller-supplied alternate payload."},
+    {"case":"invalid-import-relationship","source":"database.ts:applyPreview + record-integrity.ts","native_status":"IMPLEMENTED_NATIVE_FORMAT_NOT_RUN","expected":"Missing or cross-client relationship rejects the whole synthetic native merge."},
+    {"case":"legacy-backup-integrity","source":"database.ts imports backup.ts and migrations.ts (not supplied)","native_status":"OPEN","expected":"Do not accept legacy backup format until digest, schema, migrations and backup consistency are inspected and reproduced."}
+  ]
+}
