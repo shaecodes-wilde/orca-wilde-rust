@@ -1,6 +1,7 @@
 [workspace]
 resolver = "2"
-members = ["crates/wilde-contracts"]
+exclude = ["crates/wilde-runtime/vendor/portable-pty"]
+members = ["crates/wilde-contracts", "crates/wilde-browser", "crates/wilde-domain", "crates/wilde-runtime", "crates/wilde-ui", "crates/wilde-ide", "apps/wilde-desktop"]
 
 [workspace.package]
 version = "0.1.0"
@@ -17,3 +18,8 @@ unsafe_op_in_unsafe_fn = "deny"
 
 [workspace.lints.clippy]
 all = "warn"
+
+
+
+[patch.crates-io]
+portable-pty = { path = "crates/wilde-runtime/vendor/portable-pty" }

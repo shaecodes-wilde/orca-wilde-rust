@@ -1,0 +1,28 @@
+[package]
+name = "wilde-desktop"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[features]
+default = []
+windows-scene = ["dep:tao", "dep:windows-sys", "wilde-browser/windows-child"]
+
+[dependencies]
+anyhow = "=1.0.102"
+serde.workspace = true
+serde_json.workspace = true
+wilde-contracts = { path = "../../crates/wilde-contracts" }
+wilde-domain = { path = "../../crates/wilde-domain" }
+wilde-runtime = { path = "../../crates/wilde-runtime" }
+wilde-browser = { path = "../../crates/wilde-browser" }
+wilde-ui = { path = "../../crates/wilde-ui" }
+wilde-ide = { path = "../../crates/wilde-ide" }
+
+[target.'cfg(target_os = "windows")'.dependencies]
+tao = { version = "=0.34.8", optional = true }
+windows-sys = { version = "=0.61.2", optional = true, features = ["Win32_Foundation", "Win32_UI_WindowsAndMessaging", "Win32_Graphics_Gdi"] }
+
+[lints]
+workspace = true

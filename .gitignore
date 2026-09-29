@@ -5,3 +5,4 @@
 .env
 .env.*
 /kickoff/wilde-native-rust-kickoff/**/__pycache__/
+**/__pycache__/

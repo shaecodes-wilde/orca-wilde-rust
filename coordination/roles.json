@@ -13,9 +13,9 @@
     {
       "id": "a01",
       "preferred_model": "GPT-6.1-Sol High",
-      "actual_model": "not-exposed-by-primary-session",
+      "actual_model": "gpt-6.1-sol",
       "runner": "Codex primary chat",
-      "session_id": null,
+      "session_id": "01a0eed4-33d9-7ac1-b7b1-82fcf1e627be",
       "name": "Architecture and integration",
       "branch": "rust-v2/integration",
       "path_suffix": "a01",

@@ -1,0 +1,46 @@
+name: Wilde native headless verification
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: wilde-native-headless-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  windows-headless:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      ORCA_BACKGROUND_LAUNCH: '1'
+      CARGO_BUILD_JOBS: '2'
+      CARGO_INCREMENTAL: '0'
+    steps:
+      - name: Read this public repository at the requested commit
+        shell: pwsh
+        run: |
+          git init .
+          git remote add origin "https://github.com/$env:GITHUB_REPOSITORY.git"
+          git fetch --depth 1 origin $env:GITHUB_SHA
+          git checkout --detach FETCH_HEAD
+      - name: Install the pinned compiler on the temporary runner
+        shell: pwsh
+        run: rustup toolchain install 1.94.0 --profile minimal --component rustfmt,clippy
+      - name: Fetch locked Windows dependencies
+        shell: pwsh
+        run: cargo +1.94.0 fetch --locked --target x86_64-pc-windows-msvc
+      - name: Run guarded headless tests and compile the native scene
+        shell: pwsh
+        run: ./tools/verify.ps1 -Toolchain 1.94.0 -WindowsChild -WindowsScene
+      - name: Preserve reviewable test and cleanup evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # verified v4
+        with:
+          name: wilde-native-windows-evidence
+          path: |
+            evidence/*.log
+            evidence/*.json
+            evidence/*.jsonl
+            evidence/guarded-tests/*.log
+            evidence/guarded-tests/results.json
+          retention-days: 14
+# Visible-window, focus, IME, Wayland and macOS acceptance require a separately approved isolated environment.
