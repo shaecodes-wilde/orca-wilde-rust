@@ -20,7 +20,7 @@ API: OwnedFixtureSession::spawn(identity, size), identity/process_id, attach/det
 
 Each native read allocates at most 4096 bytes and queue capacity is 16 chunks (65536 bytes), plus one producer and one consumer chunk. Full queue is a fatal stream fault, followed by owned-child termination, never silent frame loss or a fabricated snapshot. No replay or recovery after stream fault.
 
-Windows fixed argv uses installed SystemRoot/System32/WindowsPowerShell/v1.0/powershell.exe with -NoLogo -NoProfile -NonInteractive -Command and one static harmless fixture script. Unix uses /bin/sh -c and one static harmless script. Only Ping/Finish enum input is exposed. Environment is cleared and synthetic HOME/USERPROFILE/TEMP/TMP point to an exclusively created temporary cwd. No copied credentials, user commands, profiles, network or durable endpoints.
+Windows fixed argv uses installed SystemRoot/System32/WindowsPowerShell/v1.0/powershell.exe with -NoLogo -NoProfile -NonInteractive -Command and one static harmless fixture script. Unix uses /bin/sh -c and one static harmless script. Only Ping/Finish enum input is exposed. Environment is cleared and synthetic HOME/USERPROFILE/TEMP/TMP point to an exclusively created temporary cwd. WILDE_RUNTIME_TEST_ROOT selects an existing absolute canonical scratch root when supplied; standalone runs otherwise use the OS temporary root. No copied credentials, user commands, profiles, network or durable endpoints.
 
 Exactly two session workers: bounded output reader and lifecycle supervisor. Supervisor polls owned child under the same mutex used for kill/reap; it has an 8s fixture lifetime plus at most 2s verification window. No clone_killer: cached dependency inspection found Unix cloned killers carry only numeric PIDs, while Windows kill return handling is unreliable. Only owned try_wait evidence establishes Exited. PID is informational; caller generation fences the consumer identity and is not a kernel creation timestamp.
 
@@ -28,7 +28,7 @@ Exactly two session workers: bounded output reader and lifecycle supervisor. Sup
 
 PASS, exit 0: rustfmt --edition 2024 on the five owned Rust files. PASS, exit 0: rustfmt --edition 2024 --check and git diff --cached --check. No Cargo command, dependency install, fixture process or GUI launch was run by A02.
 
-A1 ready command after registering crate: ORCA_BACKGROUND_LAUNCH=1, CARGO_BUILD_JOBS=2, CARGO_TARGET_DIR=F:\wr-build\<coordinator-selected-target>; cargo test -p wilde-runtime -- --test-threads=1. This starts only installed fixed fixture shells, with synthetic temporary cwd and no GUI. A1 chooses the external build target and executes all builds sequentially.
+A1 ready command after registering crate: ORCA_BACKGROUND_LAUNCH=1, WILDE_RUNTIME_TEST_ROOT=F:\wr-build\runtime-tests (existing directory), CARGO_BUILD_JOBS=2, CARGO_TARGET_DIR=F:\wr-build\<coordinator-selected-target>; cargo test -p wilde-runtime -- --test-threads=1. This starts only installed fixed fixture shells, with synthetic temporary cwd and no GUI. A1 chooses the external build target and executes all builds sequentially.
 
 Prepared real integration tests (NOT RUN): native output/escape bytes, write/read acknowledgement, viewer detach/reattach with stable PID and identity, native resize, successful natural exit, explicit kill and repeatable close, Drop receipt, fixed lifetime/automatic stop. Prepared pure tests (NOT RUN): fatal bounded queue overflow preserves ordering of admitted chunks; disconnected consumer refusal; invalid host/generation/geometry/identifier admission.
 
@@ -51,4 +51,3 @@ At runtime CleanupReceipt remains available after Drop and records PID/generatio
 ## Next
 
 A1: register acknowledged dependencies/member, integrate own contract repair, build and run actual Windows fixture tests, preserve measured output and cleanup receipts, then request A6/A5 review fixes as needed. Linux/macOS fixture runs follow on isolated test hosts. Next runtime task is native read cancellation and process-tree containment design before widening beyond fixtures. No Shae decision required for this scoped local pilot.
-

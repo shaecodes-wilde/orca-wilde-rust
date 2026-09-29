@@ -34,9 +34,16 @@ pub(crate) struct FixtureDirectory(pub PathBuf, pub bool);
 
 impl FixtureDirectory {
     pub fn create() -> Result<Self> {
-        let base = std::env::temp_dir()
-            .canonicalize()
-            .context("resolve temporary root")?;
+        let requested = std::env::var_os("WILDE_RUNTIME_TEST_ROOT")
+            .map(PathBuf::from)
+            .unwrap_or_else(std::env::temp_dir);
+        if !requested.is_absolute() {
+            bail!("fixture temporary root must be absolute");
+        }
+        let base = requested.canonicalize().context("resolve temporary root")?;
+        if !base.is_dir() {
+            bail!("fixture temporary root must be an existing directory");
+        }
         for _ in 0..16 {
             let serial = NEXT_CWD.fetch_add(1, Ordering::Relaxed);
             let path = base.join(format!("wilde-pty-fixture-{}-{serial}", std::process::id()));
