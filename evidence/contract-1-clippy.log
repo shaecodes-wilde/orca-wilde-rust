@@ -1,0 +1,8 @@
+    Checking wilde-contracts v0.1.0 (F:\Orca Wilde Rust\crates\wilde-contracts)
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\F:\wr-build\a01\debug\incremental\wilde_contracts-12ov4p8b640mp\s-hmr705lf10-08rtfh2-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\F:\wr-build\a01\debug\incremental\wilde_contracts-34tu01h72dx2z\s-hmr705mtal-1nwgr8y-working`
+
+warning: `wilde-contracts` (lib test) generated 1 warning
+warning: `wilde-contracts` (lib) generated 1 warning
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 4.69s

@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "repository": "shaecodes-wilde/orca-wilde",
+  "reviewed_branch": "wilde/theme",
+  "reviewed_commit": "1db4ef38577ec932f97067b7391625b7be599884",
+  "models_are_preferences_not_api_ids": true,
+  "primary_role": "a01",
+  "max_engineering_roles": 6,
+  "default_max_active_implementation_workers": 3,
+  "default_max_heavy_jobs_per_host": 1,
+  "default_cargo_build_jobs": 2,
+  "roles": [
+    {
+      "id": "a01",
+      "preferred_model": "GPT-6.1-Sol High",
+      "actual_model": "not-exposed-by-primary-session",
+      "runner": "Codex primary chat",
+      "session_id": null,
+      "name": "Architecture and integration",
+      "branch": "rust-v2/integration",
+      "path_suffix": "a01",
+      "owned_paths": [
+        "Cargo.toml",
+        "Cargo.lock",
+        "crates/wilde-contracts/",
+        "apps/",
+        "docs/current/native-rust/architecture/",
+        "docs/current/native-rust/recon/a01/",
+        "docs/current/native-rust/handoffs/a01/",
+        "rust-toolchain.toml",
+        "tests/contracts/",
+        "tests/e2e/",
+        ".github/workflows/wilde-native-*.yml"
+      ],
+      "initial_tasks": [
+        "R00",
+        "R06",
+        "R07"
+      ],
+      "reasoning_effort": "high",
+      "worktree": "F:\\Orca Wilde Rust"
+    },
+    {
+      "id": "a02",
+      "preferred_model": "GPT-6.1-Sol High",
+      "actual_model": "gpt-6.1-sol",
+      "runner": "Codex collaboration subagent",
+      "session_id": null,
+      "name": "Runtime and execution hosts",
+      "branch": "rust-v2/a02-runtime",
+      "path_suffix": "a02",
+      "owned_paths": [
+        "crates/wilde-runtime/",
+        "docs/current/native-rust/recon/a02/",
+        "docs/current/native-rust/handoffs/a02/"
+      ],
+      "initial_tasks": [
+        "R01",
+        "R08",
+        "R13"
+      ],
+      "reasoning_effort": "high",
+      "worktree": "F:\\wr\\a02"
+    },
+    {
+      "id": "a03",
+      "preferred_model": "GPT-6.1-Sol High",
+      "actual_model": "gpt-6.1-sol",
+      "runner": "Codex collaboration subagent",
+      "session_id": null,
+      "name": "Business domain and storage",
+      "branch": "rust-v2/a03-domain",
+      "path_suffix": "a03",
+      "owned_paths": [
+        "crates/wilde-domain/",
+        "crates/wilde-storage/",
+        "docs/current/native-rust/recon/a03/",
+        "docs/current/native-rust/handoffs/a03/",
+        "tests/fixtures/domain/"
+      ],
+      "initial_tasks": [
+        "R02",
+        "R09",
+        "R14"
+      ],
+      "reasoning_effort": "high",
+      "worktree": "F:\\wr\\a03"
+    },
+    {
+      "id": "a04",
+      "preferred_model": "GPT-6.1-Sol High",
+      "actual_model": "gpt-6.1-sol",
+      "runner": "Codex collaboration subagent",
+      "session_id": null,
+      "name": "Native UI and business surfaces",
+      "branch": "rust-v2/a04-ui",
+      "path_suffix": "a04",
+      "owned_paths": [
+        "crates/wilde-ui/",
+        "docs/current/native-rust/recon/a04/",
+        "docs/current/native-rust/handoffs/a04/"
+      ],
+      "initial_tasks": [
+        "R03",
+        "R10",
+        "R17"
+      ],
+      "reasoning_effort": "high",
+      "worktree": "F:\\wr\\a04"
+    },
+    {
+      "id": "a05",
+      "preferred_model": "GPT-6.1-Sol High",
+      "actual_model": "gpt-6.1-sol",
+      "runner": "Codex collaboration subagent",
+      "session_id": null,
+      "name": "Native IDE surfaces",
+      "branch": "rust-v2/a05-ide",
+      "path_suffix": "a05",
+      "owned_paths": [
+        "crates/wilde-ide/",
+        "docs/current/native-rust/recon/a05/",
+        "docs/current/native-rust/handoffs/a05/"
+      ],
+      "initial_tasks": [
+        "R04",
+        "R11",
+        "R18"
+      ],
+      "reasoning_effort": "high",
+      "worktree": "F:\\wr\\a05"
+    },
+    {
+      "id": "a06",
+      "preferred_model": "GPT-6.1-Sol High",
+      "actual_model": "gpt-6.1-sol",
+      "runner": "Codex collaboration subagent",
+      "session_id": null,
+      "name": "Browser platform and performance",
+      "branch": "rust-v2/a06-platform",
+      "path_suffix": "a06",
+      "owned_paths": [
+        "crates/wilde-browser/",
+        "crates/wilde-platform/",
+        "crates/wilde-governor/",
+        "tests/platform/",
+        "docs/current/native-rust/recon/a06/",
+        "docs/current/native-rust/handoffs/a06/",
+        "tests/performance/"
+      ],
+      "initial_tasks": [
+        "R05",
+        "R12",
+        "R19"
+      ],
+      "reasoning_effort": "high",
+      "worktree": "F:\\wr\\a06"
+    }
+  ]
+}

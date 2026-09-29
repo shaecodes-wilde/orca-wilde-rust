@@ -1,0 +1,528 @@
+{
+  "schema_version": 1,
+  "status_vocabulary": [
+    "planned",
+    "ready",
+    "in-progress",
+    "review",
+    "integrated",
+    "verified",
+    "retired-old-path",
+    "blocked",
+    "not-tested"
+  ],
+  "publishing": "draft-by-default; honor current repository-write authorization",
+  "tasks": [
+    {
+      "id": "R00",
+      "owner": "a01",
+      "gate": "G0",
+      "depends_on": [],
+      "title": "Inventory and safe migration base",
+      "scope": "Record actual checkout/HEAD/worktrees/instructions and source/version drift; publish no production changes.",
+      "acceptance": [
+        "Preflight report",
+        "Feature register initialized",
+        "Actual runner/model map"
+      ],
+      "status": "ready",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R01",
+      "owner": "a02",
+      "gate": "G0",
+      "depends_on": [
+        "R00"
+      ],
+      "title": "Runtime contract inventory",
+      "scope": "Trace daemon/PTY/host status and current terminal transcript tests.",
+      "acceptance": [
+        "Source-to-contract map",
+        "Process/session authority decisions"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R02",
+      "owner": "a03",
+      "gate": "G0",
+      "depends_on": [
+        "R00"
+      ],
+      "title": "Business semantics fixtures",
+      "scope": "Capture synthetic command, preview, idempotency, import and rollback expectations.",
+      "acceptance": [
+        "Golden request/response fixtures",
+        "No production data"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R03",
+      "owner": "a04",
+      "gate": "G1",
+      "depends_on": [
+        "R00"
+      ],
+      "title": "Native toolkit scene spike",
+      "scope": "Pair with A5/A6 to compare two native toolkits with real embedded surfaces.",
+      "acceptance": [
+        "Real native window",
+        "Input/DPI/focus evidence",
+        "Explicit Wayland/Windows results"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R04",
+      "owner": "a05",
+      "gate": "G1",
+      "depends_on": [
+        "R00"
+      ],
+      "title": "Terminal/editor component spike",
+      "scope": "Prove native terminal model/rendering and basic native editor with reusable components.",
+      "acceptance": [
+        "Escape/Unicode/resize tests",
+        "Text edit/undo/save pilot",
+        "No xterm or Monaco parity claim"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R05",
+      "owner": "a06",
+      "gate": "G1",
+      "depends_on": [
+        "R00"
+      ],
+      "title": "Embedded browser and baseline spike",
+      "scope": "Prove real in-window browser composition and instrument baseline workloads.",
+      "acceptance": [
+        "Actual browser, not placeholder",
+        "Windows/Wayland results or precise blockers",
+        "Measured baseline with environment metadata"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R06",
+      "owner": "a01",
+      "gate": "G1",
+      "depends_on": [
+        "R01",
+        "R02"
+      ],
+      "title": "Minimal versioned contracts",
+      "scope": "Approve IDs, service envelopes, host status, lifecycle and bounded terminal streams.",
+      "acceptance": [
+        "Producer/consumer acknowledgements",
+        "Schema/fixture tests",
+        "Compatibility strategy"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R07",
+      "owner": "a01",
+      "gate": "G1",
+      "depends_on": [
+        "R06"
+      ],
+      "title": "Cargo foundation and isolated dev identity",
+      "scope": "Create smallest useful Rust workspace with meaningful tests and scoped CI; no empty-crate theater.",
+      "acceptance": [
+        "Format/check/test/clippy evidence",
+        "Lockfile/toolchain decision",
+        "Separate identity/profile/endpoints"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R08",
+      "owner": "a02",
+      "gate": "G2",
+      "depends_on": [
+        "R07"
+      ],
+      "title": "Real local runtime pilot",
+      "scope": "Launch fixture shell in isolated PTY, resize/attach/detach and stop owned process.",
+      "acceptance": [
+        "Real PTY tests",
+        "PID/start identity cleanup",
+        "UI detach behavior explicit"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R09",
+      "owner": "a03",
+      "gate": "G2",
+      "depends_on": [
+        "R07",
+        "R02"
+      ],
+      "title": "Synthetic domain/storage pilot",
+      "scope": "Native service stores client/project/workspace assignment with versioned mutations.",
+      "acceptance": [
+        "SQLite atomicity",
+        "Repeat request/preview conflict tests",
+        "Read-only source or synthetic fixture"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R10",
+      "owner": "a04",
+      "gate": "G2",
+      "depends_on": [
+        "R07",
+        "R03",
+        "R04",
+        "R05"
+      ],
+      "title": "Native client/project/workspace view",
+      "scope": "Use approved native toolkit and contracts; show assigned workspace without launching it.",
+      "acceptance": [
+        "Native controls",
+        "Keyboard navigation",
+        "No eager process launches"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R11",
+      "owner": "a05",
+      "gate": "G2",
+      "depends_on": [
+        "R08",
+        "R04"
+      ],
+      "title": "Native terminal vertical slice",
+      "scope": "Consume bounded session stream with native model/rendering, resizing and history.",
+      "acceptance": [
+        "Transcript/escape tests",
+        "Native typing/resize evidence",
+        "No process stop on widget hide"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R12",
+      "owner": "a06",
+      "gate": "G2",
+      "depends_on": [
+        "R05",
+        "R07"
+      ],
+      "title": "Browser adapter and lifecycle pilot",
+      "scope": "Open fixture website in native surface, manage focus and dispose isolated browser/profile resources.",
+      "acceptance": [
+        "Embedded-page input",
+        "Permission boundary",
+        "Cleanup evidence"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R13",
+      "owner": "a02",
+      "gate": "G3",
+      "depends_on": [
+        "R08"
+      ],
+      "title": "Runtime failure and host parity",
+      "scope": "Expand local/remote process ownership, Git, SSH and WSL in separate reviewed sub-tasks.",
+      "acceptance": [
+        "Reconnect/fault matrix",
+        "Host-key/argument safety",
+        "Supported OS evidence"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R14",
+      "owner": "a03",
+      "gate": "G3",
+      "depends_on": [
+        "R09"
+      ],
+      "title": "Business import and API parity",
+      "scope": "Port full command semantics and safe backup/import with a versioned compatibility adapter.",
+      "acceptance": [
+        "Differential fixtures",
+        "No dual writer",
+        "Import/rollback rehearsal"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R15",
+      "owner": "a01",
+      "gate": "G2",
+      "depends_on": [
+        "R09",
+        "R10",
+        "R11",
+        "R12"
+      ],
+      "title": "Integrate useful vertical slice",
+      "scope": "Compose client\u2192project\u2192workspace\u2192PTY and persistence; verify browser composition.",
+      "acceptance": [
+        "End-to-end fixture test",
+        "Exact integrated commit",
+        "Independent A6 review"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R16",
+      "owner": "a06",
+      "gate": "G2",
+      "depends_on": [
+        "R15"
+      ],
+      "title": "Comparable slice benchmark",
+      "scope": "Measure same workloads against native and reference app, not blank window comparisons.",
+      "acceptance": [
+        "Comparable metadata",
+        "Repeated real samples",
+        "No invented savings"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R17",
+      "owner": "a04",
+      "gate": "G4",
+      "depends_on": [
+        "R15"
+      ],
+      "title": "Native application coverage",
+      "scope": "Move navigation/settings/business surfaces/accessibility in scoped issues.",
+      "acceptance": [
+        "Feature register entries",
+        "Input/accessibility tests",
+        "Existing design assets respected"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R18",
+      "owner": "a05",
+      "gate": "G4",
+      "depends_on": [
+        "R15"
+      ],
+      "title": "Native IDE parity",
+      "scope": "Editor/diff/explorer/Markdown/PDF/images with explicit feature subset decisions.",
+      "acceptance": [
+        "Save/undo/conflict behavior",
+        "Large-file and transcript tests",
+        "No hidden web editor"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R19",
+      "owner": "a06",
+      "gate": "G4",
+      "depends_on": [
+        "R12",
+        "R16"
+      ],
+      "title": "Browser capability parity",
+      "scope": "Profiles, permissions, downloads, media, automation, Design Mode, remote viewing.",
+      "acceptance": [
+        "Capability matrix",
+        "Same-page session semantics",
+        "Sandbox/security review"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R20",
+      "owner": "a06",
+      "gate": "G5",
+      "depends_on": [
+        "R13",
+        "R16",
+        "R19"
+      ],
+      "title": "Global resource governor",
+      "scope": "Measured admission and retention with protected work and cooldown.",
+      "acceptance": [
+        "Bounded queues/caches",
+        "Dirty/media/automation protections",
+        "No unsafe hard-RAM guarantee"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R21",
+      "owner": "a03",
+      "gate": "G5",
+      "depends_on": [
+        "R14"
+      ],
+      "title": "n8n and activity parity",
+      "scope": "Ingest execution history through fake provider first; retain ownership and pagination.",
+      "acceptance": [
+        "No workflow deployment",
+        "Idempotent collection",
+        "Disconnect/retention tests"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R22",
+      "owner": "a06",
+      "gate": "G5",
+      "depends_on": [
+        "R17",
+        "R20"
+      ],
+      "title": "Native Spotify OBS and voice adapters",
+      "scope": "Use validated command layer and credentials; fake providers before authorized live smoke.",
+      "acceptance": [
+        "No account/stream side effects in tests",
+        "Controls/push-to-talk coverage",
+        "Disable/reconnect cleanup"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R23",
+      "owner": "a01",
+      "gate": "G6",
+      "depends_on": [
+        "R13",
+        "R14",
+        "R17",
+        "R18",
+        "R19",
+        "R20",
+        "R21",
+        "R22"
+      ],
+      "title": "Parity and long-run acceptance",
+      "scope": "Review every register row, run supported-platform and bounded-memory soak evidence.",
+      "acceptance": [
+        "No required unknown rows",
+        "Real duration/platform records",
+        "Rollback readiness"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R24",
+      "owner": "a06",
+      "gate": "G6",
+      "depends_on": [
+        "R23"
+      ],
+      "title": "Isolated release candidate",
+      "scope": "Package with separate identity; signing and installer/upgrade/rollback tests where required.",
+      "acceptance": [
+        "No live installer overwrite",
+        "Dependency/license inventory",
+        "Release/security review"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    },
+    {
+      "id": "R25",
+      "owner": "a01",
+      "gate": "G6",
+      "depends_on": [
+        "R24"
+      ],
+      "title": "Shae-approved production cutover",
+      "scope": "Only after explicit approval: migrate verified backup, preserve recovery and retire old paths per decision.",
+      "acceptance": [
+        "Explicit approval record",
+        "Restorable original",
+        "Measured final workload evidence"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": []
+    }
+  ]
+}

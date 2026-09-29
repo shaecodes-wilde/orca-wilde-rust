@@ -1,0 +1,27 @@
+   Compiling wilde-contracts v0.1.0 (F:\Orca Wilde Rust\crates\wilde-contracts)
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\F:\wr-build\a01\debug\incremental\wilde_contracts-0hm4y9hrar3st\s-hmr6zy5k5h-1fn29xx-working`
+
+warning: hard linking files in the incremental compilation cache failed. copying files instead. consider moving the cache directory to a file system which supports hard linking in session dir `\\?\F:\wr-build\a01\debug\incremental\wilde_contracts-352deb5g92j1a\s-hmr6zy5k9i-1wzq9l8-working`
+
+warning: `wilde-contracts` (lib) generated 1 warning
+warning: `wilde-contracts` (lib test) generated 1 warning
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 11.89s
+     Running unittests src\lib.rs (F:\wr-build\a01\debug\deps\wilde_contracts-523751c7e45473d3.exe)
+
+running 7 tests
+test tests::lost_host_contact_cannot_invent_process_exit ... ok
+test tests::gap_does_not_advance_cursor_and_replay_requires_snapshot ... ok
+test tests::restarted_session_and_oversized_payload_do_not_consume_cursor ... ok
+test tests::unknown_verdict_preserves_reply_but_wrong_type_is_rejected ... ok
+test tests::unsupported_major_fails_before_execution ... ok
+test tests::bounded_ingress_rejects_invalid_identity_before_dispatch ... ok
+test tests::wire_ingress_preserves_bytes_and_unknown_optional_fields ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests wilde_contracts
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

@@ -1,0 +1,13 @@
+   Compiling proc-macro2 v1.0.106
+   Compiling quote v1.0.45
+   Compiling unicode-ident v1.0.24
+   Compiling serde_core v1.0.228
+   Compiling zmij v1.0.21
+   Compiling syn v2.0.117
+   Compiling serde_json v1.0.149
+   Compiling serde v1.0.228
+   Compiling serde_derive v1.0.228
+    Checking itoa v1.0.18
+    Checking memchr v2.8.0
+    Checking wilde-contracts v0.1.0 (F:\Orca Wilde Rust\crates\wilde-contracts)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2m 12s
