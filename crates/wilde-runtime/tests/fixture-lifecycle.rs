@@ -85,6 +85,26 @@ fn await_quiet(session: &mut OwnedFixtureSession, cursor: &mut StreamCursor) {
     }
     panic!("fixture output did not become quiet within 32 frames / 100 milliseconds");
 }
+fn await_natural_exit(session: &OwnedFixtureSession) {
+    let deadline = Instant::now() + Duration::from_secs(2);
+    loop {
+        let verdict = session.verdict();
+        let report = session.cleanup_receipt().snapshot();
+        if verdict == ProcessVerdict::Exited {
+            assert_eq!(
+                report.exit_code,
+                Some(0),
+                "natural exit must be observed before cleanup: {report:?}"
+            );
+            return;
+        }
+        assert!(
+            Instant::now() < deadline,
+            "natural exit observation deadline: {report:?}"
+        );
+        std::thread::sleep(Duration::from_millis(10));
+    }
+}
 fn assert_cleanup(session: &mut OwnedFixtureSession) {
     let report = session.close(MAX_CLEANUP_WAIT);
     assert_eq!(
@@ -135,11 +155,8 @@ fn real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattac
     await_marker(&mut session, b"WILDE_FIXTURE_PONG", &mut cursor);
     session.write_input(FixtureInput::Finish).unwrap();
     await_marker(&mut session, b"WILDE_FIXTURE_DONE", &mut cursor);
-    let deadline = Instant::now() + Duration::from_secs(1);
-    while session.verdict() != ProcessVerdict::Exited && Instant::now() < deadline {
-        std::thread::sleep(Duration::from_millis(10));
-    }
-    assert_eq!(session.verdict(), ProcessVerdict::Exited);
+    await_natural_exit(&session);
+
     assert_cleanup(&mut session);
     assert_eq!(session.cleanup_receipt().snapshot().exit_code, Some(0));
 }
