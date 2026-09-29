@@ -4,11 +4,14 @@ pub const MAX_ROWS: u16 = 200;
 pub const MAX_COLUMNS: u16 = 400;
 pub const MAX_SCROLLBACK_ROWS: usize = 10_000;
 pub const MAX_RETAINED_CELLS: usize = 2_000_000;
+/// Pilot lifetime admission limit, not a production terminal retention policy.
+pub const MAX_SESSION_INPUT_BYTES: usize = 4 * 1_048_576;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum TerminalError {
     InvalidDimensions,
     RetentionLimit,
+    LifetimeByteLimit,
     Contract(ContractError),
 }
 
@@ -18,6 +21,8 @@ pub struct TerminalModel {
     scrollback_rows: usize,
     widest_columns: u16,
     snapshot_required: bool,
+    admitted_bytes: usize,
+    resource_exhausted: bool,
 }
 
 impl TerminalModel {
@@ -39,19 +44,31 @@ impl TerminalModel {
             scrollback_rows,
             widest_columns: cols,
             snapshot_required: false,
+            admitted_bytes: 0,
+            resource_exhausted: false,
         })
     }
 
     pub fn accept_frame(&mut self, frame: &TerminalFrame) -> Result<(), TerminalError> {
+        if self.resource_exhausted {
+            return Err(TerminalError::LifetimeByteLimit);
+        }
         if self.snapshot_required {
             return Err(TerminalError::Contract(ContractError::SnapshotRequired));
         }
-        if let Err(error) = self.cursor.accept(frame) {
+        let mut accepted_cursor = self.cursor.clone();
+        if let Err(error) = accepted_cursor.accept(frame) {
             if error == ContractError::SnapshotRequired {
                 self.snapshot_required = true;
             }
             return Err(TerminalError::Contract(error));
         }
+        if frame.payload.len() > MAX_SESSION_INPUT_BYTES - self.admitted_bytes {
+            self.resource_exhausted = true;
+            return Err(TerminalError::LifetimeByteLimit);
+        }
+        self.cursor = accepted_cursor;
+        self.admitted_bytes += frame.payload.len();
         self.parser.process(&frame.payload);
         Ok(())
     }
@@ -70,6 +87,14 @@ impl TerminalModel {
 
     pub fn snapshot_required(&self) -> bool {
         self.snapshot_required
+    }
+
+    pub fn admitted_bytes(&self) -> usize {
+        self.admitted_bytes
+    }
+
+    pub fn resource_exhausted(&self) -> bool {
+        self.resource_exhausted
     }
 
     /// Caller must order this with the corresponding host PTY resize.

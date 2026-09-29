@@ -158,3 +158,72 @@ fn resize_budget_remembers_wider_retained_history() {
     assert_eq!(terminal.resize(1, 0), Err(TerminalError::InvalidDimensions));
     assert_eq!(terminal.screen().size(), (1, 1));
 }
+
+#[test]
+fn unterminated_osc_across_frames_exhausts_lifetime_budget_atomically() {
+    let mut terminal = model();
+    terminal.accept_frame(&frame(0, b"safe\x1b]0;")).unwrap();
+    let chunk = vec![b'x'; MAX_FRAME_BYTES];
+    while terminal.admitted_bytes() < MAX_SESSION_INPUT_BYTES {
+        let remaining = MAX_SESSION_INPUT_BYTES - terminal.admitted_bytes();
+        let count = remaining.min(chunk.len());
+        terminal
+            .accept_frame(&frame(terminal.next_sequence(), &chunk[..count]))
+            .unwrap();
+    }
+    assert_eq!(terminal.contents(), "safe");
+    let next_sequence = terminal.next_sequence();
+    let would_clear_screen = frame(next_sequence, b"\x07\x1b[2J\x1b[Hbad");
+    assert_eq!(
+        terminal.accept_frame(&would_clear_screen),
+        Err(TerminalError::LifetimeByteLimit)
+    );
+    assert_eq!(terminal.contents(), "safe");
+    assert_eq!(terminal.next_sequence(), next_sequence);
+    assert_eq!(terminal.admitted_bytes(), MAX_SESSION_INPUT_BYTES);
+    assert!(terminal.resource_exhausted());
+    assert!(!terminal.snapshot_required());
+    assert_eq!(
+        terminal.accept_frame(&frame(next_sequence, b"\x07later")),
+        Err(TerminalError::LifetimeByteLimit)
+    );
+    assert_eq!(
+        terminal.accept_frame(&frame(next_sequence, b"")),
+        Err(TerminalError::LifetimeByteLimit)
+    );
+    assert_eq!(terminal.contents(), "safe");
+    assert_eq!(terminal.next_sequence(), next_sequence);
+}
+
+#[test]
+fn oversized_osc_frame_does_not_start_parser_escape_or_consume_budget() {
+    let mut terminal = model();
+    let mut osc = vec![b'x'; MAX_FRAME_BYTES + 1];
+    osc[..4].copy_from_slice(b"\x1b]0;");
+    assert_eq!(
+        terminal.accept_frame(&frame(0, &osc)),
+        Err(TerminalError::Contract(ContractError::FrameTooLarge))
+    );
+    assert_eq!(terminal.admitted_bytes(), 0);
+    assert_eq!(terminal.next_sequence(), 0);
+    assert!(!terminal.resource_exhausted());
+    terminal.accept_frame(&frame(0, b"valid")).unwrap();
+    assert_eq!(terminal.contents(), "valid");
+    assert_eq!(terminal.admitted_bytes(), 5);
+}
+
+#[test]
+fn rejected_stream_identity_does_not_charge_lifetime_budget() {
+    let mut terminal = model();
+    terminal.accept_frame(&frame(0, b"safe")).unwrap();
+    let mut invalid = frame(1, b"rejected");
+    invalid.identity.generation += 1;
+    assert_eq!(
+        terminal.accept_frame(&invalid),
+        Err(TerminalError::Contract(ContractError::SnapshotRequired))
+    );
+    assert_eq!(terminal.admitted_bytes(), 4);
+    assert_eq!(terminal.next_sequence(), 1);
+    assert_eq!(terminal.contents(), "safe");
+    assert!(!terminal.resource_exhausted());
+}
