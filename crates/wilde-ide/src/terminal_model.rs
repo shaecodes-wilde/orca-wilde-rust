@@ -16,6 +16,7 @@ pub struct TerminalModel {
     parser: vt100::Parser,
     cursor: StreamCursor,
     scrollback_rows: usize,
+    widest_columns: u16,
     snapshot_required: bool,
 }
 
@@ -36,6 +37,7 @@ impl TerminalModel {
             parser: vt100::Parser::new(rows, cols, scrollback_rows),
             cursor,
             scrollback_rows,
+            widest_columns: cols,
             snapshot_required: false,
         })
     }
@@ -72,6 +74,7 @@ impl TerminalModel {
 
     /// Caller must order this with the corresponding host PTY resize.
     pub fn resize(&mut self, rows: u16, cols: u16) -> Result<(), TerminalError> {
+        validate_size(rows, cols, self.scrollback_rows)?;
         let widest_columns = self.widest_columns.max(cols);
         validate_size(rows, widest_columns, self.scrollback_rows)?;
         self.parser.screen_mut().set_size(rows, cols);
