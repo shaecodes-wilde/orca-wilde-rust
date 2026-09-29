@@ -1,4 +1,4 @@
-param([string]$Toolchain='stable',[switch]$WindowsChild,[switch]$WindowsScene)
+param([string]$Toolchain='stable',[switch]$WindowsChild,[switch]$WindowsScene,[switch]$CompileOnly)
 if ($Toolchain -notin @('stable','1.94.0')) { throw 'Compiler must be stable or pinned 1.94.0' }
 $toolchainSelector='+'+$Toolchain
 $ErrorActionPreference = 'Stop'
@@ -36,8 +36,11 @@ try {
             @{name='guarded-tests';arguments=@()},
             @{name='clippy';arguments=@($toolchainSelector,'clippy','--workspace','--all-targets','--offline','--locked','--','-D','warnings')}
         )
+        if ($CompileOnly) { $steps=@($steps | Where-Object { $_.name -notin @('test-build','guarded-tests') }) }
         if ($WindowsChild) { $steps+=@{name='windows-child';arguments=@($toolchainSelector,'check','-p','wilde-browser','--features','windows-child','--offline','--locked')} }
         if ($WindowsScene) { $steps+=@{name='windows-scene';arguments=@($toolchainSelector,'check','-p','wilde-desktop','--features','windows-scene','--offline','--locked')} }
+        if ($WindowsScene) { $steps+=@{name='windows-scene-clippy';arguments=@($toolchainSelector,'clippy','-p','wilde-desktop','--features','windows-scene','--all-targets','--offline','--locked','--','-D','warnings')} }
+        $steps=@($steps | Where-Object { $_.name -ne 'clippy' }) + @($steps | Where-Object { $_.name -eq 'clippy' })
         $results=@(); $guardRunId=[Guid]::NewGuid().ToString('N')
         foreach ($step in $steps) {
             $logPath=Join-Path $evidenceRoot ('integrated-'+$step.name+'.log')

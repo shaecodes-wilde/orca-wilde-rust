@@ -1,0 +1,15 @@
+# Inventory and runner decisions
+
+Source is shaecodes-wilde/orca-wilde, branch wilde/theme, exact committed base 1db4ef38577ec932f97067b7391625b7be599884. Source preflight was saved outside that checkout; its dirty state had 47 entries. A later scoped read again found the same HEAD and 47 entries. No reset, stash, clean, app launch, profile copy, credential copy, global Git exception or original-worktree mutation was performed. Counts are evidence of the observed state, not a byte-for-byte claim about concurrent user work.
+
+Shae chose F:\Orca Wilde Rust for the independent native repository and orca-wilde-rust, public, for eventual GitHub publication. These override the kickoff subdirectory proposal. Existing repository history is not imported wholesale. Selected 25 committed public source references and the original MIT license are preserved for semantics/design/wire comparison; unrelated dirty changes remain with their original checkout.
+
+The installed stable compiler is Rust 1.94.0; Rustfmt and Clippy are available. Dependencies are pinned and locked. The Cargo download cache is shared; only A1 builds with 2 jobs, incremental compilation disabled, under F:\wr-build\a01. Linked role worktrees share new-repository Git objects under F:\wr\a02..a06. Scoped safe.directory parameters accommodate this volume without modifying global Git configuration.
+
+The Codex collaboration runner exposes gpt-6.1-sol with high effort and supports at most 3 workers beside A1. Shae's latest model instruction applies to ALL roles. A1's own session context was verified as gpt-6.1-sol/high. Dedicated native worker launches used that explicit model/effort. Runner handles, ownership and worktrees are in coordination/roles.json. A3/A4 were queued while slots were occupied, then implemented their owned scopes. No roles beyond the six were created.
+
+An initial tool-free installed Claude probe verified claude-opus-5-5 and a Pro account, before Shae changed the preferred workers. Two owned file-only Claude launches were stopped after that correction; they produced no implementation files. No Claude workers remain. Raw session receipts stay in ignored evidence/raw and are excluded from publication. This report makes no billing claim.
+
+Native GUI testing has no approved isolated Windows display or Linux/Wayland runner in this session. No native window or old Electron app was launched. Browser/window code may be compiled without satisfying rendered/focus/IME/accessibility/platform acceptance. The permanent native toolkit remains gated; diagnostic Tao/Win32 composition is not a permanent selection.
+
+GitHub account access was verified as shaecodes-wilde using existing authenticated tools; no token was printed or copied. The target repository returned404 to this account during discovery. The connector has repository reads but no surfaced repository-create capability; the authenticated GitHub CLI is the planned creation fallback after exact external-write approval. No repository creation, push, issue, PR, workflow execution or production change has happened.

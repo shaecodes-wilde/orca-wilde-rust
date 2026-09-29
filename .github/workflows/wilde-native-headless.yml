@@ -19,9 +19,15 @@ jobs:
         shell: pwsh
         run: |
           git init .
+          if ($LASTEXITCODE -ne 0) { throw "Repository initialization failed" }
           git remote add origin "https://github.com/$env:GITHUB_REPOSITORY.git"
+          if ($LASTEXITCODE -ne 0) { throw "Read-only remote setup failed" }
           git fetch --depth 1 origin $env:GITHUB_SHA
+          if ($LASTEXITCODE -ne 0) { throw "Exact commit fetch failed" }
           git checkout --detach FETCH_HEAD
+          if ($LASTEXITCODE -ne 0) { throw "Exact commit checkout failed" }
+          $checkedHead=git rev-parse HEAD
+          if ($LASTEXITCODE -ne 0 -or $checkedHead -ne $env:GITHUB_SHA) { throw "Checkout commit does not match requested commit" }
       - name: Install the pinned compiler on the temporary runner
         shell: pwsh
         run: rustup toolchain install 1.94.0 --profile minimal --component rustfmt,clippy
