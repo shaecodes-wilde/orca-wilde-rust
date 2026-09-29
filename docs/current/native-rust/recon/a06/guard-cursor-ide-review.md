@@ -31,3 +31,7 @@ EditorDocument REQUEST CHANGES before multi-document composition: SaveCandidate 
 ## Handoff
 
 Guard cleanup blockers, flag experiment scope and A5 document-token request sent to A1; A5 request also sent directly to its owner. Worktree retained and clean after this docs commit. Free review slot; re-review only actual repaired artifacts. No external writes or source modifications in this cycle.
+
+## Superseding A5 repair review
+
+Read exact db6a880e0c18d116d80f1466fcff667def858339. APPROVE private per-instance Arc<()> token carried into SaveCandidate and Arc::ptr_eq refusal before baseline mutation. Added same-baseline/matching-revision cross-document regression preserves first document state and accepts the candidate on its original document. This resolves the multi-document acknowledgement blocker above at source level. Tests still delegated to A1; durable file identity/atomic write remain host requirements. No build or test by A6.
