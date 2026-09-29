@@ -142,12 +142,13 @@ mod tests {
         #[cfg(windows)]
         let result = std::os::windows::fs::symlink_dir(&target.0, &link);
         #[cfg(windows)]
-        if result
-            .as_ref()
-            .is_err_and(|error| error.raw_os_error() == Some(1314))
+        if let Err(error) = &result
+            && matches!(error.raw_os_error(), Some(1 | 1314))
         {
             eprintln!(
-                "NOT RUN: Windows denied symlink creation; native reparse cleanup rejection remains unverified"
+                "NOT RUN: fixture symlink creation unavailable: {error}; kind={:?}, raw_os_error={:?}; native link/reparse rejection remains unverified",
+                error.kind(),
+                error.raw_os_error()
             );
             return;
         }
