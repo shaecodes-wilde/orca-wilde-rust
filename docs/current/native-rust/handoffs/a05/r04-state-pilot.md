@@ -2,7 +2,7 @@
 
 Task / role: R04 / A05 native terminal and editor state pilot
 Actual model / runner / session: GPT-6.1-Sol High / Codex child agent / a05_native_ide
-Worktree / branch / exact HEAD: F:\wr\a05 / rust-v2/a05-ide / code HEAD db6a880e0c18d116d80f1466fcff667def858339; documentation follow-up supplied to A1
+Worktree / branch / exact HEAD: F:\wr\a05 / rust-v2/a05-ide / code HEAD fd4b3d77855c1d5570b9360c0471c0f09c2c8577; documentation follow-up supplied to A1
 Base contract version: wilde-contracts protocol major 1; unchanged SessionIdentity, TerminalFrame, StreamCursor
 Status: implemented local state APIs; integration build/tests NOT RUN pending A1 sole build slot
 
@@ -24,7 +24,7 @@ Direct rustfmt --edition 2024 on all five owned Rust files: exit 0. Cargo build/
 
 ## Review and integration
 
-Independent reviewer: A6 source-level review approved terminal ingress/retention semantics within stated scope and found a cross-document save acknowledgement blocker. Fixed in db6a880 with a private per-document Arc token and pre-mutation identity check; A6 APPROVED that exact repair on 2026-09-29. This is source-level approval, not a passing test or native acceptance. PR: none. Integrated SHA: not yet integrated. Dependency/license and build verification remain A1-owned. A6 also found vte default std unterminated OSC storage grows across frames. Repaired with cumulative pilot byte admission and explicit resource fault; current repair build/tests pending A1. No terminal emulator/editor parity or performance claim.
+Independent reviewer: A6 source-level review approved terminal ingress/retention semantics within stated scope and found a cross-document save acknowledgement blocker. Fixed in db6a880 with a private per-document Arc token and pre-mutation identity check; A6 APPROVED that exact repair on 2026-09-29. This is source-level approval, not a passing test or native acceptance. PR: none. Integrated SHA: not yet integrated. Dependency/license and build verification remain A1-owned. A6 also found vte default std unterminated OSC storage grows across frames. Repaired in fd4b3d7 with cumulative pilot byte admission and explicit resource fault. A6 approved the staged repair source; immutable-commit acknowledgement requested, current repair build/tests pending A1. No terminal emulator/editor parity or performance claim.
 
 ## Runtime and cleanup
 
@@ -33,6 +33,7 @@ No task-owned app/PTY/GUI processes, endpoints, production profiles or temp fixt
 ## Next
 
 A1 fetch/lock/build; compose A2's owned real ConPTY fixture with this model and A4's native sibling scene. Native grid drawing and visible input/render evidence require isolated display/CI. Durable host snapshot recovery, editor filesystem adapter and full IDE functions remain open.
+
 
 
 
