@@ -1,0 +1,13 @@
+[package]
+name = "wilde-ide"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+
+[dependencies]
+wilde-contracts = { path = "../wilde-contracts" }
+vt100 = "=0.16.2"
+
+[lints]
+workspace = true
