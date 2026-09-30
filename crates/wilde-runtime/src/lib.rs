@@ -13,8 +13,8 @@ use anyhow::{Context, Result, bail};
 use fixture_command::FixtureDirectory;
 use fixture_lifecycle::OwnedChild;
 pub use fixture_lifecycle::{
-    CleanupReceipt, CleanupReport, CleanupTiming, CwdRemovalError, MAX_CLEANUP_WAIT,
-    MAX_FIXTURE_LIFETIME,
+    CleanupReceipt, CleanupReport, CleanupTiming, CwdRemovalError, ExitObservation,
+    KillAdapterError, KillObservation, MAX_CLEANUP_WAIT, MAX_FIXTURE_LIFETIME, SupervisionRecord,
 };
 pub use portable_pty::PtySize;
 use portable_pty::{MasterPty, native_pty_system};
@@ -119,6 +119,7 @@ impl OwnedFixtureSession {
             cwd_removed: false,
             cwd_remove_error: None,
             timing: CleanupTiming::default(),
+            supervision: SupervisionRecord::default(),
         })));
         let (consumer, output) = match sink {
             Some(sink) => (

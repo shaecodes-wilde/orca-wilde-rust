@@ -49,6 +49,33 @@ pub struct CleanupTiming {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
+pub struct KillAdapterError {
+    pub kind: std::io::ErrorKind,
+    pub raw_os_error: Option<i32>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct KillObservation {
+    pub elapsed_since_supervisor_start: Duration,
+    pub stop_seen: bool,
+    pub fault_code: u8,
+    pub adapter_error: Option<KillAdapterError>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ExitObservation {
+    pub elapsed_since_supervisor_start: Duration,
+    pub code: u32,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
+pub struct SupervisionRecord {
+    pub first_kill: Option<KillObservation>,
+    pub first_exit: Option<ExitObservation>,
+    pub max_poll_gap: Duration,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CleanupReport {
     pub process_id: Option<u32>,
     pub generation: u64,
@@ -60,6 +87,7 @@ pub struct CleanupReport {
     pub cwd_removed: bool,
     pub cwd_remove_error: Option<CwdRemovalError>,
     pub timing: CleanupTiming,
+    pub supervision: SupervisionRecord,
 }
 
 #[derive(Clone)]
@@ -115,10 +143,17 @@ pub(crate) fn supervise(
     stop: Arc<AtomicBool>,
     receipt: CleanupReceipt,
 ) {
-    let deadline = Instant::now() + MAX_FIXTURE_LIFETIME;
+    let started = Instant::now();
+    let deadline = started + MAX_FIXTURE_LIFETIME;
     let mut stop_deadline = None;
+    let mut previous_poll = started;
     loop {
         let now = Instant::now();
+        let poll_gap = now.saturating_duration_since(previous_poll);
+        previous_poll = now;
+        receipt.update(|report| {
+            report.supervision.max_poll_gap = report.supervision.max_poll_gap.max(poll_gap);
+        });
         if now >= deadline {
             let _ = fault.compare_exchange(0, LEASE_EXPIRED, Ordering::AcqRel, Ordering::Acquire);
         }
@@ -128,6 +163,15 @@ pub(crate) fn supervise(
         };
         match owned.try_wait() {
             Ok(Some(status)) => {
+                receipt.update(|report| {
+                    report
+                        .supervision
+                        .first_exit
+                        .get_or_insert(ExitObservation {
+                            elapsed_since_supervisor_start: started.elapsed(),
+                            code: status.exit_code(),
+                        });
+                });
                 record_exit(&receipt, status);
                 break;
             }
@@ -138,7 +182,25 @@ pub(crate) fn supervise(
             && (stop.load(Ordering::Acquire) || fault.load(Ordering::Acquire) != 0)
         {
             // Poll and signal under one ownership lock; a reaped PID is never signalled later.
-            let _ = owned.kill();
+            receipt.update(|report| {
+                report.supervision.first_kill = Some(KillObservation {
+                    elapsed_since_supervisor_start: started.elapsed(),
+                    stop_seen: stop.load(Ordering::Acquire),
+                    fault_code: fault.load(Ordering::Acquire),
+                    adapter_error: None,
+                });
+            });
+            let kill_result = owned.kill();
+            if let Err(error) = kill_result {
+                receipt.update(|report| {
+                    if let Some(observation) = report.supervision.first_kill.as_mut() {
+                        observation.adapter_error = Some(KillAdapterError {
+                            kind: error.kind(),
+                            raw_os_error: error.raw_os_error(),
+                        });
+                    }
+                });
+            }
             stop_deadline = Some(Instant::now() + MAX_CLEANUP_WAIT);
         }
         drop(owned);
@@ -197,6 +259,7 @@ mod observation_failure_tests {
             cwd_removed: false,
             cwd_remove_error: None,
             timing: CleanupTiming::default(),
+            supervision: SupervisionRecord::default(),
         })))
     }
 
