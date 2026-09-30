@@ -4,14 +4,17 @@ pub const MAX_ROWS: u16 = 200;
 pub const MAX_COLUMNS: u16 = 400;
 pub const MAX_SCROLLBACK_ROWS: usize = 10_000;
 pub const MAX_RETAINED_CELLS: usize = 2_000_000;
-/// Pilot lifetime admission limit, not a production terminal retention policy.
-pub const MAX_SESSION_INPUT_BYTES: usize = 4 * 1_048_576;
+/// Admission limit for one control sequence, including introducer and terminator.
+pub const MAX_CONTROL_SEQUENCE_BYTES: usize = 16 * 1024;
+
+mod control_budget;
+use control_budget::ControlBudget;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum TerminalError {
     InvalidDimensions,
     RetentionLimit,
-    LifetimeByteLimit,
+    ControlSequenceLimit,
     Contract(ContractError),
 }
 
@@ -21,7 +24,8 @@ pub struct TerminalModel {
     scrollback_rows: usize,
     widest_columns: u16,
     snapshot_required: bool,
-    admitted_bytes: usize,
+    admitted_bytes: u64,
+    control_budget: ControlBudget,
     resource_exhausted: bool,
 }
 
@@ -45,13 +49,14 @@ impl TerminalModel {
             widest_columns: cols,
             snapshot_required: false,
             admitted_bytes: 0,
+            control_budget: ControlBudget::default(),
             resource_exhausted: false,
         })
     }
 
     pub fn accept_frame(&mut self, frame: &TerminalFrame) -> Result<(), TerminalError> {
         if self.resource_exhausted {
-            return Err(TerminalError::LifetimeByteLimit);
+            return Err(TerminalError::ControlSequenceLimit);
         }
         if self.snapshot_required {
             return Err(TerminalError::Contract(ContractError::SnapshotRequired));
@@ -63,12 +68,16 @@ impl TerminalModel {
             }
             return Err(TerminalError::Contract(error));
         }
-        if frame.payload.len() > MAX_SESSION_INPUT_BYTES - self.admitted_bytes {
+        let mut accepted_budget = self.control_budget;
+        if accepted_budget.admit(&frame.payload).is_err() {
             self.resource_exhausted = true;
-            return Err(TerminalError::LifetimeByteLimit);
+            return Err(TerminalError::ControlSequenceLimit);
         }
         self.cursor = accepted_cursor;
-        self.admitted_bytes += frame.payload.len();
+        self.control_budget = accepted_budget;
+        self.admitted_bytes = self
+            .admitted_bytes
+            .saturating_add(frame.payload.len() as u64);
         self.parser.process(&frame.payload);
         Ok(())
     }
@@ -89,7 +98,7 @@ impl TerminalModel {
         self.snapshot_required
     }
 
-    pub fn admitted_bytes(&self) -> usize {
+    pub fn admitted_bytes(&self) -> u64 {
         self.admitted_bytes
     }
 
@@ -128,3 +137,7 @@ fn validate_size(rows: u16, cols: u16, scrollback: usize) -> Result<(), Terminal
 
 #[cfg(test)]
 mod tests;
+
+#[cfg(test)]
+#[path = "terminal_model/stream_tests.rs"]
+mod stream_tests;
