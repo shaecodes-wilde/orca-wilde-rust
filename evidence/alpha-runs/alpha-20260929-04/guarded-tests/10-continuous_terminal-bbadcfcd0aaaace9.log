@@ -1,0 +1,15 @@
+
+running 1 test
+test detached_viewer_observes_final_screen_after_real_pty_stream_over_sixteen_mib ... ok
+
+successes:
+
+---- detached_viewer_observes_final_screen_after_real_pty_stream_over_sixteen_mib stdout ----
+{"admitted_bytes":18874542,"next_sequence":4750,"final_sentinel":true,"detached_process_unchanged":true,"stream_fault_free":true,"exit_code":0,"reader_joined":true,"lifecycle_joined":true,"fixture_cwd_removed":true}
+
+
+successes:
+    detached_viewer_observes_final_screen_after_real_pty_stream_over_sixteen_mib
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.26s
+

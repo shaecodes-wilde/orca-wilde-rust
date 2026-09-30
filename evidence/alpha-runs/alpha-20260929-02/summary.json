@@ -1,0 +1,135 @@
+{
+  "source_commit": "5c54c4af01113d6fe6f5da8973c12df527d39bee",
+  "guard_run_id": "1682f489c53c4f72b83ba0daff380911",
+  "completed": true,
+  "results": [
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-02\\guarded-tests\\00-fixture_lifecycle-9c5806f7e2573ed9.log",
+      "sha256": "eea4574557e193c0275117bfc618dbe5382ac50103a73fc7555b9a2aa2e244c3",
+      "exit_code": 101,
+      "successful_functions": 5,
+      "failed_functions": 1,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-02\\guarded-tests\\01-continuous_terminal-bbadcfcd0aaaace9.log",
+      "sha256": "3dee704d554fb61d5459bab300c4722aa6763a1f5048b2b8412573272d99d469",
+      "exit_code": 101,
+      "successful_functions": 0,
+      "failed_functions": 1,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-02\\guarded-tests\\02-pilot-3436b4bb1fa93ebf.log",
+      "sha256": "5bedbe25a166f0ac30f2601d37a9291a92f1cd50e77945e47afce352ba7638e0",
+      "exit_code": 0,
+      "successful_functions": 1,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-02\\guarded-tests\\03-wilde_desktop-e00c0d9ebf9ba506.log",
+      "sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-02\\guarded-tests\\04-scene_policy-e24851f6a09220e8.log",
+      "sha256": "1f75f592969e3bbf76948bacd3b9cb77833e674c4c2ac1b813140e4653df9137",
+      "exit_code": 0,
+      "successful_functions": 9,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-02\\guarded-tests\\05-wilde_desktop-88bf298cd7fdd6ef.log",
+      "sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-02\\guarded-tests\\06-browser_policy-ffe5dc5c29684c41.log",
+      "sha256": "4544c14c50d310acf5d2b9d3302c26add2af26309ca2ad98fc3de9cf0cd5c7a6",
+      "exit_code": 0,
+      "successful_functions": 9,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-02\\guarded-tests\\07-sqlite-3e0b0a6a48cf93ec.log",
+      "sha256": "8fbef8d607a767a32913842da7f87eb6d066f7884a68a4638b2137cfaa25747b",
+      "exit_code": 0,
+      "successful_functions": 12,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-02\\guarded-tests\\08-wilde_ide-a9ad64da2301dc85.log",
+      "sha256": "dafde3c8be1488cd8a44fe7d413cd3f7853957bff7fd8fcb9edf67b6065ba595",
+      "exit_code": 0,
+      "successful_functions": 30,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-02\\guarded-tests\\09-wilde_domain-07b36f04555022d2.log",
+      "sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-02\\guarded-tests\\10-wilde_contracts-49997b206d700627.log",
+      "sha256": "297051449aef49fea5d783e38e822965f1ee9284f9f5c22b0e187053c7cdb3fe",
+      "exit_code": 0,
+      "successful_functions": 7,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-02\\guarded-tests\\11-wilde_ui-300c7f4d91fd22a1.log",
+      "sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-02\\guarded-tests\\12-wilde_browser-07d4f2ec4c1c6b42.log",
+      "sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-02\\guarded-tests\\13-wilde_runtime-85e9dada5a6c18cc.log",
+      "sha256": "e974b39fa85ae1532c674e9f2f13294bb55e7fe94dc25d0336ddc231ed5f6d4c",
+      "exit_code": 0,
+      "successful_functions": 16,
+      "failed_functions": 0,
+      "explicit_not_run": true,
+      "owned_job_empty": true
+    }
+  ],
+  "later_verifier_steps": "NOT_RUN after guarded-tests failure",
+  "verdict": "FAIL"
+}

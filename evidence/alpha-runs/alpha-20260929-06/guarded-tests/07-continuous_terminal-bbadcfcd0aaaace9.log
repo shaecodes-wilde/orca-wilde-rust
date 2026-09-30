@@ -1,0 +1,13 @@
+
+running 1 test
+test detached_viewer_observes_final_screen_after_real_pty_stream_over_sixteen_mib ... continuous fixture spawn begin: 248.9µs
+continuous fixture spawn returned: 90.434ms
+continuous sustained input begin: 90.5947ms
+continuous sustained input returned: 90.6614ms
+continuous pre-close observation: elapsed=6.0785053s, receipt=CleanupReport { process_id: Some(30852), generation: 1, cwd: "\\\\?\\F:\\wr-build\\runtime-tests\\wilde-pty-fixture-33432-1", verdict: Exited, exit_code: Some(0), reader_joined: false, lifecycle_joined: false, cwd_removed: false, cwd_remove_error: None, timing: CleanupTiming { writer_drop: 0ns, verdict_observation: 0ns, master_drop: 0ns, worker_join: 0ns, manifest_removal: 0ns, total_close: 0ns, deadline_exhausted: false }, supervision: SupervisionRecord { first_kill: None, first_exit: None, max_poll_gap: 14.6992ms } }
+continuous close returned: elapsed=6.1134693s, receipt=CleanupReport { process_id: Some(30852), generation: 1, cwd: "\\\\?\\F:\\wr-build\\runtime-tests\\wilde-pty-fixture-33432-1", verdict: Exited, exit_code: Some(0), reader_joined: true, lifecycle_joined: true, cwd_removed: true, cwd_remove_error: None, timing: CleanupTiming { writer_drop: 14.8µs, verdict_observation: 38.7µs, master_drop: 19.7µs, worker_join: 24.3µs, manifest_removal: 23.363ms, total_close: 33.5691ms, deadline_exhausted: false }, supervision: SupervisionRecord { first_kill: None, first_exit: Some(ExitObservation { elapsed_since_supervisor_start: 5.995141s, code: 0 }), max_poll_gap: 14.6992ms } }
+{"admitted_bytes":18874541,"next_sequence":4640,"final_sentinel":true,"detached_process_unchanged":true,"stream_fault_free":true,"exit_code":0,"reader_joined":true,"lifecycle_joined":true,"fixture_cwd_removed":true}
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 6.12s
+

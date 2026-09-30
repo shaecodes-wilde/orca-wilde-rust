@@ -1,0 +1,164 @@
+{
+  "source_commit": "2cda7ca3b40d5cb7da47a0b02f0f8439add78fac",
+  "guard_run_id": "7c35408e6b8d4aa49e71658e3340f51e",
+  "completed": true,
+  "artifacts_hashed_after_guard_completion_before_another_build": true,
+  "results": [
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-03\\guarded-tests\\00-scene_policy-e24851f6a09220e8.log",
+      "log_sha256": "1f75f592969e3bbf76948bacd3b9cb77833e674c4c2ac1b813140e4653df9137",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\scene_policy-e24851f6a09220e8.exe",
+      "executable_sha256": "1bdebf585db7c6c4eeb0bb704db4a8892ce77fdc451f79ce3cea182f700899af",
+      "exit_code": 0,
+      "successful_functions": 9,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-03\\guarded-tests\\01-browser_policy-ffe5dc5c29684c41.log",
+      "log_sha256": "7f2795b309818da5a73a713873c8dc8158a55e2ce3c34fb7422a5fe0191475cf",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\browser_policy-ffe5dc5c29684c41.exe",
+      "executable_sha256": "0c693f0a099e355664a3a2d97abbe4c6c0970e52e9580abe3674e2bd8f74280f",
+      "exit_code": 0,
+      "successful_functions": 9,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-03\\guarded-tests\\02-wilde_ide-a9ad64da2301dc85.log",
+      "log_sha256": "6c19ea91c4021ebb3d4ae002525ea8d2f83fef8b31f2f51d1604ae2ba4ab32c5",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_ide-a9ad64da2301dc85.exe",
+      "executable_sha256": "986319f8cf22385f11d6ad2b0aa3fd3f5faec057fdcfe90152a419703f0e5242",
+      "exit_code": 0,
+      "successful_functions": 30,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-03\\guarded-tests\\03-sqlite-3e0b0a6a48cf93ec.log",
+      "log_sha256": "ea5287cfb780084a475502db31369c47b2c618def12ee66288cf5e76fa27dd1b",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\sqlite-3e0b0a6a48cf93ec.exe",
+      "executable_sha256": "74b4118bfc6f1960a8304b7f6188cdacdb29112ef007b63f46fdab92f62e124e",
+      "exit_code": 0,
+      "successful_functions": 12,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-03\\guarded-tests\\04-wilde_runtime-85e9dada5a6c18cc.log",
+      "log_sha256": "bc99d013477ce344fcfcb05e4a6e8819e7637e7746fbdfbc1b2a65ea3c4c8c6a",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_runtime-85e9dada5a6c18cc.exe",
+      "executable_sha256": "27b6ed88ba58d76cd5e3550bce137e3a0209098db1122ab4f9f6fa552d06a9d9",
+      "exit_code": 0,
+      "successful_functions": 16,
+      "failed_functions": 0,
+      "explicit_not_run": true,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-03\\guarded-tests\\05-wilde_desktop-e00c0d9ebf9ba506.log",
+      "log_sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_desktop-e00c0d9ebf9ba506.exe",
+      "executable_sha256": "5133e9346bb8f30e90249583a20746ead2ac6c4678db583d685db6cae00cce45",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-03\\guarded-tests\\06-pilot-3436b4bb1fa93ebf.log",
+      "log_sha256": "fcd875a3e64a5326543373630b7c02cd94e9fff500a94e78c4940680164878ef",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\pilot-3436b4bb1fa93ebf.exe",
+      "executable_sha256": "25f0450a435e90085415c0e2c02a16cc6e97ee94e18e6bf6a7a4ad0a5ad2e320",
+      "exit_code": 101,
+      "successful_functions": 0,
+      "failed_functions": 1,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-03\\guarded-tests\\07-continuous_terminal-bbadcfcd0aaaace9.log",
+      "log_sha256": "6fe8fef345524008817fb59863fd58fa2a89f3c540b067e02498d36aa647a20b",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\continuous_terminal-bbadcfcd0aaaace9.exe",
+      "executable_sha256": "de2049062963cd7120e34cdb82f85351a95ff339d532817adf5b851027c88093",
+      "exit_code": 101,
+      "successful_functions": 0,
+      "failed_functions": 1,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-03\\guarded-tests\\08-wilde_desktop-88bf298cd7fdd6ef.log",
+      "log_sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_desktop-88bf298cd7fdd6ef.exe",
+      "executable_sha256": "425de8ad121b57c2e053662ad8bffba81d26a007dc29ddcaaf2b12fcbe400931",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-03\\guarded-tests\\09-wilde_domain-07b36f04555022d2.log",
+      "log_sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_domain-07b36f04555022d2.exe",
+      "executable_sha256": "dcbf5e997fbff6a6b8004a7d9c574202196f62d2a599ad2cc57c21233de8f1ac",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-03\\guarded-tests\\10-wilde_contracts-49997b206d700627.log",
+      "log_sha256": "297051449aef49fea5d783e38e822965f1ee9284f9f5c22b0e187053c7cdb3fe",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_contracts-49997b206d700627.exe",
+      "executable_sha256": "a414572a010b70e2061e0f79ea9d718be0a08fdc50f4ddbe050ada5e69d7653f",
+      "exit_code": 0,
+      "successful_functions": 7,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-03\\guarded-tests\\11-wilde_ui-300c7f4d91fd22a1.log",
+      "log_sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_ui-300c7f4d91fd22a1.exe",
+      "executable_sha256": "357c3b864414b11441124b2fb5823ff56845f3e839d2b8a48a74657981bb3678",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-03\\guarded-tests\\12-wilde_browser-07d4f2ec4c1c6b42.log",
+      "log_sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_browser-07d4f2ec4c1c6b42.exe",
+      "executable_sha256": "af78ff7f7c9336ad31e2f9c0c3b5091aae75d0bd6ce69fe1907115b6c0943a4c",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-03\\guarded-tests\\13-fixture_lifecycle-9c5806f7e2573ed9.log",
+      "log_sha256": "27f6936fadd0c10d9b8144df760c7dbff1969121290b2aabcaa1d86912e5ac9d",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\fixture_lifecycle-9c5806f7e2573ed9.exe",
+      "executable_sha256": "5b3f2582433b12d172dd066797f1faab6b787ec9f7e04e4091bd87f369fb65de",
+      "exit_code": 101,
+      "successful_functions": 5,
+      "failed_functions": 1,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    }
+  ],
+  "verdict": "FAIL",
+  "later_verifier_steps": "NOT_RUN after guarded-tests failure"
+}

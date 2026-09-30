@@ -1,0 +1,8 @@
+
+running 6 tests
+test canonical_sink_failure_stops_owned_fixture_and_preserves_explicit_fault ... ok
+test dropping_viewer_owner_has_an_observable_cleanup_receipt ... FAILED
+test explicit_close_kills_only_the_owned_fixture_and_is_repeatable ... FAILED
+test fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement ... ok
+test real_native_canonical_sink_receives_over_16_mib_while_viewer_is_detached ... FAILED
+test real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach ... 

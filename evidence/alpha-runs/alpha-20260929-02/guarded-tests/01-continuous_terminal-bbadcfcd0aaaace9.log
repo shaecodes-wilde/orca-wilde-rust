@@ -1,0 +1,22 @@
+
+running 1 test
+test detached_viewer_observes_final_screen_after_real_pty_stream_over_sixteen_mib ... FAILED
+
+successes:
+
+successes:
+
+failures:
+
+---- detached_viewer_observes_final_screen_after_real_pty_stream_over_sixteen_mib stdout ----
+
+thread 'detached_viewer_observes_final_screen_after_real_pty_stream_over_sixteen_mib' (21904) panicked at apps\wilde-desktop\tests\continuous-terminal.rs:3:67:
+called `Result::unwrap()` on an `Err` value: continuous fixture cleanup incomplete: CleanupReport { process_id: Some(26928), generation: 1, cwd: "\\\\?\\F:\\wr-build\\runtime-tests\\wilde-pty-fixture-21176-1", verdict: Exited, exit_code: Some(0), reader_joined: true, lifecycle_joined: true, cwd_removed: false, cwd_remove_error: Some(CwdRemovalError { kind: TimedOut, raw_os_error: None }) }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    detached_viewer_observes_final_screen_after_real_pty_stream_over_sixteen_mib
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 34.36s
+

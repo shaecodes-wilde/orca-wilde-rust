@@ -1,0 +1,41 @@
+
+running 6 tests
+test canonical_sink_failure_stops_owned_fixture_and_preserves_explicit_fault ... ok
+test dropping_viewer_owner_has_an_observable_cleanup_receipt ... ok
+test explicit_close_kills_only_the_owned_fixture_and_is_repeatable ... ok
+test fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement ... ok
+test real_native_canonical_sink_receives_over_16_mib_while_viewer_is_detached ... FAILED
+test real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach ... ok
+
+successes:
+
+---- canonical_sink_failure_stops_owned_fixture_and_preserves_explicit_fault stdout ----
+
+thread 'wilde-fixture-output' (15284) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:155:13:
+synthetic canonical consumer panic
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+successes:
+    canonical_sink_failure_stops_owned_fixture_and_preserves_explicit_fault
+    dropping_viewer_owner_has_an_observable_cleanup_receipt
+    explicit_close_kills_only_the_owned_fixture_and_is_repeatable
+    fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement
+    real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach
+
+failures:
+
+---- real_native_canonical_sink_receives_over_16_mib_while_viewer_is_detached stdout ----
+canonical native receipt: admitted_bytes=18874760, next_sequence=74022, identity_unchanged=true, pid_unchanged=true, exit_code=Some(3221225786), reader_joined=true, lifecycle_joined=true, cwd_removed=true, final_fault=None
+
+thread 'real_native_canonical_sink_receives_over_16_mib_while_viewer_is_detached' (33332) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:144:5:
+assertion `left == right` failed
+  left: Some(3221225786)
+ right: Some(0)
+
+
+failures:
+    real_native_canonical_sink_receives_over_16_mib_while_viewer_is_detached
+
+test result: FAILED. 5 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 17.37s
+

@@ -1,0 +1,22 @@
+
+running 1 test
+test synthetic_client_workspace_sqlite_reopen_and_real_native_pty_share_one_slice ... FAILED
+
+successes:
+
+successes:
+
+failures:
+
+---- synthetic_client_workspace_sqlite_reopen_and_real_native_pty_share_one_slice stdout ----
+
+thread 'synthetic_client_workspace_sqlite_reopen_and_real_native_pty_share_one_slice' (28516) panicked at apps\wilde-desktop\tests\pilot.rs:25:27:
+called `Result::unwrap()` on an `Err` value: fixture cleanup incomplete: CleanupReport { process_id: Some(21024), generation: 1, cwd: "\\\\?\\F:\\wr-build\\runtime-tests\\wilde-pty-fixture-19772-1", verdict: Exited, exit_code: Some(1), reader_joined: true, lifecycle_joined: true, cwd_removed: true, cwd_remove_error: None, timing: CleanupTiming { writer_drop: 23.4µs, verdict_observation: 1.2643ms, master_drop: 46.8µs, worker_join: 47.5µs, manifest_removal: 27.5637ms, total_close: 380.6142ms, deadline_exhausted: false } }
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    synthetic_client_workspace_sqlite_reopen_and_real_native_pty_share_one_slice
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 4.06s
+

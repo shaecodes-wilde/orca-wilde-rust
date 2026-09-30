@@ -1,0 +1,14 @@
+{
+  "checks": [
+    {
+      "path": "F:\\wr-build\\runtime-tests\\wilde-pty-fixture-30088-5",
+      "exists_after_guarded_job_completion": false
+    },
+    {
+      "path": "F:\\wr-build\\runtime-tests\\wilde-pty-fixture-21176-1",
+      "exists_after_guarded_job_completion": false
+    }
+  ],
+  "no_manual_removal": true,
+  "note": "Drop can retry owned cleanup after an assertion failure; later absence cannot pass the original cleanup deadline."
+}

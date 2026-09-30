@@ -205,7 +205,7 @@
         "model_requested": "gpt-6.1-sol",
         "effort_requested": "high",
         "routing_evidence": "explicit worker launch accepted; no independent turn_context exposed",
-        "state": "read-only investigation completed"
+        "state": "completed read-only inspection; no source edits, retained"
       },
       {
         "role": "a05",
@@ -213,7 +213,8 @@
         "model_requested": "gpt-6.1-sol",
         "effort_requested": "high",
         "routing_evidence": "explicit worker launch accepted",
-        "state": "stream contract acknowledged by A1; A2 acknowledgement pending"
+        "state": "completed; scoped delivered source integrated/reviewed, retained",
+        "delivered_commit": "683ef377a7067adafcea10a571fc1f13a73637fa"
       },
       {
         "role": "a06",
@@ -221,7 +222,8 @@
         "model_requested": "gpt-6.1-sol",
         "effort_requested": "high",
         "routing_evidence": "explicit worker launch accepted",
-        "state": "retention pressure API acknowledged by A1"
+        "state": "completed; scoped delivered source integrated/reviewed, retained",
+        "delivered_commit": "1175267f9a55a1b82ca8ed90992c92741ab8a38f"
       },
       {
         "role": "a02",
@@ -229,10 +231,14 @@
         "model_requested": "gpt-6.1-sol",
         "effort_requested": "high",
         "routing_evidence": "explicit worker launch accepted after A4 completed",
-        "state": "runtime source and consumer contract review"
+        "state": "completed; scoped delivered source integrated/reviewed, retained",
+        "delivered_commit": "0bac5a5f64b680ccb8a9010fd741114ebd3cd40a"
       }
     ],
     "max_active_workers": 3,
-    "preflight": "evidence/alpha/preflight.json"
+    "preflight": "evidence/alpha/preflight.json",
+    "tested_source": "86e2b20f12193ca5b7aa2c2c97097b8052db3158",
+    "acceptance": "FAIL runtime reliability; native composition/performance BLOCKED",
+    "latest_evidence": "evidence/alpha/alpha-run.json"
   }
 }

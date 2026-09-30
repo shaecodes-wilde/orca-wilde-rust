@@ -1,0 +1,22 @@
+
+running 1 test
+test detached_viewer_observes_final_screen_after_real_pty_stream_over_sixteen_mib ... FAILED
+
+successes:
+
+successes:
+
+failures:
+
+---- detached_viewer_observes_final_screen_after_real_pty_stream_over_sixteen_mib stdout ----
+
+thread 'detached_viewer_observes_final_screen_after_real_pty_stream_over_sixteen_mib' (34500) panicked at apps\wilde-desktop\tests\continuous-terminal.rs:3:67:
+called `Result::unwrap()` on an `Err` value: continuous output sentinel deadline
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    detached_viewer_observes_final_screen_after_real_pty_stream_over_sixteen_mib
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 25.30s
+

@@ -1,0 +1,24 @@
+
+running 6 tests
+test canonical_sink_failure_stops_owned_fixture_and_preserves_explicit_fault ... 
+thread 'wilde-fixture-output' (23128) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:155:13:
+synthetic canonical consumer panic
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+ok
+test dropping_viewer_owner_has_an_observable_cleanup_receipt ... ok
+test explicit_close_kills_only_the_owned_fixture_and_is_repeatable ... ok
+test fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement ... 
+thread 'fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement' (29648) panicked at crates\wilde-runtime\tests\fixture-lifecycle.rs:273:5:
+own cwd must be removed: CleanupReport { process_id: Some(21552), generation: 5, cwd: "\\\\?\\F:\\wr-build\\runtime-tests\\wilde-pty-fixture-32272-5", verdict: Exited, exit_code: Some(1), reader_joined: true, lifecycle_joined: true, cwd_removed: false, cwd_remove_error: Some(CwdRemovalError { kind: TimedOut, raw_os_error: None }), timing: CleanupTiming { writer_drop: 16.2µs, verdict_observation: 17.5µs, master_drop: 18.8µs, worker_join: 12.4µs, manifest_removal: 4.4998156s, total_close: 4.5099452s, deadline_exhausted: true }, supervision: SupervisionRecord { first_kill: Some(KillObservation { elapsed_since_supervisor_start: 8.0101044s, stop_seen: false, fault_code: 3, adapter_error: None }), first_exit: Some(ExitObservation { elapsed_since_supervisor_start: 8.0727168s, code: 1 }), max_poll_gap: 21.87ms } }
+FAILED
+test real_native_canonical_sink_receives_over_16_mib_while_viewer_is_detached ... canonical native receipt: admitted_bytes=18874760, next_sequence=74000, identity_unchanged=true, pid_unchanged=true, exit_code=Some(0), reader_joined=true, lifecycle_joined=true, cwd_removed=true, final_fault=None
+ok
+test real_native_fixture_preserves_bytes_and_survives_viewer_detach_resize_reattach ... ok
+
+failures:
+
+failures:
+    fixed_lifetime_stops_an_unattended_fixture_without_observer_involvement
+
+test result: FAILED. 5 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 20.68s
+

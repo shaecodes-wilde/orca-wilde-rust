@@ -1,0 +1,5 @@
+   Compiling wilde-runtime v0.1.0 (F:\Orca Wilde Rust\crates\wilde-runtime)
+   Compiling wilde-browser v0.1.0 (F:\Orca Wilde Rust\crates\wilde-browser)
+   Compiling wilde-ide v0.1.0 (F:\Orca Wilde Rust\crates\wilde-ide)
+   Compiling wilde-desktop v0.1.0 (F:\Orca Wilde Rust\apps\wilde-desktop)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 32.89s

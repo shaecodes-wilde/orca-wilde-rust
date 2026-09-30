@@ -1,0 +1,56 @@
+
+running 16 tests
+test fixture_command::directory_preservation_tests::nonempty_fixture_directory_is_retained_until_its_exact_test_file_is_removed ... ok
+test fixture_command::guard_admission_tests::unguarded_or_mismatched_runner_attestation_refuses_fixture_execution ... ok
+test fixture_directory::tests::exact_empty_windows_startup_manifest_is_removed_bottom_up ... ok
+test fixture_directory::tests::expired_cleanup_budget_keeps_the_validated_manifest ... ok
+test fixture_directory::tests::linked_profile_directory_is_refused_without_following_target ... ok
+test fixture_directory::tests::unexpected_file_preserves_the_whole_manifest_before_any_removal ... ok
+test fixture_lifecycle::observation_failure_tests::genuine_child_observation_error_replaces_stale_live_receipt ... ok
+test fixture_lifecycle::observation_failure_tests::poisoned_ownership_lock_also_replaces_stale_live_receipt ... ok
+test fixture_output::drain_failure_tests::canonical_consumer_receives_sustained_ordered_bytes_without_a_viewer_queue ... ok
+test fixture_output::drain_failure_tests::canonical_rejection_or_panic_latches_fault_and_drains_without_more_callbacks ... ok
+test fixture_output::drain_failure_tests::canonical_sequence_exhaustion_never_publishes_an_unrepresentable_cursor ... ok
+test fixture_output::drain_failure_tests::overflow_drains_remaining_native_bytes_without_publishing_them ... ok
+test fixture_output::tests::dropped_consumer_refuses_new_output_without_blocking ... ok
+test fixture_output::tests::slow_observer_gets_explicit_failure_without_byte_reordering ... ok
+test tests::invalid_host_generation_and_geometry_are_refused_before_launch ... ok
+test tests::oversized_and_control_character_identifiers_are_refused ... ok
+
+successes:
+
+---- fixture_directory::tests::linked_profile_directory_is_refused_without_following_target stdout ----
+NOT RUN: fixture symlink creation unavailable: Incorrect function. (os error 1); kind=Uncategorized, raw_os_error=Some(1); native link/reparse rejection remains unverified
+
+---- fixture_lifecycle::observation_failure_tests::poisoned_ownership_lock_also_replaces_stale_live_receipt stdout ----
+
+thread 'fixture_lifecycle::observation_failure_tests::poisoned_ownership_lock_also_replaces_stale_live_receipt' (14680) panicked at crates\wilde-runtime\src\fixture-lifecycle.rs:219:13:
+synthetic child owner failure
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+---- fixture_output::drain_failure_tests::canonical_rejection_or_panic_latches_fault_and_drains_without_more_callbacks stdout ----
+
+thread 'fixture_output::drain_failure_tests::canonical_rejection_or_panic_latches_fault_and_drains_without_more_callbacks' (19228) panicked at crates\wilde-runtime\src\fixture-output.rs:279:21:
+synthetic canonical consumer panic
+
+
+successes:
+    fixture_command::directory_preservation_tests::nonempty_fixture_directory_is_retained_until_its_exact_test_file_is_removed
+    fixture_command::guard_admission_tests::unguarded_or_mismatched_runner_attestation_refuses_fixture_execution
+    fixture_directory::tests::exact_empty_windows_startup_manifest_is_removed_bottom_up
+    fixture_directory::tests::expired_cleanup_budget_keeps_the_validated_manifest
+    fixture_directory::tests::linked_profile_directory_is_refused_without_following_target
+    fixture_directory::tests::unexpected_file_preserves_the_whole_manifest_before_any_removal
+    fixture_lifecycle::observation_failure_tests::genuine_child_observation_error_replaces_stale_live_receipt
+    fixture_lifecycle::observation_failure_tests::poisoned_ownership_lock_also_replaces_stale_live_receipt
+    fixture_output::drain_failure_tests::canonical_consumer_receives_sustained_ordered_bytes_without_a_viewer_queue
+    fixture_output::drain_failure_tests::canonical_rejection_or_panic_latches_fault_and_drains_without_more_callbacks
+    fixture_output::drain_failure_tests::canonical_sequence_exhaustion_never_publishes_an_unrepresentable_cursor
+    fixture_output::drain_failure_tests::overflow_drains_remaining_native_bytes_without_publishing_them
+    fixture_output::tests::dropped_consumer_refuses_new_output_without_blocking
+    fixture_output::tests::slow_observer_gets_explicit_failure_without_byte_reordering
+    tests::invalid_host_generation_and_geometry_are_refused_before_launch
+    tests::oversized_and_control_character_identifiers_are_refused
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.76s
+

@@ -1,0 +1,44 @@
+[
+  {
+    "step": "format",
+    "started_utc": "2026-09-30T01:09:37.5513157Z",
+    "log": "F:\\Orca Wilde Rust\\evidence\\alpha-runs\\alpha-20260929-07\\integrated-format.log",
+    "exit_code": 0,
+    "elapsed_seconds": 0.5479867
+  },
+  {
+    "step": "check",
+    "started_utc": "2026-09-30T01:09:38.1426020Z",
+    "log": "F:\\Orca Wilde Rust\\evidence\\alpha-runs\\alpha-20260929-07\\integrated-check.log",
+    "exit_code": 0,
+    "elapsed_seconds": 4.067625
+  },
+  {
+    "step": "windows-child",
+    "started_utc": "2026-09-30T01:09:42.2527810Z",
+    "log": "F:\\Orca Wilde Rust\\evidence\\alpha-runs\\alpha-20260929-07\\integrated-windows-child.log",
+    "exit_code": 0,
+    "elapsed_seconds": 2.9298605
+  },
+  {
+    "step": "windows-scene",
+    "started_utc": "2026-09-30T01:09:45.2105024Z",
+    "log": "F:\\Orca Wilde Rust\\evidence\\alpha-runs\\alpha-20260929-07\\integrated-windows-scene.log",
+    "exit_code": 0,
+    "elapsed_seconds": 15.5195019
+  },
+  {
+    "step": "windows-scene-clippy",
+    "started_utc": "2026-09-30T01:10:00.7579136Z",
+    "log": "F:\\Orca Wilde Rust\\evidence\\alpha-runs\\alpha-20260929-07\\integrated-windows-scene-clippy.log",
+    "exit_code": 0,
+    "elapsed_seconds": 9.5024558
+  },
+  {
+    "step": "clippy",
+    "started_utc": "2026-09-30T01:10:10.2891792Z",
+    "log": "F:\\Orca Wilde Rust\\evidence\\alpha-runs\\alpha-20260929-07\\integrated-clippy.log",
+    "exit_code": 0,
+    "elapsed_seconds": 6.4549836
+  }
+]

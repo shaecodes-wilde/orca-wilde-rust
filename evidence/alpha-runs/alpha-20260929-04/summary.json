@@ -1,0 +1,223 @@
+{
+  "source_commit": "89f5d43ed4b4a94e9ee148b6c4651a6a61b69091",
+  "guard_run_id": "c8367cfed1ed4063afc47b8e4e851dcd",
+  "completed": true,
+  "artifacts_hashed_after_guard_completion_before_another_build": true,
+  "results": [
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-04\\guarded-tests\\00-scene_policy-e24851f6a09220e8.log",
+      "log_sha256": "1f75f592969e3bbf76948bacd3b9cb77833e674c4c2ac1b813140e4653df9137",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\scene_policy-e24851f6a09220e8.exe",
+      "executable_sha256": "1bdebf585db7c6c4eeb0bb704db4a8892ce77fdc451f79ce3cea182f700899af",
+      "exit_code": 0,
+      "successful_functions": 9,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-04\\guarded-tests\\01-browser_policy-ffe5dc5c29684c41.log",
+      "log_sha256": "4544c14c50d310acf5d2b9d3302c26add2af26309ca2ad98fc3de9cf0cd5c7a6",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\browser_policy-ffe5dc5c29684c41.exe",
+      "executable_sha256": "0c693f0a099e355664a3a2d97abbe4c6c0970e52e9580abe3674e2bd8f74280f",
+      "exit_code": 0,
+      "successful_functions": 9,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-04\\guarded-tests\\02-sqlite-3e0b0a6a48cf93ec.log",
+      "log_sha256": "2d22de3dc2031c81d419ccf62fa928503abc59ef9b4fe2307e028bad86ebff05",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\sqlite-3e0b0a6a48cf93ec.exe",
+      "executable_sha256": "74b4118bfc6f1960a8304b7f6188cdacdb29112ef007b63f46fdab92f62e124e",
+      "exit_code": 0,
+      "successful_functions": 12,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-04\\guarded-tests\\03-wilde_ide-a9ad64da2301dc85.log",
+      "log_sha256": "cc172cc294d0ef87651df64e1aa2772ff0c7410edf0c869ebb0b7df0618f4262",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_ide-a9ad64da2301dc85.exe",
+      "executable_sha256": "986319f8cf22385f11d6ad2b0aa3fd3f5faec057fdcfe90152a419703f0e5242",
+      "exit_code": 0,
+      "successful_functions": 30,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-04\\guarded-tests\\04-wilde_domain-07b36f04555022d2.log",
+      "log_sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_domain-07b36f04555022d2.exe",
+      "executable_sha256": "dcbf5e997fbff6a6b8004a7d9c574202196f62d2a599ad2cc57c21233de8f1ac",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-04\\guarded-tests\\05-wilde_contracts-49997b206d700627.log",
+      "log_sha256": "297051449aef49fea5d783e38e822965f1ee9284f9f5c22b0e187053c7cdb3fe",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_contracts-49997b206d700627.exe",
+      "executable_sha256": "a414572a010b70e2061e0f79ea9d718be0a08fdc50f4ddbe050ada5e69d7653f",
+      "exit_code": 0,
+      "successful_functions": 7,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-04\\guarded-tests\\06-wilde_ui-300c7f4d91fd22a1.log",
+      "log_sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_ui-300c7f4d91fd22a1.exe",
+      "executable_sha256": "357c3b864414b11441124b2fb5823ff56845f3e839d2b8a48a74657981bb3678",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-04\\guarded-tests\\07-wilde_browser-07d4f2ec4c1c6b42.log",
+      "log_sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_browser-07d4f2ec4c1c6b42.exe",
+      "executable_sha256": "af78ff7f7c9336ad31e2f9c0c3b5091aae75d0bd6ce69fe1907115b6c0943a4c",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-04\\guarded-tests\\08-wilde_desktop-88bf298cd7fdd6ef.log",
+      "log_sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_desktop-88bf298cd7fdd6ef.exe",
+      "executable_sha256": "5ee847670bdd2e0d174e39e9eda22ef0ea4070b5b8ef3d07c80fcc178fe4db3f",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-04\\guarded-tests\\09-wilde_desktop-e00c0d9ebf9ba506.log",
+      "log_sha256": "5005259f2bf5bda55d5bac9e61b7bcfbe75a9a9fd42d0ff00623682edfd7b6a4",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_desktop-e00c0d9ebf9ba506.exe",
+      "executable_sha256": "409065a57d1a29502b59b815ecf1a702639430b36fa2020143d67218f6a41ba1",
+      "exit_code": 0,
+      "successful_functions": 0,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-04\\guarded-tests\\10-continuous_terminal-bbadcfcd0aaaace9.log",
+      "log_sha256": "d93127ed511616625ae20921dac69405af14e116c47590a1def1764712ab48f7",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\continuous_terminal-bbadcfcd0aaaace9.exe",
+      "executable_sha256": "a22bc20614cf69be0962b38a580dadcafe3695c70a1b6c675eaccfa42c9749f9",
+      "exit_code": 0,
+      "successful_functions": 1,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-04\\guarded-tests\\11-fixture_lifecycle-9c5806f7e2573ed9.log",
+      "log_sha256": "39a26fddac124e037c38197f53147c2b41f5222ddc0a9baec517c1518238b969",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\fixture_lifecycle-9c5806f7e2573ed9.exe",
+      "executable_sha256": "091b7a4e84c831c1d91ae9cfb821656943091f92a41066e0f1d681471095c459",
+      "exit_code": 0,
+      "successful_functions": 6,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-04\\guarded-tests\\12-pilot-3436b4bb1fa93ebf.log",
+      "log_sha256": "3974357a1ade1c525a84243541c0582a13fb53f3b18db8bf3672fb0559873701",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\pilot-3436b4bb1fa93ebf.exe",
+      "executable_sha256": "8a5efa0fc288b0c43fec71e9e80295ed8f4dfe0e68b9f885b52d11ff7b3a23f9",
+      "exit_code": 0,
+      "successful_functions": 1,
+      "failed_functions": 0,
+      "explicit_not_run": false,
+      "owned_job_empty": true
+    },
+    {
+      "log": "evidence\\alpha-runs\\alpha-20260929-04\\guarded-tests\\13-wilde_runtime-85e9dada5a6c18cc.log",
+      "log_sha256": "8fb83063b25fd3de9c111f5dcb50e56c1aefe8fd7681add8ebbfac8c17f93ed3",
+      "executable": "F:\\wr-build\\a01\\debug\\deps\\wilde_runtime-85e9dada5a6c18cc.exe",
+      "executable_sha256": "823841f1e6898775c607ecf9658ab6110a4fcf3344e34bac006ff61e697032a9",
+      "exit_code": 0,
+      "successful_functions": 16,
+      "failed_functions": 0,
+      "explicit_not_run": true,
+      "owned_job_empty": true
+    }
+  ],
+  "guard_verdict": "PASS",
+  "verifier_steps": "All 8 verification steps passed; compilation and lint do not establish rendered native interaction",
+  "verification_steps": [
+    {
+      "log": "F:\\Orca Wilde Rust\\evidence\\alpha-runs\\alpha-20260929-04\\integrated-format.log",
+      "exit_code": 0,
+      "elapsed_seconds": 1.0999424,
+      "step": "format",
+      "started_utc": "2026-09-30T00:51:59.1423536Z"
+    },
+    {
+      "log": "F:\\Orca Wilde Rust\\evidence\\alpha-runs\\alpha-20260929-04\\integrated-check.log",
+      "exit_code": 0,
+      "elapsed_seconds": 18.5126594,
+      "step": "check",
+      "started_utc": "2026-09-30T00:52:00.2949784Z"
+    },
+    {
+      "log": "F:\\Orca Wilde Rust\\evidence\\alpha-runs\\alpha-20260929-04\\integrated-test-build.log",
+      "exit_code": 0,
+      "elapsed_seconds": 23.4217396,
+      "step": "test-build",
+      "started_utc": "2026-09-30T00:52:18.8475495Z"
+    },
+    {
+      "log": "F:\\Orca Wilde Rust\\evidence\\alpha-runs\\alpha-20260929-04\\integrated-guarded-tests.log",
+      "exit_code": 0,
+      "elapsed_seconds": 34.5486298,
+      "step": "guarded-tests",
+      "started_utc": "2026-09-30T00:52:42.3031946Z"
+    },
+    {
+      "log": "F:\\Orca Wilde Rust\\evidence\\alpha-runs\\alpha-20260929-04\\integrated-windows-child.log",
+      "exit_code": 0,
+      "elapsed_seconds": 6.6017258,
+      "step": "windows-child",
+      "started_utc": "2026-09-30T00:53:16.9332482Z"
+    },
+    {
+      "log": "F:\\Orca Wilde Rust\\evidence\\alpha-runs\\alpha-20260929-04\\integrated-windows-scene.log",
+      "exit_code": 0,
+      "elapsed_seconds": 16.2885256,
+      "step": "windows-scene",
+      "started_utc": "2026-09-30T00:53:23.5628542Z"
+    },
+    {
+      "log": "F:\\Orca Wilde Rust\\evidence\\alpha-runs\\alpha-20260929-04\\integrated-windows-scene-clippy.log",
+      "exit_code": 0,
+      "elapsed_seconds": 10.8155411,
+      "step": "windows-scene-clippy",
+      "started_utc": "2026-09-30T00:53:39.8769192Z"
+    },
+    {
+      "log": "F:\\Orca Wilde Rust\\evidence\\alpha-runs\\alpha-20260929-04\\integrated-clippy.log",
+      "exit_code": 0,
+      "elapsed_seconds": 10.2344521,
+      "step": "clippy",
+      "started_utc": "2026-09-30T00:53:50.7335Z"
+    }
+  ],
+  "verdict": "PASS_HEADLESS_SCOPE"
+}

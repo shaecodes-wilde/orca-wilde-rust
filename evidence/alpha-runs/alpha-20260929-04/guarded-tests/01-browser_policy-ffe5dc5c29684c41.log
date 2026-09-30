@@ -1,0 +1,27 @@
+
+running 9 tests
+test bounds_and_launch_reject_infinite_outside_background_and_unisolated_scenes ... ok
+test closing_one_owner_preserves_other_pages_and_duplicate_ids_fail_closed ... ok
+test cooldown_and_clock_uncertainty_defer_budget_without_repeated_eviction ... ok
+test explicit_marked_profile_succeeds_but_default_existing_and_traversal_fail ... ok
+test mixed_pressure_distinguishes_protection_from_cooldown_and_clock_rollback ... ok
+test navigation_cannot_escape_allowlist_via_credentials_schemes_host_suffix_or_backslash ... ok
+test protected_only_pressure_is_visible_without_scheduling_eviction ... ok
+test synthetic_initial_navigation_loads_once_and_rejects_external_or_repeat_navigation ... ok
+test visible_dirty_unknown_media_download_and_lease_pages_are_outside_warm_budget ... ok
+
+successes:
+
+successes:
+    bounds_and_launch_reject_infinite_outside_background_and_unisolated_scenes
+    closing_one_owner_preserves_other_pages_and_duplicate_ids_fail_closed
+    cooldown_and_clock_uncertainty_defer_budget_without_repeated_eviction
+    explicit_marked_profile_succeeds_but_default_existing_and_traversal_fail
+    mixed_pressure_distinguishes_protection_from_cooldown_and_clock_rollback
+    navigation_cannot_escape_allowlist_via_credentials_schemes_host_suffix_or_backslash
+    protected_only_pressure_is_visible_without_scheduling_eviction
+    synthetic_initial_navigation_loads_once_and_rejects_external_or_repeat_navigation
+    visible_dirty_unknown_media_download_and_lease_pages_are_outside_warm_budget
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+

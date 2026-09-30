@@ -1,0 +1,7 @@
+{
+  "failed_returned_receipt": "evidence/alpha-runs/alpha-20260929-06/guarded-tests/05-fixture_lifecycle-9c5806f7e2573ed9.log",
+  "path": "F:\\wr-build\\runtime-tests\\wilde-pty-fixture-32272-5",
+  "present_after_guard_completion": false,
+  "manual_cleanup_performed": false,
+  "scope": "Later path absence can reflect existing Drop retry or process teardown; it never changes the earlier returned deadline failure."
+}

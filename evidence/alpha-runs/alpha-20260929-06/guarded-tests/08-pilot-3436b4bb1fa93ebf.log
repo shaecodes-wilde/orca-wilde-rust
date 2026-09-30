@@ -1,0 +1,8 @@
+
+running 1 test
+test synthetic_client_workspace_sqlite_reopen_and_real_native_pty_share_one_slice ... pilot pre-close observation: elapsed=601.2345ms, natural_exit=true, receipt=CleanupReport { process_id: Some(33832), generation: 1, cwd: "\\\\?\\F:\\wr-build\\runtime-tests\\wilde-pty-fixture-32220-1", verdict: Exited, exit_code: Some(0), reader_joined: false, lifecycle_joined: false, cwd_removed: false, cwd_remove_error: None, timing: CleanupTiming { writer_drop: 0ns, verdict_observation: 0ns, master_drop: 0ns, worker_join: 0ns, manifest_removal: 0ns, total_close: 0ns, deadline_exhausted: false }, supervision: SupervisionRecord { first_kill: None, first_exit: Some(ExitObservation { elapsed_since_supervisor_start: 601.0371ms, code: 0 }), max_poll_gap: 11.4574ms } }
+pilot close returned: elapsed=656.4436ms, receipt=CleanupReport { process_id: Some(33832), generation: 1, cwd: "\\\\?\\F:\\wr-build\\runtime-tests\\wilde-pty-fixture-32220-1", verdict: Exited, exit_code: Some(0), reader_joined: true, lifecycle_joined: true, cwd_removed: true, cwd_remove_error: None, timing: CleanupTiming { writer_drop: 22.1µs, verdict_observation: 20.7µs, master_drop: 29.8µs, worker_join: 17.3µs, manifest_removal: 43.5116ms, total_close: 53.7671ms, deadline_exhausted: false }, supervision: SupervisionRecord { first_kill: None, first_exit: Some(ExitObservation { elapsed_since_supervisor_start: 601.0371ms, code: 0 }), max_poll_gap: 11.4574ms } }
+ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.17s
+

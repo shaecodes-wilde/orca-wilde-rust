@@ -1,0 +1,540 @@
+{
+  "schema_version": 1,
+  "record_kind": "observed_local_increment",
+  "milestone": "Native Workspace Alpha",
+  "scope_revision": null,
+  "run_id": "alpha-20260929",
+  "started_at_utc": "2026-09-30T00:09:28.094713+00:00",
+  "repository": "shaecodes-wilde/orca-wilde-rust",
+  "source_commit": "86e2b20f12193ca5b7aa2c2c97097b8052db3158",
+  "dirty_patch_hash": null,
+  "build_artifact_sha256": null,
+  "legacy_source_commit": "1db4ef38577ec932f97067b7391625b7be599884",
+  "legacy_build_artifact_sha256": null,
+  "model_routing_observed": [
+    {
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "evidence": "current session turn_context, 2026-09-29T23:45:15.137Z; only routing fields retained"
+    },
+    {
+      "roles": [
+        "a04",
+        "a05",
+        "a06",
+        "a02"
+      ],
+      "model_requested": "gpt-6.1-sol",
+      "effort_requested": "high",
+      "evidence": "explicit collaboration runner launches accepted; distinct turn_context not exposed"
+    }
+  ],
+  "environments": [
+    {
+      "platform": "Windows-10-10.0.26200-SP0",
+      "filesystem": "exFAT",
+      "native_windows_display": "BLOCKED; user confirmed no existing runner",
+      "wayland_display": "BLOCKED; WSL not installed, user confirmed no existing runner",
+      "scope": "Windows headless owned fixture tests and compile-only source checks"
+    }
+  ],
+  "permissions": {
+    "local_development_authority_reference": "Direct user reply: Begin the next phase; existing kickoff local edits/fixtures/scoped commits/worktrees.",
+    "isolated_native_display_authority_reference": null,
+    "real_agent_account_execution_authority_reference": null,
+    "real_agent_spend_cap": null,
+    "github_publication_authority_reference": null,
+    "hosted_ci_dispatch_authority_reference": null,
+    "production_cutover": "NOT_AUTHORIZED"
+  },
+  "performance_protocol": {
+    "revision": "A6 baseline design v1; no measured baseline/no numeric budget lock",
+    "locked_before_scoring_at_utc": null,
+    "budgets": [],
+    "paired_runs": [],
+    "incomparable_workloads": []
+  },
+  "acceptance": [
+    {
+      "id": "S01",
+      "title": "Setup and provenance",
+      "required_for": "functional",
+      "required_environment": "Windows and Linux/Wayland composition environments",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": "No isolated Windows/Wayland display; preflight recorded without claiming complete setup.",
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "S02",
+      "title": "Legacy noninterference",
+      "required_for": "functional",
+      "required_environment": "All exercised environments",
+      "result": "NOT_RUN",
+      "observations_by_environment": [],
+      "evidence": [
+        "evidence/alpha/postflight.json"
+      ],
+      "reviewer": null,
+      "blocker": null,
+      "implementation_commits": [],
+      "notes": "Legacy HEAD and normalized path/status inventory match preflight with47 changed/untracked paths. No old app launch or edits by this cycle. Byte identity, active processes, profiles and endpoint noninterference were not fully tested; full S02 remains NOT_RUN."
+    },
+    {
+      "id": "C01",
+      "title": "Genuine native/browser surfaces",
+      "required_for": "functional",
+      "required_environment": "Windows and Linux/Wayland",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": "No isolated display; genuine terminal cells/editable native composition/Wayland adapter missing.",
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "C02",
+      "title": "Native interaction and input",
+      "required_for": "functional",
+      "required_environment": "Windows and Linux/Wayland",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": "No isolated display for focus, IME, accessibility or native input.",
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "C03",
+      "title": "Surface lifecycle and toolkit decision",
+      "required_for": "functional",
+      "required_environment": "Windows and Linux/Wayland",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": "No Windows/Wayland lifecycle comparison; permanent toolkit decision unresolved.",
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "F01",
+      "title": "Actual worktree and durable identity",
+      "required_for": "functional",
+      "required_environment": "Windows",
+      "result": "NOT_RUN",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": null,
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "F02",
+      "title": "Interactive local terminal",
+      "required_for": "functional",
+      "required_environment": "Windows",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": "Interactive native terminal controls and isolated display missing.",
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "F03",
+      "title": "Continuous bounded stream beyond pilot limit",
+      "required_for": "functional",
+      "required_environment": "Windows",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [
+        "evidence/alpha-runs/alpha-20260929-06/summary.json",
+        "evidence/alpha-runs/alpha-20260929-06/guarded-tests/07-continuous_terminal-bbadcfcd0aaaace9.log"
+      ],
+      "reviewer": null,
+      "blocker": "Continuous parser/native reader subsets exercised; snapshot/replay, slow-viewer resync and stdin/resize ordering not implemented.",
+      "implementation_commits": [],
+      "notes": "Real composed in-process detached parser received18874541bytes/sequence4640; final marker, same identity, fault-free natural0 before/after close and complete cleanup. Raw sink18874760bytes/sequence74000. IDE30 model tests pass. Snapshot/replay, independent host/UI restart and slow-viewer resync are not implemented; full F03 BLOCKED."
+    },
+    {
+      "id": "F04",
+      "title": "Separately approved real coding-agent exercise",
+      "required_for": "functional",
+      "required_environment": "Windows",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": "Specific CLI/account/task/root/spend approval absent.",
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "F05",
+      "title": "Native file save and diff review",
+      "required_for": "functional",
+      "required_environment": "Windows",
+      "result": "NOT_RUN",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": null,
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "F06",
+      "title": "Save conflicts and file failures",
+      "required_for": "functional",
+      "required_environment": "Windows",
+      "result": "NOT_RUN",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": null,
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "F07",
+      "title": "Three independent session contexts",
+      "required_for": "functional",
+      "required_environment": "Windows",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": "Native workspace switching and three-session integration not implemented.",
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "F08",
+      "title": "UI reconnect to living host",
+      "required_for": "functional",
+      "required_environment": "Windows",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": "Independent authenticated session-host process/reconnect not implemented.",
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "F09",
+      "title": "Minimal development browser",
+      "required_for": "functional",
+      "required_environment": "Windows",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": "Isolated display and fixture navigation/input adapter evidence missing.",
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "F10",
+      "title": "Persistent small application state",
+      "required_for": "functional",
+      "required_environment": "Windows",
+      "result": "NOT_RUN",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": null,
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "R01",
+      "title": "Host/transport failure and authority",
+      "required_for": "functional",
+      "required_environment": "Windows; remote-policy simulation is not SSH parity",
+      "result": "NOT_RUN",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": null,
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "R02",
+      "title": "Owned process termination and cancellation",
+      "required_for": "functional",
+      "required_environment": "Windows",
+      "result": "FAIL",
+      "observations_by_environment": [],
+      "evidence": [
+        "evidence/alpha-runs/alpha-20260929-02/summary.json",
+        "evidence/alpha-runs/alpha-20260929-05/summary.json",
+        "evidence/alpha-runs/alpha-20260929-06/summary.json"
+      ],
+      "reviewer": null,
+      "blocker": null,
+      "implementation_commits": [],
+      "notes": "Alpha06 fixed-lifetime fixture failed cwd removal after signaled exit and worker joins: manifest_removal4.4998156s/totalclose4.5099452s,2sbudget,TimedOut. Supervisor lease kill recorded stopfalse/fault3 at8.0101044s and exit1 at8.0727168s. No alpha06 watchdog timeout. Exact slow IO operation/cause remains unmeasured; alpha02 and alpha05 causes remain unresolved."
+    },
+    {
+      "id": "R03",
+      "title": "Safe cleanup and protected browser retention",
+      "required_for": "functional",
+      "required_environment": "Windows; real link-capable test filesystem required",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [
+        "docs/current/native-rust/recon/a01/alpha-browser-pressure-review.md",
+        "evidence/alpha-runs/alpha-20260929-06/summary.json"
+      ],
+      "reviewer": null,
+      "blocker": "Native symlink creation unavailable on current exFAT test filesystem; live browser disposal and full workspace teardown not exercised.",
+      "implementation_commits": [],
+      "notes": "Browser protection/pressure policy9 cases pass; native symlink rejection explicitly NOT RUN, despite harness success. Model policy tests do not prove actual resource disposal."
+    },
+    {
+      "id": "P01",
+      "title": "Equivalent paired baseline",
+      "required_for": "efficiency",
+      "required_environment": "Same isolated comparison host",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": "Equivalent isolated release app workloads and baseline absent.",
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "P02",
+      "title": "Preregistered efficiency criteria",
+      "required_for": "efficiency",
+      "required_environment": "Same isolated comparison host",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": "Numeric budgets not calibrated/locked before scoring.",
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "P03",
+      "title": "Bounded lifecycle/resource experiment",
+      "required_for": "efficiency",
+      "required_environment": "Same isolated comparison host",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [],
+      "reviewer": null,
+      "blocker": "Real lifecycle resource soak/composition absent.",
+      "implementation_commits": [],
+      "notes": null
+    },
+    {
+      "id": "Q01",
+      "title": "Integrated guarded verification",
+      "required_for": "functional",
+      "required_environment": "All claimed targets",
+      "result": "FAIL",
+      "observations_by_environment": [],
+      "evidence": [
+        "evidence/alpha-runs/alpha-20260929-04/summary.json",
+        "evidence/alpha-runs/alpha-20260929-05/summary.json",
+        "evidence/alpha-runs/alpha-20260929-06/summary.json",
+        "evidence/alpha-runs/alpha-20260929-07/verification-steps.json"
+      ],
+      "reviewer": null,
+      "blocker": null,
+      "implementation_commits": [],
+      "notes": "Alpha04 all8stagespassed; identical-binary repeatalpha05failed2appharnesses plus1runtimewatchdog. Alpha06diagnostics:90harnesssuccesses/1failure,including1explicitNOTRUNlinkcase;14emptyownedjobs/no watchdog timeout; bothapppilots/rawsustained pass. Failed integrated reliability is not overwritten by compile-only success. Alpha07 all6compile-onlystagespassed on currentdiagnostic source; no fixture acceptance implied."
+    },
+    {
+      "id": "Q02",
+      "title": "Independent review and handoff",
+      "required_for": "functional",
+      "required_environment": "All acceptance evidence",
+      "result": "BLOCKED",
+      "observations_by_environment": [],
+      "evidence": [
+        "docs/current/native-rust/recon/a06/alpha-signaled-process-source-review.md",
+        "docs/current/native-rust/recon/a06/alpha-04-05-headless-repeat-evidence-review.md",
+        "docs/current/native-rust/recon/a06/alpha-supervision-progress-source-review.md",
+        "docs/current/native-rust/recon/a01/alpha-browser-pressure-review.md",
+        "docs/current/native-rust/recon/a06/alpha-06-removal-phase-evidence-review.md"
+      ],
+      "reviewer": null,
+      "blocker": "Independent scoped source/evidence reviews exist; full alpha requirements and critical runtime reliability are unaccepted.",
+      "implementation_commits": [],
+      "notes": "A6 independently reviews A1/A2/A5 only; A1 reviews A6 retention. Whole-alpha acceptance not performed."
+    }
+  ],
+  "critical_findings_open": [
+    {
+      "id": "cleanup-deadline",
+      "status": "FAIL",
+      "detail": "Alpha06 manifest-removal phase overran2sbudget to4.4998156s after process exit and both worker joins. Exact filesystem operation/cause unmeasured; synchronous OS calls remain without a proven hard deadline."
+    },
+    {
+      "id": "runtime-repeat-reliability",
+      "status": "FAIL",
+      "detail": "Alpha04finitePASS then identical-binaryalpha05FAIL: marker deadline, pilotexit1, runtime watchdog. Those prior causes remain unresolved. Signal-authority correction source reviewed; it is not a demonstrated flake repair."
+    },
+    {
+      "id": "gui-launch-contract",
+      "status": "BLOCKED",
+      "detail": "No isolated Windows/Wayland runner; userconfirmed. Background flag required but current UI/browser admission rejects it. No flag clearing or GUI launch."
+    }
+  ],
+  "scope_decisions": [
+    {
+      "scope": "first safe increment",
+      "detail": "Bounded controls/continuous fixture sink and browser pressure implemented; independent host/workspace/native UI/performance remain separate open alpha requirements."
+    }
+  ],
+  "cleanup_receipts": [
+    {
+      "run_id": "1682f489c53c4f72b83ba0daff380911",
+      "owned_jobs": 14,
+      "all_owned_jobs_empty": true,
+      "watchdog_timeouts": 0,
+      "forced_remaining_children": false,
+      "evidence": "evidence/alpha-runs/alpha-20260929-02/guarded-tests/results.json",
+      "note": "Empty jobs describe outer containment, not an initial cleanup deadline pass. Timeout true means watchdog job termination occurred."
+    },
+    {
+      "run_id": "7c35408e6b8d4aa49e71658e3340f51e",
+      "owned_jobs": 14,
+      "all_owned_jobs_empty": true,
+      "watchdog_timeouts": 0,
+      "forced_remaining_children": false,
+      "evidence": "evidence/alpha-runs/alpha-20260929-03/guarded-tests/results.json",
+      "note": "Empty jobs describe outer containment, not an initial cleanup deadline pass. Timeout true means watchdog job termination occurred."
+    },
+    {
+      "run_id": "c8367cfed1ed4063afc47b8e4e851dcd",
+      "owned_jobs": 14,
+      "all_owned_jobs_empty": true,
+      "watchdog_timeouts": 0,
+      "forced_remaining_children": false,
+      "evidence": "evidence/alpha-runs/alpha-20260929-04/guarded-tests/results.json",
+      "note": "Empty jobs describe outer containment, not an initial cleanup deadline pass. Timeout true means watchdog job termination occurred."
+    },
+    {
+      "run_id": "ebad526e0f3f4b1d9c98871a6e2267a8",
+      "owned_jobs": 14,
+      "all_owned_jobs_empty": true,
+      "watchdog_timeouts": 1,
+      "forced_remaining_children": false,
+      "evidence": "evidence/alpha-runs/alpha-20260929-05/guarded-tests/results.json",
+      "note": "Empty jobs describe outer containment, not an initial cleanup deadline pass. Timeout true means watchdog job termination occurred."
+    },
+    {
+      "run_id": "ea2f3d8b81a347bfaa042e59655c5a55",
+      "owned_jobs": 14,
+      "all_owned_jobs_empty": true,
+      "watchdog_timeouts": 0,
+      "forced_remaining_children": false,
+      "evidence": "evidence/alpha-runs/alpha-20260929-06/guarded-tests/results.json",
+      "note": "Empty jobs describe outer containment, not an initial cleanup deadline pass. Timeout true means watchdog job termination occurred."
+    }
+  ],
+  "retained_artifacts": [
+    "All five dedicated worktrees; cleanup ancestry/ignored-content/process requirements not all established.",
+    "evidence/alpha-runs/alpha-20260929-01",
+    "evidence/alpha-runs/alpha-20260929-02",
+    "evidence/alpha-runs/alpha-20260929-03",
+    "evidence/alpha-runs/alpha-20260929-04",
+    "evidence/alpha-runs/alpha-20260929-05",
+    "evidence/alpha-runs/alpha-20260929-06",
+    "evidence/alpha-runs/alpha-20260929-07"
+  ],
+  "reviewers": [
+    {
+      "role": "a06",
+      "scope": "A5 controls, A1 app/verifier, failed alpha02 run",
+      "independent_of": "A5/A1 authors",
+      "excluded": "own browser retention"
+    },
+    {
+      "role": "a01",
+      "scope": "A2 runtime and A6 retention source",
+      "independent_of": "A2/A6 authors"
+    }
+  ],
+  "verdicts": {
+    "functional_alpha": "FAIL",
+    "efficiency_validated": "BLOCKED",
+    "full_alpha": "FAIL"
+  },
+  "next_runnable_action": "Instrument individual owned-directory validation/enumeration/removal operations or design a reviewed deadline-safe cleanup boundary under A1/A2 ownership, preserving original safety limits and failure receipts. Then continue independent host/transport and real workspace provisioning. Native composition requires an isolated runner.",
+  "warning": "Observed local increment with retained failures. First safe implementation begun; integrated runtime reliability and full alpha are NOT ACCEPTED.",
+  "finished_at_utc": "2026-09-30T01:13:15.122063+00:00",
+  "artifact_binding_note": "Per-executable and log hashes are in each run summary; no single full-app binary or release artifact exists.",
+  "verification_runs": [
+    {
+      "name": "alpha-20260929-01",
+      "evidence": "evidence/alpha-runs/alpha-20260929-01/verification-steps.json",
+      "kind": "guarded",
+      "verdict": "FAIL"
+    },
+    {
+      "name": "alpha-20260929-02",
+      "evidence": "evidence/alpha-runs/alpha-20260929-02/verification-steps.json",
+      "kind": "guarded",
+      "source_commit": "5c54c4af01113d6fe6f5da8973c12df527d39bee",
+      "summary": "evidence/alpha-runs/alpha-20260929-02/summary.json",
+      "verdict": "FAIL"
+    },
+    {
+      "name": "alpha-20260929-03",
+      "evidence": "evidence/alpha-runs/alpha-20260929-03/verification-steps.json",
+      "kind": "guarded",
+      "source_commit": "2cda7ca3b40d5cb7da47a0b02f0f8439add78fac",
+      "summary": "evidence/alpha-runs/alpha-20260929-03/summary.json",
+      "verdict": "FAIL"
+    },
+    {
+      "name": "alpha-20260929-04",
+      "evidence": "evidence/alpha-runs/alpha-20260929-04/verification-steps.json",
+      "kind": "guarded",
+      "source_commit": "89f5d43ed4b4a94e9ee148b6c4651a6a61b69091",
+      "summary": "evidence/alpha-runs/alpha-20260929-04/summary.json",
+      "verdict": "PASS_HEADLESS_SCOPE"
+    },
+    {
+      "name": "alpha-20260929-05",
+      "evidence": "evidence/alpha-runs/alpha-20260929-05/verification-steps.json",
+      "kind": "guarded",
+      "source_commit": "89f5d43ed4b4a94e9ee148b6c4651a6a61b69091",
+      "summary": "evidence/alpha-runs/alpha-20260929-05/summary.json",
+      "verdict": "FAIL"
+    },
+    {
+      "name": "alpha-20260929-06",
+      "evidence": "evidence/alpha-runs/alpha-20260929-06/verification-steps.json",
+      "kind": "guarded",
+      "source_commit": "86e2b20f12193ca5b7aa2c2c97097b8052db3158",
+      "summary": "evidence/alpha-runs/alpha-20260929-06/summary.json",
+      "verdict": "FAIL"
+    },
+    {
+      "name": "alpha-20260929-07",
+      "evidence": "evidence/alpha-runs/alpha-20260929-07/verification-steps.json",
+      "kind": "compile-only",
+      "verdict": "PASS_COMPILE_ONLY",
+      "source_commit": "86e2b20f12193ca5b7aa2c2c97097b8052db3158",
+      "summary": "evidence/alpha-runs/alpha-20260929-07/summary.json"
+    }
+  ],
+  "dirty_tree_scope_note": "Coordinator observed only report/evidence/register edits outside compiled Rust/Cargo source during tested builds. Exact whole-tree dirty patch was not captured; null hash is not a claim of globally clean checkout."
+}

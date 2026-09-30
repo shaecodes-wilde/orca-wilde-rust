@@ -1,0 +1,69 @@
+
+running 30 tests
+test editor_document::tests::acknowledged_earlier_save_keeps_later_edit_dirty ... ok
+test editor_document::tests::document_and_history_admission_limits_are_enforced ... ok
+test editor_document::tests::history_limits_keep_recent_undo_and_never_exceed_budget ... ok
+test editor_document::tests::invalid_utf8_boundaries_ranges_and_oversized_edits_are_atomic ... ok
+test editor_document::tests::same_baseline_save_candidate_cannot_acknowledge_another_document ... ok
+test editor_document::tests::save_conflict_returns_no_candidate_and_preserves_dirty_buffer ... ok
+test editor_document::tests::unchanged_edit_leaves_history_and_revision_alone ... ok
+test editor_document::tests::unicode_edit_undo_redo_and_branching_preserve_text ... ok
+test terminal_model::stream_tests::cancelled_and_terminated_controls_allow_long_following_output ... ok
+test terminal_model::stream_tests::escape_cancels_osc_then_opens_a_fresh_bounded_osc ... ok
+test terminal_model::stream_tests::exact_control_limit_accepts_terminator_and_next_output ... ok
+test terminal_model::stream_tests::hostile_control_forms_are_bounded_across_frames ... ok
+test terminal_model::stream_tests::raw_c1_st_ends_dcs_but_not_osc ... ok
+test terminal_model::stream_tests::rejected_control_frame_keeps_prefix_and_cursor_atomic_and_latches ... ok
+test terminal_model::stream_tests::repeated_completed_osc_does_not_accumulate_a_lifetime_budget ... ok
+test terminal_model::stream_tests::repeated_escape_is_one_bounded_incomplete_sequence ... ok
+test terminal_model::stream_tests::split_controls_match_uninterrupted_mature_parser_cells_and_modes ... ok
+test terminal_model::stream_tests::sustained_sixteen_mib_keeps_final_unicode_sentinel_and_bounded_history ... ok
+test terminal_model::stream_tests::utf8_gap_and_osc_replay_keep_last_trusted_state_without_reset ... ok
+test terminal_model::tests::alternate_screen_restores_primary_contents_and_cursor ... ok
+test terminal_model::tests::every_byte_split_preserves_utf8_wide_and_combining_cells ... ok
+test terminal_model::tests::identity_generation_and_replay_rejections_preserve_screen ... ok
+test terminal_model::tests::oversized_frame_is_atomic_and_can_be_retried_at_same_sequence ... ok
+test terminal_model::tests::oversized_osc_frame_does_not_start_parser_escape_or_consume_budget ... ok
+test terminal_model::tests::rejected_stream_identity_does_not_charge_admitted_bytes ... ok
+test terminal_model::tests::resize_budget_remembers_wider_retained_history ... ok
+test terminal_model::tests::resize_clamps_cursor_and_rejects_invalid_size_without_mutation ... ok
+test terminal_model::tests::scrollback_retention_and_admission_are_bounded ... ok
+test terminal_model::tests::split_ansi_retains_parser_state_across_frames ... ok
+test terminal_model::tests::stream_gap_latches_recovery_without_consuming_escape_fragment ... ok
+
+successes:
+
+successes:
+    editor_document::tests::acknowledged_earlier_save_keeps_later_edit_dirty
+    editor_document::tests::document_and_history_admission_limits_are_enforced
+    editor_document::tests::history_limits_keep_recent_undo_and_never_exceed_budget
+    editor_document::tests::invalid_utf8_boundaries_ranges_and_oversized_edits_are_atomic
+    editor_document::tests::same_baseline_save_candidate_cannot_acknowledge_another_document
+    editor_document::tests::save_conflict_returns_no_candidate_and_preserves_dirty_buffer
+    editor_document::tests::unchanged_edit_leaves_history_and_revision_alone
+    editor_document::tests::unicode_edit_undo_redo_and_branching_preserve_text
+    terminal_model::stream_tests::cancelled_and_terminated_controls_allow_long_following_output
+    terminal_model::stream_tests::escape_cancels_osc_then_opens_a_fresh_bounded_osc
+    terminal_model::stream_tests::exact_control_limit_accepts_terminator_and_next_output
+    terminal_model::stream_tests::hostile_control_forms_are_bounded_across_frames
+    terminal_model::stream_tests::raw_c1_st_ends_dcs_but_not_osc
+    terminal_model::stream_tests::rejected_control_frame_keeps_prefix_and_cursor_atomic_and_latches
+    terminal_model::stream_tests::repeated_completed_osc_does_not_accumulate_a_lifetime_budget
+    terminal_model::stream_tests::repeated_escape_is_one_bounded_incomplete_sequence
+    terminal_model::stream_tests::split_controls_match_uninterrupted_mature_parser_cells_and_modes
+    terminal_model::stream_tests::sustained_sixteen_mib_keeps_final_unicode_sentinel_and_bounded_history
+    terminal_model::stream_tests::utf8_gap_and_osc_replay_keep_last_trusted_state_without_reset
+    terminal_model::tests::alternate_screen_restores_primary_contents_and_cursor
+    terminal_model::tests::every_byte_split_preserves_utf8_wide_and_combining_cells
+    terminal_model::tests::identity_generation_and_replay_rejections_preserve_screen
+    terminal_model::tests::oversized_frame_is_atomic_and_can_be_retried_at_same_sequence
+    terminal_model::tests::oversized_osc_frame_does_not_start_parser_escape_or_consume_budget
+    terminal_model::tests::rejected_stream_identity_does_not_charge_admitted_bytes
+    terminal_model::tests::resize_budget_remembers_wider_retained_history
+    terminal_model::tests::resize_clamps_cursor_and_rejects_invalid_size_without_mutation
+    terminal_model::tests::scrollback_retention_and_admission_are_bounded
+    terminal_model::tests::split_ansi_retains_parser_state_across_frames
+    terminal_model::tests::stream_gap_latches_recovery_without_consuming_escape_fragment
+
+test result: ok. 30 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 5.28s
+

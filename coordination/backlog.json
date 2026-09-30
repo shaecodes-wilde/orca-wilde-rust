@@ -597,13 +597,14 @@
       "acceptance": [
         "docs/current/native-rust/alpha/04_ACCEPTANCE_TESTS.md"
       ],
-      "status": "review",
+      "status": "verified",
       "issue_url": null,
       "pr_url": null,
       "evidence": [
-        "evidence/alpha/preflight.json"
+        "evidence/alpha/alpha-run.json",
+        "docs/current/native-rust/handoffs/a01/ALPHA_PROGRESS.md"
       ],
-      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+      "current_note": "Preflight/package provenance/source references/actual routing and ownership reconciled. Runner unavailable explicitly recorded; publication remains unapproved."
     },
     {
       "id": "NWA-02",
@@ -628,9 +629,10 @@
       "issue_url": null,
       "pr_url": null,
       "evidence": [
-        "evidence/alpha/preflight.json"
+        "evidence/alpha/alpha-run.json",
+        "docs/current/native-rust/handoffs/a01/ALPHA_PROGRESS.md"
       ],
-      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+      "current_note": "No existing isolated Windows/Wayland runner. Read-only composition inspection found static sidebar/read-only terminal/fixed geometry; toolkit gate and launch-contract reconciliation remain open."
     },
     {
       "id": "NWA-03",
@@ -653,9 +655,10 @@
       "issue_url": null,
       "pr_url": null,
       "evidence": [
-        "evidence/alpha/preflight.json"
+        "evidence/alpha/alpha-run.json",
+        "docs/current/native-rust/handoffs/a01/ALPHA_PROGRESS.md"
       ],
-      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+      "current_note": "Canonical fixture sink remains in-process. Independent authenticated session-host process, durable UI reconnect and remote authority remain unimplemented."
     },
     {
       "id": "NWA-04",
@@ -678,9 +681,10 @@
       "issue_url": null,
       "pr_url": null,
       "evidence": [
-        "evidence/alpha/preflight.json"
+        "evidence/alpha/alpha-run.json",
+        "docs/current/native-rust/handoffs/a01/ALPHA_PROGRESS.md"
       ],
-      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+      "current_note": "Continuous bounded parser and reader-owned sink integrated and tested beyond16MiB; fullsnapshot/replay/slow-viewer resync/native interaction remain open. Repeated runtime cleanup failures prevent acceptance."
     },
     {
       "id": "NWA-05",
@@ -703,9 +707,10 @@
       "issue_url": null,
       "pr_url": null,
       "evidence": [
-        "evidence/alpha/preflight.json"
+        "evidence/alpha/alpha-run.json",
+        "docs/current/native-rust/handoffs/a01/ALPHA_PROGRESS.md"
       ],
-      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+      "current_note": "Synthetic assignment persistence exists; actual Git worktree provisioning and durable workspace identity are separate unimplemented alpha requirements."
     },
     {
       "id": "NWA-06",
@@ -726,9 +731,10 @@
       "issue_url": null,
       "pr_url": null,
       "evidence": [
-        "evidence/alpha/preflight.json"
+        "evidence/alpha/alpha-run.json",
+        "docs/current/native-rust/handoffs/a01/ALPHA_PROGRESS.md"
       ],
-      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+      "current_note": "Existing editor model is not real bounded workspace file/save/diff integration; no new native file-operation acceptance."
     },
     {
       "id": "NWA-07",
@@ -756,9 +762,10 @@
       "issue_url": null,
       "pr_url": null,
       "evidence": [
-        "evidence/alpha/preflight.json"
+        "evidence/alpha/alpha-run.json",
+        "docs/current/native-rust/handoffs/a01/ALPHA_PROGRESS.md"
       ],
-      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+      "current_note": "Composition/independent host/workspace/file prerequisites incomplete; no approved real agent exercise."
     },
     {
       "id": "NWA-08",
@@ -781,9 +788,10 @@
       "issue_url": null,
       "pr_url": null,
       "evidence": [
-        "evidence/alpha/preflight.json"
+        "evidence/alpha/alpha-run.json",
+        "docs/current/native-rust/handoffs/a01/ALPHA_PROGRESS.md"
       ],
-      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+      "current_note": "Protected pressure diagnostics source reviewed independently and9policycasespass. Live browser ownership/disposal/permission hooks await isolated runner."
     },
     {
       "id": "NWA-09",
@@ -807,9 +815,10 @@
       "issue_url": null,
       "pr_url": null,
       "evidence": [
-        "evidence/alpha/preflight.json"
+        "evidence/alpha/alpha-run.json",
+        "docs/current/native-rust/handoffs/a01/ALPHA_PROGRESS.md"
       ],
-      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+      "current_note": "Equivalent isolated release workloads, baseline calibration and preregistered numerical criteria unavailable. No efficiency claim."
     },
     {
       "id": "NWA-10",
@@ -829,16 +838,17 @@
       "acceptance": [
         "docs/current/native-rust/alpha/04_ACCEPTANCE_TESTS.md"
       ],
-      "status": "planned",
+      "status": "blocked",
       "issue_url": null,
       "pr_url": null,
       "evidence": [
-        "evidence/alpha/preflight.json"
+        "evidence/alpha/alpha-run.json",
+        "docs/current/native-rust/handoffs/a01/ALPHA_PROGRESS.md"
       ],
-      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+      "current_note": "All scoped reviews/evidence retained, but integrated runtime repeat reliability FAIL and native/agent/performance gates unresolved."
     }
   ],
   "scope_note": "Statuses cover entire acceptance criteria; tested prototype subsets never imply feature parity or cutover.",
-  "tested_source": "52e478ce83db480df779cc0255cf898495844452",
-  "current_verification": "All 8 local verification steps passed; remote CI and rendered native gates unrun."
+  "tested_source": "86e2b20f12193ca5b7aa2c2c97097b8052db3158",
+  "current_verification": "Alpha06 guarded diagnostic FAIL in owned fixture directory cleanup; alpha04 finite fullPASS followed by identical-binaryalpha05FAIL. Alpha07 all6compile-only stagesPASS on currentsource86e2b20. Native interaction/remoteCI unrun."
 }
