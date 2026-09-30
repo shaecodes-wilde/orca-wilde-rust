@@ -1,0 +1,313 @@
+{
+  "commit": "1db4ef38577ec932f97067b7391625b7be599884",
+  "reference_only": true,
+  "legacy_tests_executed": false,
+  "groups": {
+    "business": [
+      "src/main/wilde/business/database.ts",
+      "src/main/wilde/business/database.test.ts",
+      "src/shared/wilde/domain.ts"
+    ],
+    "runtime": [
+      "src/shared/runtime-terminal-contracts.ts",
+      "src/main/runtime/terminal-model-query-authority.ts",
+      "src/main/runtime/terminal-model-query-authority.test.ts",
+      "tests/e2e/terminal-output-scheduler.spec.ts",
+      "tests/e2e/terminal-hidden-tui-visual-restore.spec.ts"
+    ],
+    "cleanup": [
+      "src/main/runtime/unstopped-pty-verification.ts",
+      "src/main/runtime/worktree-teardown.ts",
+      "src/main/runtime/worktree-teardown-unstopped-pty.test.ts"
+    ],
+    "git": [
+      "src/main/runtime/orca-runtime-git.ts",
+      "src/main/runtime/worktree-launch-host-repo.test.ts"
+    ],
+    "ui": [
+      "src/renderer/src/app-shell/WildeBusinessNav.tsx",
+      "src/renderer/src/app-shell/WildeBusinessSurface.tsx",
+      "src/renderer/src/assets/main.css",
+      "docs/STYLEGUIDE.md"
+    ],
+    "editor": [
+      "src/main/runtime/orca-runtime-files.ts"
+    ],
+    "browser": [
+      "src/main/browser/browser-backend.ts",
+      "src/renderer/src/components/browser-pane/host-guest/browser-guest-worktree-retention.ts"
+    ],
+    "agent": [
+      "src/main/runtime/agent-session-launch-env-admission.test.ts",
+      "src/main/runtime/agent-terminal-launch-trust-host.test.ts",
+      "src/shared/runtime-session-contracts.ts"
+    ],
+    "attention": [
+      "docs/reference/agent-status-store.md",
+      "src/shared/agent-status-types.ts"
+    ],
+    "orchestration": [
+      "src/shared/orchestration-compatibility-evidence.ts",
+      "src/shared/runtime-rpc-envelope.ts"
+    ],
+    "platform": [
+      "docs/reference/windows-edr-posture.md",
+      "docs/reference/windows-msys-job-breakaway.md",
+      "docs/reference/ssh-execution-boundary.md"
+    ],
+    "protocol": [
+      "src/shared/terminal-stream-protocol.ts",
+      "docs/reference/remote-wire-compatibility.md"
+    ]
+  },
+  "bounded_source_inspection": [
+    {
+      "path": "src/main/wilde/business/database.ts",
+      "reference_declarations_or_cases": [
+        "export class BusinessDatabase {"
+      ]
+    },
+    {
+      "path": "src/main/wilde/business/database.test.ts",
+      "reference_declarations_or_cases": [
+        "describe('real business SQLite', () => {",
+        "it('persists the first client/project/note journey and exact workspace identity across reopen', () => {",
+        "it('rejects cross-client projects, archive writes, stale revisions and changed retry payloads', () => {",
+        "it('previews and restores a backup atomically, keeps foreign targets unresolved and rejects corrupt digest', () => {",
+        "it('imports outcomes idempotently and refuses conflicting evidence without partial changes', () => {"
+      ]
+    },
+    {
+      "path": "src/shared/wilde/domain.ts",
+      "reference_declarations_or_cases": [
+        "export type BusinessTarget = z.infer<typeof targetSchema>",
+        "export type BusinessRecord = z.infer<typeof recordSchema>",
+        "export type Client = z.infer<typeof clientSchema>",
+        "export type DeliveryProject = z.infer<typeof projectSchema>",
+        "export type Knowledge = z.infer<typeof knowledgeSchema>"
+      ]
+    },
+    {
+      "path": "src/shared/runtime-terminal-contracts.ts",
+      "reference_declarations_or_cases": [
+        "export type RuntimeTerminalSummary = {",
+        "export type RuntimeTerminalVisualTerminalNode = {",
+        "export type RuntimeTerminalVisualPaneNode =",
+        "export type RuntimeTerminalVisualTab = {",
+        "export type RuntimeTerminalVisualGroupNode = {"
+      ]
+    },
+    {
+      "path": "src/main/runtime/terminal-model-query-authority.ts",
+      "reference_declarations_or_cases": [
+        "export type TerminalModelQueryAuthoritySettings = Pick<",
+        "export function isTerminalModelQueryAuthorityEnabled(",
+        "export function shouldModelAnswerHiddenPtyQueries(opts: {",
+        "export function isNativeWindowsLocalPtySpawn(opts: {",
+        "export function registerConptyDa1OverrideInstaller(installer: ConptyDa1OverrideInstaller): void {"
+      ]
+    },
+    {
+      "path": "src/main/runtime/terminal-model-query-authority.test.ts",
+      "reference_declarations_or_cases": [
+        "describe('isTerminalModelQueryAuthorityEnabled', () => {",
+        "it('defaults on, including for absent settings', () => {",
+        "it('is an independent off switch for the responder alone', () => {",
+        "it('requires both Phase-4 gate switches \u00e2\u20ac\u201d no marks exist without them', () => {",
+        "describe('shouldModelAnswerHiddenPtyQueries', () => {"
+      ]
+    },
+    {
+      "path": "tests/e2e/terminal-output-scheduler.spec.ts",
+      "reference_declarations_or_cases": [
+        "test('background tab output bursts use the shared drain while the active tab renders', async ({",
+        "test('visible bulk output uses the high-priority drain instead of synchronous xterm writes', async ({",
+        "test('hidden overflow restores from main-owned terminal state when the tab becomes visible', async ({"
+      ]
+    },
+    {
+      "path": "tests/e2e/terminal-hidden-tui-visual-restore.spec.ts",
+      "reference_declarations_or_cases": [
+        "test('restores hidden full-screen TUI output without visible corruption', async ({",
+        "test('keeps newer live output correct after plain hidden output restores', async ({",
+        "test('restores rich synchronized TUI output from the headless model', async ({",
+        "test('keeps hidden terminal side effects live while hidden output may restore', async ({"
+      ]
+    },
+    {
+      "path": "src/main/runtime/unstopped-pty-verification.ts",
+      "reference_declarations_or_cases": [
+        "export type UnstoppedPtyVerdict = PtyLivenessVerdict",
+        "export async function verifyUnstoppedPtys(",
+        "export function unverifiableStopVerdict(",
+        "export async function resolveUnstoppedPtyVerdict(",
+        "export function describeUnstoppedPtys("
+      ]
+    },
+    {
+      "path": "src/main/runtime/worktree-teardown.ts",
+      "reference_declarations_or_cases": [
+        "export type WorktreeTeardownDeps = {",
+        "export type WorktreeTeardownResult = {",
+        "export async function killAllProcessesForWorktree("
+      ]
+    },
+    {
+      "path": "src/main/runtime/worktree-teardown-unstopped-pty.test.ts",
+      "reference_declarations_or_cases": [
+        "describe('destructive teardown when a PTY stop cannot be proven', () => {",
+        "it('verifies a failed stop against a fresh budget when the sweeps spent the deadline', async () => {",
+        "it('removes the reported wedged automation workspace without --force', async () => {",
+        "it('names the blocking PTYs and the escape hatch when one is still live', async () => {",
+        "it('clears PTY state once a failed stop is proven to have exited', async () => {"
+      ]
+    },
+    {
+      "path": "src/main/runtime/orca-runtime-git.ts",
+      "reference_declarations_or_cases": [
+        "export type {",
+        "export class RuntimeGitCommands {"
+      ]
+    },
+    {
+      "path": "src/main/runtime/worktree-launch-host-repo.test.ts",
+      "reference_declarations_or_cases": [
+        "describe('resolveWorktreeLaunchHost', () => {",
+        "it('reports ambiguous when duplicate repo rows disagree about the owning host', () => {",
+        "it('resolves the row for the host the worktree names', () => {",
+        "it('never hands a worktree a connection belonging to a different host', () => {",
+        "it('leaves a single unambiguous row alone', () => {"
+      ]
+    },
+    {
+      "path": "src/renderer/src/app-shell/WildeBusinessNav.tsx",
+      "reference_declarations_or_cases": [
+        "export function WildeBusinessNav(): React.JSX.Element | null {"
+      ]
+    },
+    {
+      "path": "src/renderer/src/app-shell/WildeBusinessSurface.tsx",
+      "reference_declarations_or_cases": []
+    },
+    {
+      "path": "src/renderer/src/assets/main.css",
+      "reference_declarations_or_cases": []
+    },
+    {
+      "path": "docs/STYLEGUIDE.md",
+      "reference_declarations_or_cases": []
+    },
+    {
+      "path": "src/main/runtime/orca-runtime-files.ts",
+      "reference_declarations_or_cases": [
+        "export class RuntimeFileCommands extends RuntimeFileCommandsWithSearchRemoteQuickOpenFilePaths {}",
+        "export type { ResolvedRuntimeFileWorktree } from './runtime-file-command-target'",
+        "export type { ResolvedRuntimeFileTarget } from './runtime-file-command-target'",
+        "export type { RuntimeFileCommandHost } from './runtime-file-command-host'"
+      ]
+    },
+    {
+      "path": "src/main/browser/browser-backend.ts",
+      "reference_declarations_or_cases": [
+        "export type BrowserBackendCreateTab = {",
+        "export type BrowserBackend = {"
+      ]
+    },
+    {
+      "path": "src/renderer/src/components/browser-pane/host-guest/browser-guest-worktree-retention.ts",
+      "reference_declarations_or_cases": [
+        "export type BrowserGuestRetentionCandidate = { pageId: string; worktreeId: string; live: boolean }",
+        "export function selectBrowserGuestEvictionPages(args: {",
+        "export function browserPageProtectionReason(pageId: string): BrowserPageRetentionReason | null {",
+        "export function touchBrowserGuestRecency(recency: string[], pageId: string): void {"
+      ]
+    },
+    {
+      "path": "src/main/runtime/agent-session-launch-env-admission.test.ts",
+      "reference_declarations_or_cases": [
+        "describe('agent session launch environment admission', () => {",
+        "it('does not persist ambient launch variables', async () => {",
+        "it('rejects an environment that could not be validated before writing', async () => {",
+        "it('rejects an overlong environment key before writing it', async () => {"
+      ]
+    },
+    {
+      "path": "src/main/runtime/agent-terminal-launch-trust-host.test.ts",
+      "reference_declarations_or_cases": [
+        "describe('launchAgentTerminal trust write', () => {",
+        "it('writes trust on the host the worktree names, not on a rival row', async () => {",
+        "it('writes trust locally for a local worktree even when a remote row shares the id', async () => {",
+        "it('refuses rather than guessing when rival rows disagree and the worktree names no host', async () => {"
+      ]
+    },
+    {
+      "path": "src/shared/runtime-session-contracts.ts",
+      "reference_declarations_or_cases": [
+        "export type * from './runtime-mobile-session-tab-contracts'",
+        "export type RuntimeGraphStatus = 'ready' | 'reloading' | 'unavailable'",
+        "export type RuntimeDesktopWindowStatus = 'available' | 'openable' | 'initializing' | 'blocked'",
+        "export type DeviceScope = 'mobile' | 'runtime'",
+        "export type RuntimeTerminalDriverState ="
+      ]
+    },
+    {
+      "path": "docs/reference/agent-status-store.md",
+      "reference_declarations_or_cases": []
+    },
+    {
+      "path": "src/shared/agent-status-types.ts",
+      "reference_declarations_or_cases": [
+        "export type {",
+        "export type AgentStatusState = (typeof AGENT_STATUS_STATES)[number]",
+        "export type AgentWorkingMode = 'monitoring'",
+        "export type WellKnownAgentType = TuiAgent | 'unknown'",
+        "export type AgentType = WellKnownAgentType | (string & {})"
+      ]
+    },
+    {
+      "path": "src/shared/orchestration-compatibility-evidence.ts",
+      "reference_declarations_or_cases": [
+        "export type OrchestrationCompatibilityHostStamp =",
+        "export type OrchestrationCompatibilityEvidence = {",
+        "export function readOrchestrationCompatibilityEvidence(",
+        "export function redactOrchestrationCompatibilitySecrets(value: unknown): unknown {"
+      ]
+    },
+    {
+      "path": "src/shared/runtime-rpc-envelope.ts",
+      "reference_declarations_or_cases": [
+        "export type RuntimeRpcSuccess<TResult> = {",
+        "export type RuntimeRpcFailure = {",
+        "export type RuntimeRpcResponse<TResult> = RuntimeRpcSuccess<TResult> | RuntimeRpcFailure",
+        "export type RuntimeOrchestrationEnvelope = {",
+        "export type RuntimeRpcKeepaliveFrame = z.infer<typeof Keepalive>"
+      ]
+    },
+    {
+      "path": "docs/reference/windows-edr-posture.md",
+      "reference_declarations_or_cases": []
+    },
+    {
+      "path": "docs/reference/windows-msys-job-breakaway.md",
+      "reference_declarations_or_cases": []
+    },
+    {
+      "path": "docs/reference/ssh-execution-boundary.md",
+      "reference_declarations_or_cases": []
+    },
+    {
+      "path": "src/shared/terminal-stream-protocol.ts",
+      "reference_declarations_or_cases": [
+        "export type TerminalStreamFrame = {",
+        "export function encodeTerminalStreamFrame(frame: TerminalStreamFrame): Uint8Array {",
+        "export function decodeTerminalStreamFrame(bytes: Uint8Array): TerminalStreamFrame | null {",
+        "export function encodeTerminalStreamJson(value: unknown): Uint8Array {",
+        "export function decodeTerminalStreamJson<T>(payload: Uint8Array): T | null {"
+      ]
+    },
+    {
+      "path": "docs/reference/remote-wire-compatibility.md",
+      "reference_declarations_or_cases": []
+    }
+  ]
+}

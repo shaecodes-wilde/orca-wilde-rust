@@ -1,5 +1,6 @@
-param([string]$Toolchain='stable',[switch]$WindowsChild,[switch]$WindowsScene,[switch]$CompileOnly)
+param([string]$Toolchain='stable',[switch]$WindowsChild,[switch]$WindowsScene,[switch]$CompileOnly,[string]$EvidenceRun='')
 if ($Toolchain -notin @('stable','1.94.0')) { throw 'Compiler must be stable or pinned 1.94.0' }
+if ($EvidenceRun -and $EvidenceRun -notmatch '^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$') { throw 'Evidence run must be a short ordinary directory name' }
 $toolchainSelector='+'+$Toolchain
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
@@ -29,6 +30,17 @@ try {
     Push-Location $projectRoot
     try {
         $evidenceRoot=Join-Path $projectRoot 'evidence'
+        if ($EvidenceRun) {
+            if ((Get-Item -LiteralPath $evidenceRoot).Attributes -band [System.IO.FileAttributes]::ReparsePoint) { throw 'Evidence directories cannot be links/reparse points' }
+            $runParent=Join-Path $evidenceRoot 'alpha-runs'
+            if (-not (Test-Path -LiteralPath $runParent)) {
+                New-Item -ItemType Directory -Path $runParent | Out-Null
+            }
+            if ((Get-Item -LiteralPath $runParent).Attributes -band [System.IO.FileAttributes]::ReparsePoint) { throw 'Evidence directories cannot be links/reparse points' }
+            $evidenceRoot=Join-Path $runParent $EvidenceRun
+            if (Test-Path -LiteralPath $evidenceRoot) { throw 'Evidence run already exists; choose a new run name to preserve previous results' }
+            New-Item -ItemType Directory -Path $evidenceRoot | Out-Null
+        }
         $steps=@(
             @{name='format';arguments=@($toolchainSelector,'fmt','--all','--','--check')},
             @{name='check';arguments=@($toolchainSelector,'check','--workspace','--offline','--locked')},

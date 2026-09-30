@@ -2,6 +2,10 @@ use anyhow::{Result, bail, ensure};
 use serde::Serialize;
 use std::{
     path::Path,
+    sync::{
+        Arc, Mutex,
+        atomic::{AtomicBool, Ordering},
+    },
     time::{Duration, Instant, SystemTime, UNIX_EPOCH},
 };
 use wilde_contracts::{ProcessVerdict, SessionIdentity};
@@ -22,6 +26,124 @@ pub struct PilotEvidence {
     pub reader_joined: bool,
     pub lifecycle_joined: bool,
     pub fixture_cwd_removed: bool,
+}
+
+#[derive(Debug, Serialize)]
+pub struct ContinuousTerminalEvidence {
+    pub admitted_bytes: u64,
+    pub next_sequence: u64,
+    pub final_sentinel: bool,
+    pub detached_process_unchanged: bool,
+    pub stream_fault_free: bool,
+    pub exit_code: Option<u32>,
+    pub reader_joined: bool,
+    pub lifecycle_joined: bool,
+    pub fixture_cwd_removed: bool,
+}
+
+/// Guarded in-process host parsing; this does not prove a separate daemon or UI restart.
+pub fn run_continuous_terminal_pilot() -> Result<ContinuousTerminalEvidence> {
+    const MINIMUM_BYTES: u64 = 16 * 1_048_576;
+    const SENTINEL: &str = "WILDE_FIXTURE_STREAM_DONE";
+    let identity = fixture_identity()?;
+    let terminal = Arc::new(Mutex::new(
+        wilde_ide::TerminalModel::new_session(identity.clone(), 24, 80, 100)
+            .map_err(|error| anyhow::anyhow!("terminal admission: {error:?}"))?,
+    ));
+    let completed = Arc::new(AtomicBool::new(false));
+    let sink_terminal = Arc::clone(&terminal);
+    let sink_completed = Arc::clone(&completed);
+    let mut session = OwnedFixtureSession::spawn_with_output_sink(
+        identity.clone(),
+        PtySize {
+            rows: 24,
+            cols: 80,
+            pixel_width: 0,
+            pixel_height: 0,
+        },
+        move |frame| {
+            let mut model = sink_terminal
+                .lock()
+                .map_err(|_| anyhow::anyhow!("canonical terminal lock poisoned"))?;
+            model
+                .accept_frame(&frame)
+                .map_err(|error| anyhow::anyhow!("canonical terminal frame: {error:?}"))?;
+            if model.admitted_bytes() >= MINIMUM_BYTES && model.contents().contains(SENTINEL) {
+                sink_completed.store(true, Ordering::Release);
+            }
+            Ok(())
+        },
+    )?;
+    let original_process = session.process_id();
+    ensure!(
+        original_process.is_some(),
+        "fixture has no owned process identity"
+    );
+    session.detach();
+    session.write_input(FixtureInput::SustainedOutput)?;
+    let deadline = Instant::now() + Duration::from_secs(7);
+    while !completed.load(Ordering::Acquire) && Instant::now() < deadline {
+        ensure!(
+            session.verdict() == ProcessVerdict::Live,
+            "fixture ended during stream"
+        );
+        std::thread::sleep(Duration::from_millis(10));
+    }
+    ensure!(
+        completed.load(Ordering::Acquire),
+        "continuous output sentinel deadline"
+    );
+    // The detached observer takes its first view only after the reader has parsed the stream.
+    let (admitted_bytes, next_sequence, final_sentinel) = {
+        let model = terminal
+            .lock()
+            .map_err(|_| anyhow::anyhow!("canonical terminal lock poisoned"))?;
+        (
+            model.admitted_bytes(),
+            model.next_sequence(),
+            model.contents().contains(SENTINEL),
+        )
+    };
+    let detached_process_unchanged = session.process_id() == original_process
+        && session.identity() == &identity
+        && session.verdict() == ProcessVerdict::Live;
+    session.attach();
+    session.write_input(FixtureInput::Finish)?;
+    let exit_deadline = Instant::now() + Duration::from_secs(2);
+    while session.verdict() != ProcessVerdict::Exited && Instant::now() < exit_deadline {
+        std::thread::sleep(Duration::from_millis(10));
+    }
+    let natural_exit = session.cleanup_receipt().snapshot();
+    let report = session.close(Duration::from_secs(2));
+    let stream_fault = session.stream_fault();
+    ensure!(
+        stream_fault.is_none(),
+        "continuous fixture stream fault: {stream_fault:?}"
+    );
+    ensure!(
+        admitted_bytes > MINIMUM_BYTES && final_sentinel && detached_process_unchanged,
+        "continuous detached stream incomplete"
+    );
+    ensure!(
+        natural_exit.verdict == ProcessVerdict::Exited
+            && natural_exit.exit_code == Some(0)
+            && report.exit_code == Some(0)
+            && report.reader_joined
+            && report.lifecycle_joined
+            && report.cwd_removed,
+        "continuous fixture cleanup incomplete: {report:?}"
+    );
+    Ok(ContinuousTerminalEvidence {
+        admitted_bytes,
+        next_sequence,
+        final_sentinel,
+        detached_process_unchanged,
+        stream_fault_free: true,
+        exit_code: report.exit_code,
+        reader_joined: report.reader_joined,
+        lifecycle_joined: report.lifecycle_joined,
+        fixture_cwd_removed: report.cwd_removed,
+    })
 }
 
 pub fn seed_synthetic(path: &Path) -> Result<wilde_domain::Snapshot> {

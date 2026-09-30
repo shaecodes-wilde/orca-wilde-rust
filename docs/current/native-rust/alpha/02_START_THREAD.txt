@@ -1,0 +1,15 @@
+Continue the existing orca-wilde-rust migration using the attached/extracted Native Workspace Alpha package. This is an implementation assignment, not another high-level planning exercise.
+
+Read 01_SYSTEM_PROMPT.md and operate as A1. Read 03_IMPLEMENTATION_PLAN.md and 04_ACCEPTANCE_TESTS.md before dispatch. Preserve the repository's current instructions and protections; do not reset to the package's historical commits or overwrite existing coordination records.
+
+Our finish line is a demonstrated native coding loop: open a disposable repository, create an isolated worktree, launch and use a real shell and a separately approved coding agent, edit/save/review changes, switch workspaces, reconnect the interface without duplicating or unintentionally stopping its session, and measure equivalent resource costs. First-party UI stays native. The working Orca Wilde installation stays untouched.
+
+Start with read-only preflight of both available checkouts, current instructions, source changes, existing worktrees, model routing, build lease and isolated test runners. Then give me a short plain-English summary of what is reusable, the next dependency gate, the first worker assignments, and any genuinely missing permission/environment. Continue immediately with available authorized local implementation; do not stop just because one GUI test needs another runner.
+
+Use the existing six ownership roles with at most three implementation workers and one coordinator-controlled build. Keep current approved model/effort routing; verify actual values rather than assuming the old receipts apply. Use 05_AGENT_BRIEFS.md for scoped dispatch.
+
+Adopt the handoff under docs/current/native-rust/alpha/ only after checking for existing content. Retain all root AGENTS.md rules; add the small package pointer once if appropriate. Extend the existing R-task/parity registers, do not replace them.
+
+This message does not grant GitHub publication, hosted CI dispatch, paid infrastructure, live-account/API use, or production-app/profile access. Prepare precise scoped approval requests only for affected work. Existing authorized local edits, fixtures, isolated worktrees and verification may proceed.
+
+Before calling the alpha complete, show the acceptance matrix with exact evidence, a reproducible coding-loop demonstration, failure/reconnect results, and the old/native workload comparison. Keep functional, efficiency and full-alpha verdicts separate. A compiling diagnostic window or passing unit tests alone is not the finish line.

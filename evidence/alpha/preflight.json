@@ -1,0 +1,186 @@
+{
+  "observed_utc": "2026-09-30T00:09:28.094713+00:00",
+  "package_sha256": "cad58433ad88195848b8377d121a21d6b599539d2b82b1e12bee9722485e6173",
+  "package_files_verified": 12,
+  "adopted_files": 13,
+  "repositories": [
+    {
+      "path": "F:\\Orca Wilde Rust",
+      "exists": true,
+      "head": {
+        "exit_code": 0,
+        "stdout": "e68c9983d0849dc6798e38403567a17259d066b5",
+        "stderr": ""
+      },
+      "branch": {
+        "exit_code": 0,
+        "stdout": "rust-v2/integration",
+        "stderr": ""
+      },
+      "status": {
+        "exit_code": 0,
+        "stdout": "M AGENTS.md\n?? docs/current/native-rust/alpha/00_START_HERE.md\n?? docs/current/native-rust/alpha/01_SYSTEM_PROMPT.md\n?? docs/current/native-rust/alpha/02_START_THREAD.txt\n?? docs/current/native-rust/alpha/03_IMPLEMENTATION_PLAN.md\n?? docs/current/native-rust/alpha/04_ACCEPTANCE_TESTS.md\n?? docs/current/native-rust/alpha/05_AGENT_BRIEFS.md\n?? docs/current/native-rust/alpha/06_PERFORMANCE_PLAN.md\n?? docs/current/native-rust/alpha/07_RUN_RECORD_TEMPLATE.md\n?? docs/current/native-rust/alpha/08_RESUME_THREAD.txt\n?? docs/current/native-rust/alpha/09_AGENTS_APPEND.md\n?? docs/current/native-rust/alpha/10_SOURCES.md\n?? docs/current/native-rust/alpha/PACKAGE_MANIFEST.json\n?? docs/current/native-rust/alpha/templates/alpha-run.json",
+        "stderr": ""
+      }
+    },
+    {
+      "path": "C:\\Users\\sread\\orca-wilde-build",
+      "exists": true,
+      "head": {
+        "exit_code": 0,
+        "stdout": "1db4ef38577ec932f97067b7391625b7be599884",
+        "stderr": ""
+      },
+      "branch": {
+        "exit_code": 0,
+        "stdout": "wilde/theme",
+        "stderr": ""
+      },
+      "status": {
+        "exit_code": 0,
+        "stdout": "M WILDE.md\n M config/electron-builder.config.cjs\n M config/tsconfig.cli.json\n M electron.vite.config.ts\n M src/cli/handlers/account.ts\n M src/main/ai-vault/codex-session-root-dedup.test.ts\n M src/main/ai-vault/codex-session-root-dedup.ts\n M src/main/codex-accounts/codex-account-registration.ts\n M src/main/codex-accounts/codex-config-mirror.ts\n M src/main/codex-accounts/codex-managed-home-lifecycle.ts\n M src/main/codex-accounts/codex-managed-home-path.ts\n M src/main/codex-accounts/host-codex-managed-home-ownership.ts\n M src/main/codex-accounts/runtime-home-mirrored-status-home.test.ts\n M src/main/codex-accounts/runtime-home-per-account-homes.test.ts\n M src/main/codex-accounts/runtime-home-resume-selection-gate.test.ts\n M src/main/codex-accounts/runtime-home-service-home-routing.ts\n M src/main/codex-accounts/runtime-home-service-launch.ts\n M src/main/codex-accounts/runtime-home-service-paths.ts\n M src/main/codex-accounts/runtime-home-service-per-account-migration.test.ts\n M src/main/codex-accounts/runtime-home-service-test-harness.ts\n M src/main/codex-accounts/runtime-home-service.ts\n M src/main/codex-accounts/service-account-add-login.test.ts\n M src/main/codex-accounts/service-test-harness.ts\n M src/main/codex/codex-config-mirror.test.ts\n M src/main/codex/codex-config-mirror.ts\n M src/main/codex/codex-home-paths.test.ts\n M src/main/codex/codex-home-paths.ts\n M src/main/codex/codex-session-index-heal.ts\n M src/main/codex/codex-state-db-backfill-recovery.test.ts\n M src/main/codex/codex-state-db-backfill-recovery.ts\n M src/main/codex/config-toml-deprecated-hook-flag.ts\n M src/main/ipc/pty-spawn-env-codex-home-routing.test.ts\n M src/main/startup/codex-launch-preparation.ts\n M src/main/startup/codex-session-resume-launch.ts\n M src/main/wilde/business/ipc.ts\n M src/renderer/src/components/settings/__snapshots__/terminal-preview-content.test.ts.snap\n M src/renderer/src/components/wilde-business/BusinessPage.tsx\n M src/renderer/src/components/wilde-business/business-page-types.ts\n M src/renderer/src/components/wilde-business/business-ui.test.tsx\n M src/shared/wilde/domain.ts\n?? .pr-10172-real-git-J14Iq5/visible-worktrees/feature/README.md\n?? src/main/codex-accounts/short-codex-home-migration.ts\n?? src/main/codex-accounts/short-codex-home.test.ts\n?? src/main/codex-accounts/short-codex-home.ts\n?? src/main/codex-accounts/short-wsl-codex-home-migration.test.ts\n?? src/main/codex-accounts/short-wsl-codex-home-migration.ts\n?? src/main/codex/codex-state-db-backfill-lock.ts",
+        "stderr": ""
+      }
+    },
+    {
+      "path": "F:\\wr\\a02",
+      "exists": true,
+      "head": {
+        "exit_code": 0,
+        "stdout": "7d9c47f8999e4ba645ec182d142e8edca81ecede",
+        "stderr": ""
+      },
+      "branch": {
+        "exit_code": 0,
+        "stdout": "rust-v2/a02-runtime",
+        "stderr": ""
+      },
+      "status": {
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "path": "F:\\wr\\a03",
+      "exists": true,
+      "head": {
+        "exit_code": 0,
+        "stdout": "affa99bb5b689136b28d24f1bd8b513f56f6b8c9",
+        "stderr": ""
+      },
+      "branch": {
+        "exit_code": 0,
+        "stdout": "rust-v2/a03-domain",
+        "stderr": ""
+      },
+      "status": {
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "path": "F:\\wr\\a04",
+      "exists": true,
+      "head": {
+        "exit_code": 0,
+        "stdout": "c94ad02ba999803461e4bbfd4094460bcc944d17",
+        "stderr": ""
+      },
+      "branch": {
+        "exit_code": 0,
+        "stdout": "rust-v2/a04-ui",
+        "stderr": ""
+      },
+      "status": {
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "path": "F:\\wr\\a05",
+      "exists": true,
+      "head": {
+        "exit_code": 0,
+        "stdout": "d03b45090a87f73528fc69eb9229af0af7684b53",
+        "stderr": ""
+      },
+      "branch": {
+        "exit_code": 0,
+        "stdout": "rust-v2/a05-ide",
+        "stderr": ""
+      },
+      "status": {
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "path": "F:\\wr\\a06",
+      "exists": true,
+      "head": {
+        "exit_code": 0,
+        "stdout": "d5fa2102f36c18211e2902f9c7ce61604c2f020b",
+        "stderr": ""
+      },
+      "branch": {
+        "exit_code": 0,
+        "stdout": "rust-v2/a06-platform",
+        "stderr": ""
+      },
+      "status": {
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    }
+  ],
+  "platform": "Windows-10-10.0.26200-SP0",
+  "disk_free_bytes": 45369131008,
+  "build_lease_present": false,
+  "build_lease": null,
+  "tools": {
+    "cargo": {
+      "path": "C:\\Users\\sread\\.cargo\\bin\\cargo.EXE",
+      "version": "cargo 1.94.0 (85eff7c80 2026-01-15)",
+      "exit_code": 0
+    },
+    "rustc": {
+      "path": "C:\\Users\\sread\\.cargo\\bin\\rustc.EXE",
+      "version": "rustc 1.94.0 (4a4ef493e 2026-03-02)",
+      "exit_code": 0
+    },
+    "python": {
+      "path": "C:\\Users\\sread\\AppData\\Local\\Programs\\Python\\Python310\\python.EXE",
+      "version": "Python 3.10.11",
+      "exit_code": 0
+    },
+    "git": {
+      "path": "C:\\Program Files\\Git\\cmd\\git.EXE",
+      "version": "git version 2.52.0.windows.1",
+      "exit_code": 0
+    }
+  },
+  "runner_probe_pending": false,
+  "no_gui_launched": true,
+  "no_legacy_mutation": true,
+  "filesystem": "exFAT",
+  "isolated_runners": {
+    "windows": "not verified",
+    "wayland": "not available; wsl --list --quiet reports WSL not installed",
+    "docker_path": null,
+    "virtualbox_path": null,
+    "hyperv_vmcompute": "stopped",
+    "hyperv_vmms": "not available",
+    "cim_volume_probe": "access denied; DriveInfo succeeded"
+  },
+  "primary_routing": {
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "evidence": "current session turn_context, 2026-09-29T23:45:15.137Z; only routing fields retained"
+  },
+  "legacy_dirty_entries": 47
+}

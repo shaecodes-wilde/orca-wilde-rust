@@ -1,0 +1,11 @@
+Resume Native Workspace Alpha in orca-wilde-rust. Do not restart the architecture or trust a previous conversation as current repository state.
+
+Read applicable AGENTS.md instructions, docs/current/native-rust/alpha/01_SYSTEM_PROMPT.md (or the supplied package location), existing coordination/backlog.json, coordination/feature-parity.csv, coordination/roles.json, and the most recent verified run/handoff and contract decisions.
+
+Verify actual HEAD/dirty files, worktree ownership, build lease, live worker/process ownership, model/effort and available isolated runners. Do not reuse stale session IDs or kill processes by saved PID. Reconcile completed commits by ancestry and evidence before retrying work.
+
+Summarize in plain English: what genuinely works, which acceptance gate is next, and the smallest safe implementation step. Continue that step using the existing role boundaries and at most three workers. Keep all other ready independent work moving. Do not open another approval loop for permissions already explicitly granted and still applicable.
+
+Required end state remains the demonstrated native coding loop, correct UI/session reconnect, bounded resource lifecycle and a comparable performance verdict. Missing GUI/platform/live-agent evidence stays blocked. A template, mock, compile-only result or source review cannot stand in for an exercised acceptance case.
+
+Preserve the installed Orca app and existing data. No publication, live account use, spending or cutover without the applicable explicit approval. Finish with exact evidence, task state, retained/removed worktrees and the next runnable action.

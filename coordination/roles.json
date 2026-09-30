@@ -187,5 +187,52 @@
   "destination_visibility": "public",
   "publication_status": "local-reviewed-candidate; external-write approval pending",
   "model_override_source": "Shae explicitly requested GPT-6.1-Sol High for A1 and all five workers, overriding kickoff Astra/Opus preferences.",
-  "tested_source": "52e478ce83db480df779cc0255cf898495844452"
+  "tested_source": "52e478ce83db480df779cc0255cf898495844452",
+  "alpha_cycle": {
+    "base_commit": "e68c9983d0849dc6798e38403567a17259d066b5",
+    "destination_repository": "shaecodes-wilde/orca-wilde-rust",
+    "local_authority": "User replied Begin the next phase; existing local edit/commit/worktree authority",
+    "publication_authority": "not granted in this cycle",
+    "primary_routing": {
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "evidence": "current session turn_context, 2026-09-29T23:45:15.137Z; only routing fields retained"
+    },
+    "workers": [
+      {
+        "role": "a04",
+        "handle": "/root/a04_alpha_composition",
+        "model_requested": "gpt-6.1-sol",
+        "effort_requested": "high",
+        "routing_evidence": "explicit worker launch accepted; no independent turn_context exposed",
+        "state": "read-only investigation completed"
+      },
+      {
+        "role": "a05",
+        "handle": "/root/a05_alpha_terminal",
+        "model_requested": "gpt-6.1-sol",
+        "effort_requested": "high",
+        "routing_evidence": "explicit worker launch accepted",
+        "state": "stream contract acknowledged by A1; A2 acknowledgement pending"
+      },
+      {
+        "role": "a06",
+        "handle": "/root/a06_alpha_platform",
+        "model_requested": "gpt-6.1-sol",
+        "effort_requested": "high",
+        "routing_evidence": "explicit worker launch accepted",
+        "state": "retention pressure API acknowledged by A1"
+      },
+      {
+        "role": "a02",
+        "handle": "/root/a02_alpha_stream",
+        "model_requested": "gpt-6.1-sol",
+        "effort_requested": "high",
+        "routing_evidence": "explicit worker launch accepted after A4 completed",
+        "state": "runtime source and consumer contract review"
+      }
+    ],
+    "max_active_workers": 3,
+    "preflight": "evidence/alpha/preflight.json"
+  }
 }

@@ -1,0 +1,19 @@
+{
+  "package": "Orca Wilde Rust - Native Workspace Alpha handoff",
+  "prepared_date": "2026-09-29",
+  "manifest_purpose": "Package file integrity only; no application code was executed or accepted.",
+  "files": {
+    "00_START_HERE.md": "fa7754aa1b70f1ecfae81bbe96d6b16de79d14e619393f67edddb458f41e8496",
+    "01_SYSTEM_PROMPT.md": "72f313280a49c0943ffa8a922ff1bcb0911b2f3ff34b94de013c8f1ce026cb66",
+    "02_START_THREAD.txt": "484e706d5e1dc9d0554222d2405e4fa92feb259741656c6e4c2aa2f06975a5d7",
+    "03_IMPLEMENTATION_PLAN.md": "412438c220ae370d71d691b71109a396c523e09e30c48de7ea8ba2203cacc3fc",
+    "04_ACCEPTANCE_TESTS.md": "8238e98fa3be75a122092041d9775fea75574ac6d855fc4fef71da0328113df1",
+    "05_AGENT_BRIEFS.md": "4b5f31869b291e4a9fda6478d40ff878e89da20eb46b12f904ae2a69f443796e",
+    "06_PERFORMANCE_PLAN.md": "fc7daa1b90fe54db7bb1f7038e91ce1a7c6968b66b21429e539c57ff0572578b",
+    "07_RUN_RECORD_TEMPLATE.md": "38478c30f90c2f90b10ba6a34dab4dcbe3b9ee316706fde174cbbb0a4119bd43",
+    "08_RESUME_THREAD.txt": "4c6db94d4033f1ff8e19d99ddf6c6fee285379a943d18b3c1054c47278c29cd0",
+    "09_AGENTS_APPEND.md": "016ce0937db72d147592880c74de812d316a2ea70372703b142efbab19416cb8",
+    "10_SOURCES.md": "81c38035269c576b067a6a96a7907760ed1d7369606d123391b407be74131fdf",
+    "templates/alpha-run.json": "4f3bdc57c785428fd26c250fef1beff9d85bd2419ce690a413574e038ed1e63f"
+  }
+}

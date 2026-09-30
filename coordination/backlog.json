@@ -579,6 +579,263 @@
       "issue_url": null,
       "pr_url": null,
       "evidence": []
+    },
+    {
+      "id": "NWA-01",
+      "owner": "a01",
+      "gate": "Native Workspace Alpha",
+      "parent_tasks": [
+        "R00",
+        "R01",
+        "R02",
+        "R06",
+        "R07"
+      ],
+      "depends_on": [],
+      "title": "Reconcile alpha source, routing, owners and evidence",
+      "scope": "docs/current/native-rust/alpha/03_IMPLEMENTATION_PLAN.md",
+      "acceptance": [
+        "docs/current/native-rust/alpha/04_ACCEPTANCE_TESTS.md"
+      ],
+      "status": "review",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": [
+        "evidence/alpha/preflight.json"
+      ],
+      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+    },
+    {
+      "id": "NWA-02",
+      "owner": "a04",
+      "gate": "Native Workspace Alpha",
+      "parent_tasks": [
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R12"
+      ],
+      "depends_on": [
+        "NWA-01"
+      ],
+      "title": "Prove Windows and Wayland composition before toolkit decision",
+      "scope": "docs/current/native-rust/alpha/03_IMPLEMENTATION_PLAN.md",
+      "acceptance": [
+        "docs/current/native-rust/alpha/04_ACCEPTANCE_TESTS.md"
+      ],
+      "status": "blocked",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": [
+        "evidence/alpha/preflight.json"
+      ],
+      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+    },
+    {
+      "id": "NWA-03",
+      "owner": "a02",
+      "gate": "Native Workspace Alpha",
+      "parent_tasks": [
+        "R06",
+        "R08",
+        "R13"
+      ],
+      "depends_on": [
+        "NWA-01"
+      ],
+      "title": "Independent authenticated development session host",
+      "scope": "docs/current/native-rust/alpha/03_IMPLEMENTATION_PLAN.md",
+      "acceptance": [
+        "docs/current/native-rust/alpha/04_ACCEPTANCE_TESTS.md"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": [
+        "evidence/alpha/preflight.json"
+      ],
+      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+    },
+    {
+      "id": "NWA-04",
+      "owner": "a05",
+      "gate": "Native Workspace Alpha",
+      "parent_tasks": [
+        "R06",
+        "R08",
+        "R11"
+      ],
+      "depends_on": [
+        "NWA-01"
+      ],
+      "title": "Continuous bounded terminal parsing and host streaming",
+      "scope": "docs/current/native-rust/alpha/03_IMPLEMENTATION_PLAN.md",
+      "acceptance": [
+        "docs/current/native-rust/alpha/04_ACCEPTANCE_TESTS.md"
+      ],
+      "status": "in-progress",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": [
+        "evidence/alpha/preflight.json"
+      ],
+      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+    },
+    {
+      "id": "NWA-05",
+      "owner": "a03",
+      "gate": "Native Workspace Alpha",
+      "parent_tasks": [
+        "R09",
+        "R13",
+        "R15"
+      ],
+      "depends_on": [
+        "NWA-01"
+      ],
+      "title": "Real Git workspace provisioning and durable identity",
+      "scope": "docs/current/native-rust/alpha/03_IMPLEMENTATION_PLAN.md",
+      "acceptance": [
+        "docs/current/native-rust/alpha/04_ACCEPTANCE_TESTS.md"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": [
+        "evidence/alpha/preflight.json"
+      ],
+      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+    },
+    {
+      "id": "NWA-06",
+      "owner": "a05",
+      "gate": "Native Workspace Alpha",
+      "parent_tasks": [
+        "R18"
+      ],
+      "depends_on": [
+        "NWA-01"
+      ],
+      "title": "Bounded file operations and save conflict handling",
+      "scope": "docs/current/native-rust/alpha/03_IMPLEMENTATION_PLAN.md",
+      "acceptance": [
+        "docs/current/native-rust/alpha/04_ACCEPTANCE_TESTS.md"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": [
+        "evidence/alpha/preflight.json"
+      ],
+      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+    },
+    {
+      "id": "NWA-07",
+      "owner": "a01",
+      "gate": "Native Workspace Alpha",
+      "parent_tasks": [
+        "R10",
+        "R11",
+        "R15",
+        "R18"
+      ],
+      "depends_on": [
+        "NWA-02",
+        "NWA-03",
+        "NWA-04",
+        "NWA-05",
+        "NWA-06"
+      ],
+      "title": "Integrate native coding loop and workspace switching",
+      "scope": "docs/current/native-rust/alpha/03_IMPLEMENTATION_PLAN.md",
+      "acceptance": [
+        "docs/current/native-rust/alpha/04_ACCEPTANCE_TESTS.md"
+      ],
+      "status": "blocked",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": [
+        "evidence/alpha/preflight.json"
+      ],
+      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+    },
+    {
+      "id": "NWA-08",
+      "owner": "a06",
+      "gate": "Native Workspace Alpha",
+      "parent_tasks": [
+        "R12",
+        "R16",
+        "R20"
+      ],
+      "depends_on": [
+        "NWA-01"
+      ],
+      "title": "Browser ownership, retention pressure and lifecycle",
+      "scope": "docs/current/native-rust/alpha/03_IMPLEMENTATION_PLAN.md",
+      "acceptance": [
+        "docs/current/native-rust/alpha/04_ACCEPTANCE_TESTS.md"
+      ],
+      "status": "in-progress",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": [
+        "evidence/alpha/preflight.json"
+      ],
+      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+    },
+    {
+      "id": "NWA-09",
+      "owner": "a06",
+      "gate": "Native Workspace Alpha",
+      "parent_tasks": [
+        "R15",
+        "R16",
+        "R20"
+      ],
+      "depends_on": [
+        "NWA-07",
+        "NWA-08"
+      ],
+      "title": "Equivalent release workload measurement",
+      "scope": "docs/current/native-rust/alpha/03_IMPLEMENTATION_PLAN.md",
+      "acceptance": [
+        "docs/current/native-rust/alpha/04_ACCEPTANCE_TESTS.md"
+      ],
+      "status": "blocked",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": [
+        "evidence/alpha/preflight.json"
+      ],
+      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
+    },
+    {
+      "id": "NWA-10",
+      "owner": "a01",
+      "gate": "Native Workspace Alpha",
+      "parent_tasks": [
+        "R15",
+        "R16"
+      ],
+      "depends_on": [
+        "NWA-07",
+        "NWA-08",
+        "NWA-09"
+      ],
+      "title": "Independent alpha acceptance and handoff",
+      "scope": "docs/current/native-rust/alpha/03_IMPLEMENTATION_PLAN.md",
+      "acceptance": [
+        "docs/current/native-rust/alpha/04_ACCEPTANCE_TESTS.md"
+      ],
+      "status": "planned",
+      "issue_url": null,
+      "pr_url": null,
+      "evidence": [
+        "evidence/alpha/preflight.json"
+      ],
+      "current_note": "Scope-specific result pending; parent R tasks and prior evidence retained."
     }
   ],
   "scope_note": "Statuses cover entire acceptance criteria; tested prototype subsets never imply feature parity or cutover.",
