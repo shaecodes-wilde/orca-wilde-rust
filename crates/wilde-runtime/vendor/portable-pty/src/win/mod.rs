@@ -6,10 +6,10 @@ use std::pin::Pin;
 use std::sync::Mutex;
 use std::task::{Context, Poll};
 use winapi::shared::minwindef::DWORD;
-use winapi::um::minwinbase::STILL_ACTIVE;
+use winapi::shared::winerror::WAIT_TIMEOUT;
 use winapi::um::processthreadsapi::*;
 use winapi::um::synchapi::WaitForSingleObject;
-use winapi::um::winbase::INFINITE;
+use winapi::um::winbase::{INFINITE, WAIT_FAILED, WAIT_OBJECT_0};
 
 pub mod conpty;
 mod procthreadattr;
@@ -24,18 +24,24 @@ pub struct WinChild {
 
 impl WinChild {
     fn is_complete(&mut self) -> IoResult<Option<ExitStatus>> {
-        let mut status: DWORD = 0;
         let proc = self.proc.lock().unwrap().try_clone().unwrap();
-        let res = unsafe { GetExitCodeProcess(proc.as_raw_handle() as _, &mut status) };
-        if res != 0 {
-            if status == STILL_ACTIVE {
-                Ok(None)
-            } else {
-                Ok(Some(ExitStatus::with_exit_code(status)))
+        // Exit authority requires the owned process to be signaled, not only an exit-code query.
+        match unsafe { WaitForSingleObject(proc.as_raw_handle() as _, 0) } {
+            WAIT_TIMEOUT => return Ok(None),
+            WAIT_OBJECT_0 => (),
+            WAIT_FAILED => return Err(IoError::last_os_error()),
+            result => {
+                return Err(IoError::other(format!(
+                    "unexpected process wait result: {result:#x}"
+                )))
             }
-        } else {
-            Ok(None)
         }
+        let mut status: DWORD = 0;
+        let res = unsafe { GetExitCodeProcess(proc.as_raw_handle() as _, &mut status) };
+        if res == 0 {
+            return Err(IoError::last_os_error());
+        }
+        Ok(Some(ExitStatus::with_exit_code(status)))
     }
 
     fn do_kill(&mut self) -> IoResult<()> {
