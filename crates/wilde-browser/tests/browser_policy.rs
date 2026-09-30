@@ -182,7 +182,9 @@ fn visible_dirty_unknown_media_download_and_lease_pages_are_outside_warm_budget(
         eviction_plan(&pages, 1, 100, 10).unwrap(),
         EvictionPlan {
             evict: vec!["old".into()],
-            deferred_over_budget: 0
+            deferred_over_budget: 0,
+            protected_resident_pages: 8,
+            remaining_resident_above_warm_budget: 8,
         }
     );
 }
@@ -250,4 +252,46 @@ fn synthetic_initial_navigation_loads_once_and_rejects_external_or_repeat_naviga
     let invalid = InitialSyntheticNavigation::default();
     assert!(!invalid.allows("https://example.test/"));
     assert!(!invalid.allows("about:blank"));
+}
+
+#[test]
+fn protected_only_pressure_is_visible_without_scheduling_eviction() {
+    let mut dirty = page("dirty", 1);
+    dirty.unsaved = UnsavedState::Dirty;
+    let mut unknown = page("unknown", 2);
+    unknown.unsaved = UnsavedState::Unknown;
+    let mut visible = page("visible", 3);
+    visible.protection.visible = true;
+    let plan = eviction_plan(&[dirty, unknown, visible], 1, 100, 10).unwrap();
+    assert!(plan.evict.is_empty());
+    assert_eq!(plan.deferred_over_budget, 0);
+    assert_eq!(plan.protected_resident_pages, 3);
+    assert_eq!(plan.remaining_resident_above_warm_budget, 2);
+}
+
+#[test]
+fn mixed_pressure_distinguishes_protection_from_cooldown_and_clock_rollback() {
+    let mut dirty = page("dirty", 0);
+    dirty.unsaved = UnsavedState::Dirty;
+    let mut recent = page("recent", 95);
+    recent.resident_since_ms = 95;
+    let pages = [dirty, page("old", 1), recent];
+    let plan = eviction_plan(&pages, 0, 100, 10).unwrap();
+    assert_eq!(plan.evict, vec!["old"]);
+    assert_eq!(plan.deferred_over_budget, 1);
+    assert_eq!(plan.protected_resident_pages, 1);
+    assert_eq!(plan.remaining_resident_above_warm_budget, 2);
+
+    let rollback = eviction_plan(&pages, 0, 0, 10).unwrap();
+    assert!(rollback.evict.is_empty());
+    assert_eq!(rollback.deferred_over_budget, 2);
+    assert_eq!(rollback.protected_resident_pages, 1);
+    assert_eq!(rollback.remaining_resident_above_warm_budget, 3);
+
+    let settled = eviction_plan(&pages, 0, 110, 10).unwrap();
+    assert_eq!(settled.evict, vec!["old", "recent"]);
+    assert_eq!(settled.deferred_over_budget, 0);
+    assert_eq!(settled.protected_resident_pages, 1);
+    assert_eq!(settled.remaining_resident_above_warm_budget, 1);
+    assert_eq!(pages[0].unsaved, UnsavedState::Dirty);
 }

@@ -38,7 +38,13 @@ impl WarmPage {
 #[derive(Debug, PartialEq, Eq)]
 pub struct EvictionPlan {
     pub evict: Vec<String>,
+    /// Eligible warm pages whose eviction is deferred by cooldown or clock uncertainty.
     pub deferred_over_budget: usize,
+    /// Protected residents are reported separately and are never eviction candidates.
+    pub protected_resident_pages: usize,
+    /// Informational total-resident pressure above the warm allowance after planned evictions.
+    /// The warm allowance is not a hard total cap and never overrides page protection.
+    pub remaining_resident_above_warm_budget: usize,
 }
 #[derive(Debug, PartialEq, Eq)]
 pub enum RetentionError {
@@ -67,6 +73,7 @@ pub fn eviction_plan(
             .cmp(&b.last_used_ms)
             .then(a.page_id.cmp(&b.page_id))
     });
+    let protected_resident_pages = pages.len() - warm.len();
     let mut excess = warm.len().saturating_sub(budget);
     let mut evict = Vec::new();
     for page in warm {
@@ -83,8 +90,12 @@ pub fn eviction_plan(
             excess -= 1;
         }
     }
+    let remaining_resident_above_warm_budget =
+        pages.len().saturating_sub(evict.len()).saturating_sub(budget);
     Ok(EvictionPlan {
         evict,
         deferred_over_budget: excess,
+        protected_resident_pages,
+        remaining_resident_above_warm_budget,
     })
 }
