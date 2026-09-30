@@ -196,7 +196,8 @@ def main() -> int:
     for number, executable in enumerate(artifacts):
         log = args.logs / f"{number:02d}-{executable.stem}.log"
         runner = windows_run if os.name == "nt" else unix_run
-        result = runner([str(executable), "--test-threads=1", "--show-output"], log, args.timeout)
+        # Preserve early failure receipts even when a later test reaches the owned watchdog.
+        result = runner([str(executable), "--test-threads=1", "--nocapture"], log, args.timeout)
         result.update(executable=str(executable), log=str(log))
         results.append(result)
         save_receipt()

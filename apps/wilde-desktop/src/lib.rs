@@ -45,6 +45,7 @@ pub struct ContinuousTerminalEvidence {
 pub fn run_continuous_terminal_pilot() -> Result<ContinuousTerminalEvidence> {
     const MINIMUM_BYTES: u64 = 16 * 1_048_576;
     const SENTINEL: &str = "WILDE_FIXTURE_STREAM_DONE";
+    let pilot_started = Instant::now();
     let identity = fixture_identity()?;
     let terminal = Arc::new(Mutex::new(
         wilde_ide::TerminalModel::new_session(identity.clone(), 24, 80, 100)
@@ -53,6 +54,10 @@ pub fn run_continuous_terminal_pilot() -> Result<ContinuousTerminalEvidence> {
     let completed = Arc::new(AtomicBool::new(false));
     let sink_terminal = Arc::clone(&terminal);
     let sink_completed = Arc::clone(&completed);
+    eprintln!(
+        "continuous fixture spawn begin: {:?}",
+        pilot_started.elapsed()
+    );
     let mut session = OwnedFixtureSession::spawn_with_output_sink(
         identity.clone(),
         PtySize {
@@ -74,13 +79,25 @@ pub fn run_continuous_terminal_pilot() -> Result<ContinuousTerminalEvidence> {
             Ok(())
         },
     )?;
+    eprintln!(
+        "continuous fixture spawn returned: {:?}",
+        pilot_started.elapsed()
+    );
     let original_process = session.process_id();
     ensure!(
         original_process.is_some(),
         "fixture has no owned process identity"
     );
     session.detach();
+    eprintln!(
+        "continuous sustained input begin: {:?}",
+        pilot_started.elapsed()
+    );
     session.write_input(FixtureInput::SustainedOutput)?;
+    eprintln!(
+        "continuous sustained input returned: {:?}",
+        pilot_started.elapsed()
+    );
     let deadline = Instant::now() + Duration::from_secs(7);
     while !completed.load(Ordering::Acquire) && Instant::now() < deadline {
         ensure!(
@@ -89,10 +106,22 @@ pub fn run_continuous_terminal_pilot() -> Result<ContinuousTerminalEvidence> {
         );
         std::thread::sleep(Duration::from_millis(10));
     }
-    ensure!(
-        completed.load(Ordering::Acquire),
-        "continuous output sentinel deadline"
-    );
+    if !completed.load(Ordering::Acquire) {
+        let progress = terminal.try_lock().ok().map(|model| {
+            (
+                model.admitted_bytes(),
+                model.next_sequence(),
+                model.contents().contains(SENTINEL),
+            )
+        });
+        eprintln!(
+            "continuous deadline observation before Drop: elapsed={:?}, progress={progress:?}, fault={:?}, receipt={:?}",
+            pilot_started.elapsed(),
+            session.stream_fault(),
+            session.cleanup_receipt().snapshot()
+        );
+        bail!("continuous output sentinel deadline");
+    }
     // The detached observer takes its first view only after the reader has parsed the stream.
     let (admitted_bytes, next_sequence, final_sentinel) = {
         let model = terminal
@@ -114,7 +143,15 @@ pub fn run_continuous_terminal_pilot() -> Result<ContinuousTerminalEvidence> {
         std::thread::sleep(Duration::from_millis(10));
     }
     let natural_exit = session.cleanup_receipt().snapshot();
+    eprintln!(
+        "continuous pre-close observation: elapsed={:?}, receipt={natural_exit:?}",
+        pilot_started.elapsed()
+    );
     let report = session.close(Duration::from_secs(2));
+    eprintln!(
+        "continuous close returned: elapsed={:?}, receipt={report:?}",
+        pilot_started.elapsed()
+    );
     let stream_fault = session.stream_fault();
     ensure!(
         stream_fault.is_none(),
@@ -267,7 +304,16 @@ pub fn run_headless_pilot(path: &Path) -> Result<PilotEvidence> {
         std::thread::sleep(Duration::from_millis(10));
     }
     let natural_exit = session.verdict() == ProcessVerdict::Exited;
+    eprintln!(
+        "pilot pre-close observation: elapsed={:?}, natural_exit={natural_exit}, receipt={:?}",
+        started.elapsed(),
+        session.cleanup_receipt().snapshot()
+    );
     let report = session.close(Duration::from_secs(2));
+    eprintln!(
+        "pilot close returned: elapsed={:?}, receipt={report:?}",
+        started.elapsed()
+    );
     let contents = terminal.contents();
     let evidence = PilotEvidence {
         application_id: wilde_contracts::DEV_APPLICATION_ID,
