@@ -126,7 +126,26 @@ fn real_native_canonical_sink_receives_over_16_mib_while_viewer_is_detached() {
     await_sink_marker(&session, &observed, b"WILDE_FIXTURE_DONE");
     await_natural_exit(&session);
     assert_cleanup(&mut session);
-    assert_eq!(session.cleanup_receipt().snapshot().exit_code, Some(0));
+    let cleanup = session.cleanup_receipt().snapshot();
+    let final_fault = session.stream_fault();
+    let observation = observed.lock().unwrap();
+    println!(
+        "canonical native receipt: admitted_bytes={}, next_sequence={}, identity_unchanged={}, pid_unchanged={}, exit_code={:?}, reader_joined={}, lifecycle_joined={}, cwd_removed={}, final_fault={:?}",
+        observation.bytes,
+        observation.cursor.as_ref().unwrap().next_sequence(),
+        session.identity() == &identity,
+        session.process_id() == pid,
+        cleanup.exit_code,
+        cleanup.reader_joined,
+        cleanup.lifecycle_joined,
+        cleanup.cwd_removed,
+        final_fault,
+    );
+    assert_eq!(cleanup.exit_code, Some(0));
+    assert_eq!(
+        final_fault, None,
+        "stream must remain fault-free after reader cleanup"
+    );
 }
 
 #[test]
