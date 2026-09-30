@@ -13,7 +13,8 @@ use anyhow::{Context, Result, bail};
 use fixture_command::FixtureDirectory;
 use fixture_lifecycle::OwnedChild;
 pub use fixture_lifecycle::{
-    CleanupReceipt, CleanupReport, CwdRemovalError, MAX_CLEANUP_WAIT, MAX_FIXTURE_LIFETIME,
+    CleanupReceipt, CleanupReport, CleanupTiming, CwdRemovalError, MAX_CLEANUP_WAIT,
+    MAX_FIXTURE_LIFETIME,
 };
 pub use portable_pty::PtySize;
 use portable_pty::{MasterPty, native_pty_system};
@@ -117,6 +118,7 @@ impl OwnedFixtureSession {
             lifecycle_joined: false,
             cwd_removed: false,
             cwd_remove_error: None,
+            timing: CleanupTiming::default(),
         })));
         let (consumer, output) = match sink {
             Some(sink) => (
@@ -272,24 +274,37 @@ impl OwnedFixtureSession {
     }
 
     pub fn close(&mut self, budget: Duration) -> CleanupReport {
+        let started = Instant::now();
+        let mut timing = CleanupTiming::default();
         self.closed = true;
         self.stop.store(true, Ordering::Release);
+        let phase = Instant::now();
         self.writer.take();
+        timing.writer_drop = phase.elapsed();
         let deadline = Instant::now() + budget.min(MAX_CLEANUP_WAIT);
         loop {
+            let phase = Instant::now();
             let verdict = self.verdict();
+            timing.verdict_observation = timing.verdict_observation.saturating_add(phase.elapsed());
             // Native ConPTY destruction may block; the outer owned runner is the timeout boundary.
             if verdict == ProcessVerdict::Exited {
+                let phase = Instant::now();
                 self.master.take();
+                timing.master_drop = timing.master_drop.saturating_add(phase.elapsed());
             }
+            let phase = Instant::now();
             join_finished(&mut self.reader, &self.receipt, true);
             join_finished(&mut self.lifecycle, &self.receipt, false);
+            timing.worker_join = timing.worker_join.saturating_add(phase.elapsed());
             let workers = self.receipt.snapshot();
             if verdict == ProcessVerdict::Exited
                 && workers.reader_joined
                 && workers.lifecycle_joined
             {
-                match self.cwd.remove_before(deadline) {
+                let phase = Instant::now();
+                let removal = self.cwd.remove_before(deadline);
+                timing.manifest_removal = timing.manifest_removal.saturating_add(phase.elapsed());
+                match removal {
                     Ok(()) => {
                         self.receipt.update(|report| {
                             report.cwd_removed = true;
@@ -315,6 +330,9 @@ impl OwnedFixtureSession {
             }
             std::thread::sleep(Duration::from_millis(10));
         }
+        timing.total_close = started.elapsed();
+        timing.deadline_exhausted = Instant::now() >= deadline;
+        self.receipt.update(|report| report.timing = timing);
         self.receipt.snapshot()
     }
 }

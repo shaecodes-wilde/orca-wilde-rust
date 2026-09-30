@@ -37,6 +37,17 @@ impl CwdRemovalError {
         false
     }
 }
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
+pub struct CleanupTiming {
+    pub writer_drop: Duration,
+    pub verdict_observation: Duration,
+    pub master_drop: Duration,
+    pub worker_join: Duration,
+    pub manifest_removal: Duration,
+    pub total_close: Duration,
+    pub deadline_exhausted: bool,
+}
+
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct CleanupReport {
     pub process_id: Option<u32>,
@@ -48,6 +59,7 @@ pub struct CleanupReport {
     pub lifecycle_joined: bool,
     pub cwd_removed: bool,
     pub cwd_remove_error: Option<CwdRemovalError>,
+    pub timing: CleanupTiming,
 }
 
 #[derive(Clone)]
@@ -184,6 +196,7 @@ mod observation_failure_tests {
             lifecycle_joined: false,
             cwd_removed: false,
             cwd_remove_error: None,
+            timing: CleanupTiming::default(),
         })))
     }
 
