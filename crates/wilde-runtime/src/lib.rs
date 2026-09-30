@@ -29,6 +29,7 @@ use wilde_contracts::{ProcessVerdict, SessionIdentity, TerminalFrame};
 pub enum FixtureInput {
     Ping,
     Finish,
+    SustainedOutput,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -36,6 +37,8 @@ pub enum StreamFault {
     Overflow,
     ReadFailed,
     LeaseExpired,
+    ConsumerFailed,
+    SequenceExhausted,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -54,7 +57,7 @@ pub struct OwnedFixtureSession {
     child: OwnedChild,
     master: Option<Box<dyn MasterPty + Send>>,
     writer: Option<Box<dyn Write + Send>>,
-    output: Receiver<Vec<u8>>,
+    output: Option<Receiver<Vec<u8>>>,
     fault: Arc<AtomicU8>,
     stop: Arc<AtomicBool>,
     reader: Option<JoinHandle<()>>,
@@ -65,6 +68,24 @@ pub struct OwnedFixtureSession {
 
 impl OwnedFixtureSession {
     pub fn spawn(identity: SessionIdentity, size: PtySize) -> Result<Self> {
+        Self::spawn_inner(identity, size, None)
+    }
+
+    /// The reader feeds one canonical host consumer, independent of viewer attachment.
+    /// The sink must consume every frame with bounded synchronous work; it cannot restore a parser from a tail.
+    pub fn spawn_with_output_sink(
+        identity: SessionIdentity,
+        size: PtySize,
+        sink: impl FnMut(TerminalFrame) -> Result<()> + Send + 'static,
+    ) -> Result<Self> {
+        Self::spawn_inner(identity, size, Some(Box::new(sink)))
+    }
+
+    fn spawn_inner(
+        identity: SessionIdentity,
+        size: PtySize,
+        sink: Option<fixture_output::OutputSink>,
+    ) -> Result<Self> {
         fixture_command::require_guard(std::env::var_os("WILDE_RUNTIME_FIXTURE_GUARD").as_deref())?;
         fixture_command::validate(&identity, size)?;
         let mut cwd = FixtureDirectory::create()?;
@@ -97,7 +118,20 @@ impl OwnedFixtureSession {
             cwd_removed: false,
             cwd_remove_error: None,
         })));
-        let (sender, output) = sync_channel(fixture_output::QUEUE_CHUNKS);
+        let (consumer, output) = match sink {
+            Some(sink) => (
+                fixture_output::OutputConsumer::Canonical {
+                    identity: identity.clone(),
+                    next_sequence: 0,
+                    sink,
+                },
+                None,
+            ),
+            None => {
+                let (sender, output) = sync_channel(fixture_output::QUEUE_CHUNKS);
+                (fixture_output::OutputConsumer::Raw(sender), Some(output))
+            }
+        };
         let mut session = Self {
             identity,
             next_sequence: 0,
@@ -118,7 +152,7 @@ impl OwnedFixtureSession {
         session.reader = Some(
             std::thread::Builder::new()
                 .name("wilde-fixture-output".into())
-                .spawn(move || fixture_output::read_output(reader, sender, fault))
+                .spawn(move || fixture_output::read_output(reader, consumer, fault))
                 .context("start bounded fixture reader")?,
         );
         let child = Arc::clone(&session.child);
@@ -158,6 +192,8 @@ impl OwnedFixtureSession {
             fixture_output::OVERFLOW => Some(StreamFault::Overflow),
             fixture_output::READ_FAILED => Some(StreamFault::ReadFailed),
             fixture_output::LEASE_EXPIRED => Some(StreamFault::LeaseExpired),
+            fixture_output::CONSUMER_FAILED => Some(StreamFault::ConsumerFailed),
+            fixture_output::SEQUENCE_EXHAUSTED => Some(StreamFault::SequenceExhausted),
             _ => None,
         }
     }
@@ -166,10 +202,14 @@ impl OwnedFixtureSession {
         if let Some(fault) = self.stream_fault() {
             bail!("fixture stream failed: {fault:?}");
         }
+        let output = self
+            .output
+            .as_ref()
+            .context("canonical output is owned by the host sink; raw reads are unavailable")?;
         if !self.attached {
             return Ok(OutputEvent::Detached);
         }
-        let payload = match self.output.recv_timeout(budget.min(MAX_FIXTURE_LIFETIME)) {
+        let payload = match output.recv_timeout(budget.min(MAX_FIXTURE_LIFETIME)) {
             Ok(payload) => payload,
             Err(RecvTimeoutError::Timeout) => return Ok(OutputEvent::TimedOut),
             Err(RecvTimeoutError::Disconnected) => {
@@ -201,11 +241,13 @@ impl OwnedFixtureSession {
         let bytes: &[u8] = match input {
             FixtureInput::Ping => b"ping\r",
             FixtureInput::Finish => b"finish\r",
+            FixtureInput::SustainedOutput => b"sustained-output\r",
         };
         #[cfg(not(windows))]
         let bytes: &[u8] = match input {
             FixtureInput::Ping => b"ping\n",
             FixtureInput::Finish => b"finish\n",
+            FixtureInput::SustainedOutput => b"sustained-output\n",
         };
         let writer = self.writer.as_mut().context("fixture input is closed")?;
         writer

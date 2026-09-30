@@ -128,13 +128,20 @@ pub(crate) fn command(cwd: &Path) -> Result<CommandBuilder> {
 }
 
 #[cfg(windows)]
-const WINDOWS_FIXTURE: &str = r#"$ErrorActionPreference='Stop'; [Console]::Write(([char]27)+'[32mWILDE_FIXTURE_READY'+([char]27)+"[0m`r`n"); while ($true) { $line=[Console]::ReadLine(); if ($null -eq $line) { exit 0 }; switch ($line) { 'ping' { [Console]::Write("WILDE_FIXTURE_PONG`r`n") } 'finish' { [Console]::Write("WILDE_FIXTURE_DONE`r`n"); exit 0 } default { exit 23 } } }"#;
+const WINDOWS_FIXTURE: &str = r#"$ErrorActionPreference='Stop'; [Console]::Write(([char]27)+'[32mWILDE_FIXTURE_READY'+([char]27)+"[0m`r`n"); while ($true) { $line=[Console]::ReadLine(); if ($null -eq $line) { exit 0 }; switch ($line) { 'ping' { [Console]::Write("WILDE_FIXTURE_PONG`r`n") } 'sustained-output' { $block=(('x'*62)+"`r`n")*64; for ($i=0; $i -lt 4608; $i++) { [Console]::Write($block) }; [Console]::Write("WILDE_FIXTURE_STREAM_DONE`r`n") } 'finish' { [Console]::Write("WILDE_FIXTURE_DONE`r`n"); exit 0 } default { exit 23 } } }"#;
 
 #[cfg(unix)]
 const UNIX_FIXTURE: &str = r#"printf '\033[32mWILDE_FIXTURE_READY\033[0m\r\n'
 while IFS= read -r line; do
     case "$line" in
         ping) printf 'WILDE_FIXTURE_PONG\r\n' ;;
+        sustained-output)
+            block='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\r\n'
+            i=0
+            while [ "$i" -lt 6 ]; do block="$block$block"; i=$((i + 1)); done
+            i=0
+            while [ "$i" -lt 4608 ]; do printf '%b' "$block"; i=$((i + 1)); done
+            printf 'WILDE_FIXTURE_STREAM_DONE\r\n' ;;
         finish) printf 'WILDE_FIXTURE_DONE\r\n'; exit 0 ;;
         *) exit 23 ;;
     esac
