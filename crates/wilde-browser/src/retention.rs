@@ -90,8 +90,10 @@ pub fn eviction_plan(
             excess -= 1;
         }
     }
-    let remaining_resident_above_warm_budget =
-        pages.len().saturating_sub(evict.len()).saturating_sub(budget);
+    let remaining_resident_above_warm_budget = pages
+        .len()
+        .saturating_sub(evict.len())
+        .saturating_sub(budget);
     Ok(EvictionPlan {
         evict,
         deferred_over_budget: excess,
